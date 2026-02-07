@@ -1,0 +1,13 @@
+# ninja log v6
+649	5052	7922011174765434	CMakeFiles/interface1.dir/employe_widget.cpp.obj	7eae71a9d12c5432
+76	507	7922011169019569	interface1_autogen/timestamp	ded54c66381738d9
+76	507	7922011169019569	C:/Users/hp/Documents/interface1/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/interface1_autogen/mocs_compilation.cpp	ded54c66381738d9
+1971	7367	7921997734426658	CMakeFiles/interface1.dir/main.cpp.obj	13775e8c1c4bed4d
+76	507	7922011169019569	interface1_autogen/mocs_compilation.cpp	ded54c66381738d9
+76	507	7922011169019569	C:/Users/hp/Documents/interface1/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/interface1_autogen/timestamp	ded54c66381738d9
+510	642	7922011174324133	C:/Users/hp/Documents/interface1/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/interface1_autogen/EWIEGA46WW/qrc_resources.cpp	5c41e2fa3a035031
+657	874	7922011174841104	CMakeFiles/interface1.dir/interface1_autogen/EWIEGA46WW/qrc_resources.cpp.obj	d8a16543f4027398
+510	642	7922011174324133	interface1_autogen/EWIEGA46WW/qrc_resources.cpp	5c41e2fa3a035031
+1963	7522	7921997734346879	CMakeFiles/interface1.dir/interface1_autogen/mocs_compilation.cpp.obj	fa566138641c28bb
+642	4368	7922011174700592	CMakeFiles/interface1.dir/mainwindow.cpp.obj	9c4514889ca89988
+5052	5463	7922011218801410	interface1.exe	a62fdeafa9a0b67b

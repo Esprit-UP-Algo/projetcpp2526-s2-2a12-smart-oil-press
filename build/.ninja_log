@@ -1,0 +1,24 @@
+# ninja log v6
+1162	5503	7921996789823932	CMakeFiles/interface1.dir/main.cpp.obj	1ec722805fb17099
+1553	5878	7922014042660565	CMakeFiles/interface1.dir/employe_widget.cpp.obj	d82d0ef983baf215
+42	1398	7922014039084348	interface1_autogen/timestamp	e2f8892015f0d8e0
+42	1398	7922014039084348	interface1_autogen/mocs_compilation.cpp	e2f8892015f0d8e0
+42	1398	7922014039084348	C:/Users/hp/Documents/interface1/build/interface1_autogen/timestamp	e2f8892015f0d8e0
+1401	1542	7922014042332623	C:/Users/hp/Documents/interface1/build/interface1_autogen/EWIEGA46WW/qrc_resources.cpp	d6968c538b877410
+42	1398	7922014039084348	C:/Users/hp/Documents/interface1/build/interface1_autogen/mocs_compilation.cpp	e2f8892015f0d8e0
+1401	1542	7922014042332623	interface1_autogen/EWIEGA46WW/qrc_resources.cpp	d6968c538b877410
+1557	1726	7922014042703663	CMakeFiles/interface1.dir/interface1_autogen/EWIEGA46WW/qrc_resources.cpp.obj	681bb1efeba7daf3
+1542	4960	7922014042541015	CMakeFiles/interface1.dir/interface1_autogen/mocs_compilation.cpp.obj	8f1a67320a1fa24c
+1548	5431	7922014042591783	CMakeFiles/interface1.dir/mainwindow.cpp.obj	8387c9e2781d35cd
+5879	6207	7922014085833598	interface1.exe	eaa5e727e7df86ce
+83	1555	7922017303375068	build.ninja	9993be0b278eb16e
+43	301	7922017304336413	interface1_autogen/timestamp	e2f8892015f0d8e0
+43	301	7922017304336413	interface1_autogen/mocs_compilation.cpp	e2f8892015f0d8e0
+43	301	7922017304336413	C:/Users/hp/Documents/interface1/build/interface1_autogen/timestamp	e2f8892015f0d8e0
+43	301	7922017304336413	C:/Users/hp/Documents/interface1/build/interface1_autogen/mocs_compilation.cpp	e2f8892015f0d8e0
+303	445	7922017308150748	interface1_autogen/EWIEGA46WW/qrc_resources.cpp	d6968c538b877410
+303	445	7922017308150748	C:/Users/hp/Documents/interface1/build/interface1_autogen/EWIEGA46WW/qrc_resources.cpp	d6968c538b877410
+456	680	7922017308484564	CMakeFiles/interface1.dir/interface1_autogen/EWIEGA46WW/qrc_resources.cpp.obj	681bb1efeba7daf3
+445	5285	7922017308371661	CMakeFiles/interface1.dir/mainwindow.cpp.obj	8387c9e2781d35cd
+451	6092	7922017308423717	CMakeFiles/interface1.dir/employe_widget.cpp.obj	d82d0ef983baf215
+6092	6396	7922017364824416	interface1.exe	eaa5e727e7df86ce

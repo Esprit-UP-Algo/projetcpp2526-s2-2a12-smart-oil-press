@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Application de Gestion - Tableau de bord</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayoutMain">
+    <item>
+     <widget class="QFrame" name="navFrame">
+      <property name="minimumWidth">
+       <number>200</number>
+      </property>
+      <layout class="QVBoxLayout" name="navLayout">
+       <item>
+        <widget class="QLabel" name="logoLabel">
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="resources.qrc">:/images/logo.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+         <property name="maximumHeight">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnEmploye">
+         <property name="text">
+          <string>EMPLOYÉ</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnEquipe">
+         <property name="text">
+          <string>ÉQUIPE</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnClient">
+         <property name="text">
+          <string>CLIENT</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnLaboratoire">
+         <property name="text">
+          <string>LABORATOIRE</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnCommande">
+         <property name="text">
+          <string>COMMANDE</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnMachine">
+         <property name="text">
+          <string>MACHINE</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QStackedWidget" name="stackedMain">
+      <widget class="QWidget" name="pagePlaceholder">
+       <attribute name="title">
+        <string>Accueil</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_placeholder">
+        <item>
+         <widget class="QLabel" name="welcomeLabel">
+          <property name="text">
+           <string>Bienvenue dans l'application de gestion</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar"/>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
