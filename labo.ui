@@ -1,0 +1,1370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1480</width>
+    <height>1109</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Gestion de Laboratoire - Contrôles Qualité</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow { background-color: #F8EDE3; }</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="mainLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="navFrame">
+      <property name="frameShape">
+       <enum>QFrame::Shape::StyledPanel</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #798777;</string>
+      </property>
+      <layout class="QVBoxLayout" name="navLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="lblLogo">
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>120</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>238</width>
+           <height>150</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: #798777; padding: 20px;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="sidebarBtnEmploye">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    text-align: left;
+    padding-left: 20px;
+    border: none;
+    background-color: #798777;
+    color: white;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #6A7A66;
+}
+QPushButton:checked {
+    background-color: #5A6A56;
+    border-left: 4px solid #FFFFFF;
+}</string>
+         </property>
+         <property name="text">
+          <string>EMPLOYÉ</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="sidebarBtnEquipe">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    text-align: left;
+    padding-left: 20px;
+    border: none;
+    background-color: #798777;
+    color: white;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #6A7A66;
+}
+QPushButton:checked {
+    background-color: #5A6A56;
+    border-left: 4px solid #FFFFFF;
+}</string>
+         </property>
+         <property name="text">
+          <string>ÉQUIPE</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="sidebarBtnClient">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    text-align: left;
+    padding-left: 20px;
+    border: none;
+    background-color: #798777;
+    color: white;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #6A7A66;
+}
+QPushButton:checked {
+    background-color: #5A6A56;
+    border-left: 4px solid #FFFFFF;
+}</string>
+         </property>
+         <property name="text">
+          <string>CLIENT</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="sidebarBtnLaboratoire">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    text-align: left;
+    padding-left: 20px;
+    border: none;
+    background-color: #798777;
+    color: white;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #6A7A66;
+}
+QPushButton:checked {
+    background-color: #5A6A56;
+    border-left: 4px solid #FFFFFF;
+}</string>
+         </property>
+         <property name="text">
+          <string>LABORATOIRE</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="sidebarBtnCommande">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    text-align: left;
+    padding-left: 20px;
+    border: none;
+    background-color: #798777;
+    color: white;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #6A7A66;
+}
+QPushButton:checked {
+    background-color: #5A6A56;
+    border-left: 4px solid #FFFFFF;
+}</string>
+         </property>
+         <property name="text">
+          <string>COMMANDE</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="sidebarBtnMachine">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    text-align: left;
+    padding-left: 20px;
+    border: none;
+    background-color: #798777;
+    color: white;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #6A7A66;
+}
+QPushButton:checked {
+    background-color: #5A6A56;
+    border-left: 4px solid #FFFFFF;
+}</string>
+         </property>
+         <property name="text">
+          <string>MACHINE</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="navSpacer">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="contentLayout">
+      <property name="spacing">
+       <number>20</number>
+      </property>
+      <property name="leftMargin">
+       <number>30</number>
+      </property>
+      <property name="topMargin">
+       <number>20</number>
+      </property>
+      <property name="rightMargin">
+       <number>20</number>
+      </property>
+      <property name="bottomMargin">
+       <number>20</number>
+      </property>
+      <item>
+       <layout class="QVBoxLayout" name="centerLayout">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QTabWidget" name="tabWidget">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QTabWidget::pane {
+    border: 1px solid #D1C7B7;
+    background-color: white;
+    border-radius: 4px;
+}
+QTabBar::tab {
+    background-color: #F8EDE3;
+    padding: 10px 20px;
+    margin-right: 2px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+QTabBar::tab:selected {
+    background-color: white;
+    border-bottom: 2px solid #798777;
+}</string>
+          </property>
+          <widget class="QWidget" name="tabList">
+           <attribute name="title">
+            <string>📋 Liste des Laboratoires</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="tabListLayout">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QTableWidget" name="tableLaboratoires">
+              <property name="minimumSize">
+               <size>
+                <width>900</width>
+                <height>600</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QTableWidget {
+    background-color: white;
+    alternate-background-color: #F9F9F9;
+    gridline-color: #E0E0E0;
+}
+QHeaderView::section {
+    background-color: #798777;
+    color: white;
+    padding: 8px;
+    border: none;
+    font-weight: bold;
+}
+QTableWidget::item {
+    padding: 6px;
+}
+QTableWidget::item:selected {
+    background-color: #798777;
+    color: white;
+}</string>
+              </property>
+              <property name="alternatingRowColors">
+               <bool>true</bool>
+              </property>
+              <property name="selectionMode">
+               <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
+              </property>
+              <property name="selectionBehavior">
+               <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+              </property>
+              <property name="showGrid">
+               <bool>true</bool>
+              </property>
+              <property name="gridStyle">
+               <enum>Qt::PenStyle::SolidLine</enum>
+              </property>
+              <property name="sortingEnabled">
+               <bool>true</bool>
+              </property>
+              <property name="rowCount">
+               <number>0</number>
+              </property>
+              <property name="columnCount">
+               <number>7</number>
+              </property>
+              <column>
+               <property name="text">
+                <string>ID</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Nom Laboratoire</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Type</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Adresse / Site</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Review (5)</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Espace (m²)</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Reste(m²)</string>
+               </property>
+              </column>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tabDetails">
+           <attribute name="title">
+            <string>🔍 Détails du Laboratoire</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="tabDetailsLayout">
+            <property name="spacing">
+             <number>10</number>
+            </property>
+            <item>
+             <widget class="QScrollArea" name="scrollArea">
+              <property name="widgetResizable">
+               <bool>true</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QScrollArea {
+    border: none;
+    background-color: transparent;
+}</string>
+              </property>
+              <widget class="QWidget" name="scrollAreaWidgetContents">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>946</width>
+                 <height>980</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="scrollLayout">
+                <property name="spacing">
+                 <number>15</number>
+                </property>
+                <item>
+                 <widget class="QGroupBox" name="groupBoxInfo">
+                  <property name="title">
+                   <string>📋 Informations du Laboratoire</string>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QGroupBox {
+    font-weight: bold;
+    border: 2px solid #798777;
+    border-radius: 8px;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 10px 0 10px;
+}</string>
+                  </property>
+                  <layout class="QFormLayout" name="formLayoutInfo">
+                   <property name="horizontalSpacing">
+                    <number>15</number>
+                   </property>
+                   <property name="verticalSpacing">
+                    <number>10</number>
+                   </property>
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="lblId">
+                     <property name="text">
+                      <string>ID :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QLineEdit" name="detailId">
+                     <property name="readOnly">
+                      <bool>true</bool>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: #F5F5F5;</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QLabel" name="lblNom">
+                     <property name="text">
+                      <string>Nom :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QLineEdit" name="detailName"/>
+                   </item>
+                   <item row="2" column="0">
+                    <widget class="QLabel" name="lblAddress">
+                     <property name="text">
+                      <string>Adresse :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="1">
+                    <widget class="QLineEdit" name="detailAddress"/>
+                   </item>
+                   <item row="3" column="0">
+                    <widget class="QLabel" name="lblType">
+                     <property name="text">
+                      <string>Type :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="1">
+                    <widget class="QComboBox" name="detailType">
+                     <property name="styleSheet">
+                      <string notr="true">padding: 5px;</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="0">
+                    <widget class="QLabel" name="lblConform">
+                     <property name="text">
+                      <string>Review (5) :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="1">
+                    <widget class="QComboBox" name="detailConformite">
+                     <property name="styleSheet">
+                      <string notr="true">padding: 5px;</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="0">
+                    <widget class="QLabel" name="lblArea">
+                     <property name="text">
+                      <string>Espace (m²) :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="1">
+                    <widget class="QLineEdit" name="detailSuperficie"/>
+                   </item>
+                   <item row="6" column="0">
+                    <widget class="QLabel" name="lblNbMach">
+                     <property name="text">
+                      <string>Espace Reste (m²) :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="6" column="1">
+                    <widget class="QLineEdit" name="detailNbMachines"/>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QGroupBox" name="groupBoxDates">
+                  <property name="title">
+                   <string> Dates</string>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QGroupBox {
+    font-weight: bold;
+    border: 2px solid #798777;
+    border-radius: 8px;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 10px 0 10px;
+}</string>
+                  </property>
+                  <layout class="QFormLayout" name="formLayoutDates">
+                   <property name="horizontalSpacing">
+                    <number>15</number>
+                   </property>
+                   <property name="verticalSpacing">
+                    <number>10</number>
+                   </property>
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="lblLast">
+                     <property name="text">
+                      <string>Dernier contrôle :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QDateEdit" name="detailLastControl">
+                     <property name="calendarPopup">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QLabel" name="lblNext">
+                     <property name="text">
+                      <string>Prochain contrôle :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QDateEdit" name="detailNextControl">
+                     <property name="calendarPopup">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tabHistory">
+           <attribute name="title">
+            <string>📍 Géolocalisation</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="styleSheet">
+               <string notr="true">font-size: 14px; color: #666666; padding: 50px;</string>
+              </property>
+              <property name="text">
+               <string>&lt;center&gt;&lt;h2 style='color:#798777;'&gt;📍 Géolocalisation&lt;/h2&gt;
+&lt;br&gt;
+&lt;p&gt;Cette section affichera la géolocalisation des laboratoires sur une carte interactive.&lt;/p&gt;
+&lt;br&gt;
+&lt;div style='font-size: 16px; color: #555;'&gt;🚧 Fonctionnalité en développement 🚧&lt;/div&gt;&lt;/center&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tabStats">
+           <attribute name="title">
+            <string>📊 Statistiques</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="tabStatsLayout">
+            <property name="spacing">
+             <number>15</number>
+            </property>
+            <item>
+             <widget class="QGroupBox" name="groupBoxGlobalStats">
+              <property name="title">
+               <string>📈 Vue d'ensemble</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QGroupBox {
+    font-weight: bold;
+    border: 2px solid #798777;
+    border-radius: 8px;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 10px 0 10px;
+}</string>
+              </property>
+              <layout class="QGridLayout" name="gridStats">
+               <property name="spacing">
+                <number>10</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="lblTotLabText">
+                 <property name="text">
+                  <string>Total laboratoires :</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QLabel" name="lblTotalLabs">
+                 <property name="styleSheet">
+                  <string notr="true">font-size: 18px; font-weight: bold; color: #798777;</string>
+                 </property>
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="lblConfRateText">
+                 <property name="text">
+                  <string>Taux de conformité :</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QLabel" name="lblConformityRate">
+                 <property name="styleSheet">
+                  <string notr="true">font-size: 18px; font-weight: bold; color: #4CAF50;</string>
+                 </property>
+                 <property name="text">
+                  <string>0%</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="lblNonConfText">
+                 <property name="text">
+                  <string>Non conformes :</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QLabel" name="lblNonConform">
+                 <property name="styleSheet">
+                  <string notr="true">font-size: 18px; font-weight: bold; color: #F44336;</string>
+                 </property>
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="buttonsLayout">
+              <property name="spacing">
+               <number>10</number>
+              </property>
+              <item>
+               <widget class="QPushButton" name="btnAddControl">
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {
+    background-color: #798777;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #6A7A66;
+}</string>
+                </property>
+                <property name="text">
+                 <string>➕ Nouveau contrôle</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnExportControl">
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {
+    background-color: #5D737E;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #4C626E;
+}</string>
+                </property>
+                <property name="text">
+                 <string>📄 Exporter PDF</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="groupBoxStatsByType">
+              <property name="title">
+               <string>📊 Répartition par type</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QGroupBox {
+    font-weight: bold;
+    border: 2px solid #798777;
+    border-radius: 8px;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 10px 0 10px;
+}</string>
+              </property>
+              <layout class="QVBoxLayout" name="typeStatsLayout">
+               <property name="spacing">
+                <number>8</number>
+               </property>
+               <item>
+                <widget class="QTextEdit" name="textStatsByType">
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #F9F9F9; padding: 10px; border-radius: 4px;</string>
+                 </property>
+                 <property name="html">
+                  <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#798777;&quot;&gt;Biologie:&lt;/span&gt; 25% (5 labos)&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#798777;&quot;&gt;Chimie:&lt;/span&gt; 40% (8 labos)&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#798777;&quot;&gt;Microbiologie:&lt;/span&gt; 20% (4 labos)&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#798777;&quot;&gt;Pathologie:&lt;/span&gt; 15% (3 labos)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tabAI">
+           <attribute name="title">
+            <string>🤖 Assistant IA</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="tabAILayout">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="lblAITitle">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>60</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: #798777; color: white; padding: 15px; font-size: 16px;</string>
+              </property>
+              <property name="text">
+               <string>&lt;h2 style='margin: 0;'&gt;🤖 Assistant IA - Suggestions Labo&lt;/h2&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTextEdit" name="textAIChat">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>150</height>
+               </size>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: #F9F9F9; padding: 15px; border: none;</string>
+              </property>
+              <property name="html">
+               <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt; font-weight:600; color:#798777;&quot;&gt;Assistant IA:&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; Bonjour! Je suis votre assistant IA pour les laboratoires. Je peux analyser vos données et suggérer des améliorations ou rénovations.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Sélectionnez un laboratoire dans la liste pour obtenir des suggestions personnalisées.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="AIControlLayout">
+              <property name="spacing">
+               <number>10</number>
+              </property>
+              <property name="leftMargin">
+               <number>15</number>
+              </property>
+              <property name="topMargin">
+               <number>10</number>
+              </property>
+              <property name="rightMargin">
+               <number>15</number>
+              </property>
+              <property name="bottomMargin">
+               <number>10</number>
+              </property>
+              <item>
+               <widget class="QLineEdit" name="lineEditAIQuestion">
+                <property name="placeholderText">
+                 <string>Posez une question sur les améliorations...</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">padding: 10px; border: 1px solid #D1C7B7; border-radius: 4px;</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnSendQuestion">
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {
+    background-color: #798777;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #6A7A66;
+}</string>
+                </property>
+                <property name="text">
+                 <string>Envoyer</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="groupBoxAISuggestions">
+              <property name="title">
+               <string>💡 Suggestions basées sur les données</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QGroupBox {
+    font-weight: bold;
+    border: 2px solid #798777;
+    border-radius: 8px;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 10px 0 10px;
+}</string>
+              </property>
+              <layout class="QVBoxLayout" name="AISuggestionsLayout">
+               <property name="spacing">
+                <number>8</number>
+               </property>
+               <item>
+                <widget class="QTextEdit" name="textAISuggestions">
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #F9F9F9; padding: 10px; border-radius: 4px;</string>
+                 </property>
+                 <property name="html">
+                  <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#798777;&quot;&gt;Analyses disponibles:&lt;/span&gt;&lt;/p&gt;
+&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 20px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;
+&lt;li style=&quot; margin-top:8px; margin-bottom:8px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Analyse des taux de conformité&lt;/li&gt;
+&lt;li style=&quot; margin-top:8px; margin-bottom:8px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Suggestions d'amélioration d'espace&lt;/li&gt;
+&lt;li style=&quot; margin-top:8px; margin-bottom:8px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Recommandations de rénovation&lt;/li&gt;
+&lt;li style=&quot; margin-top:8px; margin-bottom:8px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Optimisation des ressources&lt;/li&gt;
+&lt;li style=&quot; margin-top:8px; margin-bottom:8px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Prévisions de maintenance&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="rightLayout">
+        <property name="spacing">
+         <number>20</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QGroupBox" name="groupBoxSearch">
+          <property name="title">
+           <string>🔍 Recherche Rapide</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QGroupBox {
+    font-weight: bold;
+    border: 2px solid #798777;
+    border-radius: 8px;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 10px 0 10px;
+}</string>
+          </property>
+          <layout class="QVBoxLayout" name="searchLayout">
+           <property name="spacing">
+            <number>10</number>
+           </property>
+           <item>
+            <widget class="QLineEdit" name="lineEditQuickSearch">
+             <property name="placeholderText">
+              <string>Rechercher un laboratoire...</string>
+             </property>
+             <property name="clearButtonEnabled">
+              <bool>true</bool>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">padding: 10px; border: 1px solid #D1C7B7; border-radius: 4px;</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnRecherche">
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    background-color: #798777;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #6A7A66;
+}</string>
+             </property>
+             <property name="text">
+              <string>Rechercher</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBoxActions">
+          <property name="title">
+           <string>⚡ Actions</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QGroupBox {
+    font-weight: bold;
+    border: 2px solid #798777;
+    border-radius: 8px;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 10px 0 10px;
+}</string>
+          </property>
+          <layout class="QVBoxLayout" name="actionsLayout">
+           <property name="spacing">
+            <number>8</number>
+           </property>
+           <item>
+            <widget class="QPushButton" name="btnNewLab">
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    background-color: #798777;
+    color: white;
+    padding: 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: left;
+    padding-left: 20px;
+}
+QPushButton:hover {
+    background-color: #6A7A66;
+}</string>
+             </property>
+             <property name="text">
+              <string>➕ Nouveau Laboratoire</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnEditLab">
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    background-color: #5D737E;
+    color: white;
+    padding: 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: left;
+    padding-left: 20px;
+}
+QPushButton:hover {
+    background-color: #4C626E;
+}</string>
+             </property>
+             <property name="text">
+              <string>✏️ Modifier</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnDeleteLab">
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    background-color: #B05454;
+    color: white;
+    padding: 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: left;
+    padding-left: 20px;
+}
+QPushButton:hover {
+    background-color: #9E4444;
+}</string>
+             </property>
+             <property name="text">
+              <string>🗑️ Supprimer / Archiver</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnAddControlQuick">
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    background-color: #798777;
+    color: white;
+    padding: 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: left;
+    padding-left: 20px;
+}
+QPushButton:hover {
+    background-color: #6A7A66;
+}</string>
+             </property>
+             <property name="text">
+              <string>📋 Nouveau contrôle</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBoxQuickInfo">
+          <property name="title">
+           <string>ℹ️ Informations rapides</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QGroupBox {
+    font-weight: bold;
+    border: 2px solid #798777;
+    border-radius: 8px;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 10px 0 10px;
+}</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout">
+           <property name="horizontalSpacing">
+            <number>15</number>
+           </property>
+           <property name="verticalSpacing">
+            <number>12</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QLabel" name="lblQuickConf">
+             <property name="text">
+              <string>Conformité :</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="quickConformity">
+             <property name="styleSheet">
+              <string notr="true">font-weight: bold; color: #798777;</string>
+             </property>
+             <property name="text">
+              <string>-</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="lblQuickLast">
+             <property name="text">
+              <string>Dernier contrôle :</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLabel" name="quickLastControl">
+             <property name="styleSheet">
+              <string notr="true">font-weight: bold; color: #5D737E;</string>
+             </property>
+             <property name="text">
+              <string>-</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="lblQuickNext">
+             <property name="text">
+              <string>Prochain contrôle :</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLabel" name="quickNextControl">
+             <property name="styleSheet">
+              <string notr="true">font-weight: bold; color: #4CAF50;</string>
+             </property>
+             <property name="text">
+              <string>-</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <spacer name="rightSpacer">
+          <property name="orientation">
+           <enum>Qt::Orientation::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="styleSheet">
+    <string notr="true">background-color: #798777; color: white;</string>
+   </property>
+  </widget>
+  <action name="actionNewLab">
+   <property name="text">
+    <string>&amp;Nouveau Laboratoire</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionNewControl">
+   <property name="text">
+    <string>&amp;Nouveau Contrôle Qualité</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+N</string>
+   </property>
+  </action>
+  <action name="actionEditControl">
+   <property name="text">
+    <string>&amp;Modifier Contrôle</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+E</string>
+   </property>
+  </action>
+  <action name="actionExportPDF">
+   <property name="text">
+    <string>&amp;Exporter Rapport PDF</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="text">
+    <string>&amp;Quitter</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionAIAnalyze">
+   <property name="text">
+    <string>&amp;Analyser avec IA</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
+  </action>
+  <action name="actionAISuggest">
+   <property name="text">
+    <string>&amp;Demander suggestions</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+I</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

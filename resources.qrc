@@ -1,0 +1,8 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+<qresource prefix="/">
+    <file>style/styles.qss</file>
+    <file>images/logo.png</file>
+    <!-- other files like images/... -->
+</qresource>
+</RCC>
