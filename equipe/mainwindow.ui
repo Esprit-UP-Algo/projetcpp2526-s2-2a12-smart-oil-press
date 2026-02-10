@@ -1,0 +1,1456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1280</width>
+    <height>720</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1280</width>
+    <height>720</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>gestion des équipes</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(248, 237, 227);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>201</width>
+      <height>671</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(161, 177, 158);
+QPushButton {
+    color: rgb(248, 237, 227);
+    background-color: transparent;
+    border: none;
+    text-align: left;
+    padding-left: 15px; /* Use padding-left since your text is aligned left */
+    font: 700 12pt &quot;Segoe UI&quot;;
+}
+
+QPushButton:hover {
+    /* One clear color for the text on hover */
+    color: rgb(189, 210, 182); 
+    
+    /* A subtle background color so the user knows they are hovering */
+    background-color: rgba(255, 255, 255, 20); 
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>10</y>
+       <width>161</width>
+       <height>111</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 700 14pt &quot;Segoe UI&quot;;
+color: rgb(248, 237, 227);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="style.qrc">:/new/prefix1/logo.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QWidget" name="verticalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>170</y>
+       <width>171</width>
+       <height>411</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="pushButton_3">
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    color: rgb(248, 237, 227);
+    background-color: transparent;
+    border: none;
+    text-align: left;
+    padding-right: 15px;
+	font: 700 12pt &quot;Segoe UI&quot;;
+}
+
+QPushButton:hover {
+    
+	color: rgb(121, 135, 119);
+    background-color: rgba(255, 255, 255, 60); /* Increased from 30 to 60 to be more visible */
+    border: 1px solid rgba(255, 255, 255, 10); /* Adding a border often forces the OS to let go */
+}</string>
+        </property>
+        <property name="text">
+         <string>   EMPLOYÉ</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_4">
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    color: rgb(248, 237, 227);
+    background-color: transparent;
+    border: none;
+   text-align: left;
+    padding-right: 15px;
+    
+	font: 700 12pt &quot;Segoe UI&quot;;
+}
+
+QPushButton:hover {
+    
+	color: rgb(121, 135, 119);
+    background-color: rgba(255, 255, 255, 60); /* Increased from 30 to 60 to be more visible */
+    border: 1px solid rgba(255, 255, 255, 10); /* Adding a border often forces the OS to let go */
+}</string>
+        </property>
+        <property name="text">
+         <string>   EQUIPE</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_6">
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    color: rgb(248, 237, 227);
+    background-color: transparent;
+    border: none;
+	text-align: left;
+    padding-right: 15px;
+    
+	font: 700 12pt &quot;Segoe UI&quot;;
+}
+
+QPushButton:hover {
+    
+	color: rgb(121, 135, 119);
+    background-color: rgba(255, 255, 255, 60); /* Increased from 30 to 60 to be more visible */
+    border: 1px solid rgba(255, 255, 255, 10); /* Adding a border often forces the OS to let go */
+}</string>
+        </property>
+        <property name="text">
+         <string>   CLIENT</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_5">
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    color: rgb(248, 237, 227);
+    background-color: transparent;
+    border: none;
+	text-align: left;
+    padding-right: 15px;
+    
+	font: 700 12pt &quot;Segoe UI&quot;;
+}
+
+QPushButton:hover {
+    
+	color: rgb(121, 135, 119);
+    background-color: rgba(255, 255, 255, 60); /* Increased from 30 to 60 to be more visible */
+    border: 1px solid rgba(255, 255, 255, 10); /* Adding a border often forces the OS to let go */
+}</string>
+        </property>
+        <property name="text">
+         <string>   LABORATOIRE</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_7">
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    color: rgb(248, 237, 227);
+    background-color: transparent;
+    border: none;
+	text-align: left;
+    padding-right: 15px;
+    
+	font: 700 12pt &quot;Segoe UI&quot;;
+}
+
+QPushButton:hover {
+    
+	color: rgb(121, 135, 119);
+    background-color: rgba(255, 255, 255, 60); /* Increased from 30 to 60 to be more visible */
+    border: 1px solid rgba(255, 255, 255, 10); /* Adding a border often forces the OS to let go */
+}</string>
+        </property>
+        <property name="text">
+         <string>   COMMANDE</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton">
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    color: rgb(248, 237, 227);
+    background-color: transparent;
+    border: none;
+	text-align: left;
+    padding-right: 15px;
+    
+	font: 700 12pt &quot;Segoe UI&quot;;
+}
+
+QPushButton:hover {
+    
+	color: rgb(121, 135, 119);
+    background-color: rgba(255, 255, 255, 60); /* Increased from 30 to 60 to be more visible */
+    border: 1px solid rgba(255, 255, 255, 10); /* Adding a border often forces the OS to let go */
+}</string>
+        </property>
+        <property name="text">
+         <string>   MACHINE</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="frame_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1281</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(161, 177, 158);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
+    <widget class="QWidget" name="horizontalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>241</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="pushButton_11">
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    color: rgb(248, 237, 227);
+    background-color: transparent;
+    border: none;
+    
+	font: 700 6pt &quot;bold&quot;;
+}
+QPushButton:hover {
+    
+	color: rgb(121, 135, 119);
+    
+    border: 1px solid rgba(255, 255, 255, 10); /* Adding a border often forces the OS to let go */
+}</string>
+        </property>
+        <property name="text">
+         <string>fichier</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_10">
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    color: rgb(248, 237, 227);
+    background-color: transparent;
+    border: none;
+    
+	font: 700 6pt &quot;bold&quot;;
+}
+QPushButton:hover {
+    
+	color: rgb(121, 135, 119);
+    
+    border: 1px solid rgba(255, 255, 255, 10); /* Adding a border often forces the OS to let go */
+}</string>
+        </property>
+        <property name="text">
+         <string>édition</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_9">
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    color: rgb(248, 237, 227);
+    background-color: transparent;
+    border: none;
+    
+	font: 700 6pt &quot;bold&quot;;
+}
+QPushButton:hover {
+    
+	color: rgb(121, 135, 119);
+    
+    border: 1px solid rgba(255, 255, 255, 10); /* Adding a border often forces the OS to let go */
+}</string>
+        </property>
+        <property name="text">
+         <string>affichage</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="frame_3">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>50</y>
+      <width>1051</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(161, 177, 158);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
+    <widget class="QWidget" name="horizontalLayoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>1061</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="Recherche">
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    color: rgb(248, 237, 227);
+    background-color: transparent;
+    border: none;
+    font: bold 12pt &quot;Segoe UI&quot;;
+}
+
+QPushButton:hover {
+    background-color: rgba(255, 255, 255, 30);
+}</string>
+        </property>
+        <property name="text">
+         <string>Gestion</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="stats">
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    color: rgb(248, 237, 227);
+    background-color: transparent;
+    border: none;
+    font: bold 12pt &quot;Segoe UI&quot;;
+}
+
+QPushButton:hover {
+    background-color: rgba(255, 255, 255, 30);
+}</string>
+        </property>
+        <property name="text">
+         <string>Statistique </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="planns">
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    color: rgb(248, 237, 227);
+    background-color: transparent;
+    border: none;
+    font: bold 12pt &quot;Segoe UI&quot;;
+}
+
+QPushButton:hover {
+    background-color: rgba(255, 255, 255, 30);
+}</string>
+        </property>
+        <property name="text">
+         <string>plannification</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>110</y>
+      <width>1071</width>
+      <height>591</height>
+     </rect>
+    </property>
+    <widget class="QWidget" name="page_rech">
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>971</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+    background-color: white;
+    border: 2px solid rgb(161, 177, 158);
+    border-radius: 15px;
+    color: black; /* This is the text you type */
+    padding: 5px 15px;
+    font: 700 10pt &quot;Segoe UI&quot;;
+    min-width: 550px; /* Essential to show your long placeholder text */
+}
+
+QLineEdit:focus {
+    border: 2px solid black;
+}
+
+/* This styles the 'recherche des equipes...' text before you type */
+QLineEdit::placeholder {
+    color: #666666; /* Dark grey placeholder */
+    font-style: italic;
+    font-weight: 400;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>recherche des equipes par ID, NOM, CHEF, ETAT ...</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_19">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>0</y>
+        <width>71</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: #A1B19E; /* Your green */
+    color: white;
+    border-radius: 10px;      /* This rounds the corners */
+    padding: 5px 15px;        /* Adds space inside so text doesn't touch the edge */
+    border: none;
+}
+
+QPushButton:hover {
+    background-color: #8E9E8B; /* Darkens when you hover over it */
+}</string>
+      </property>
+      <property name="text">
+       <string>filtre</string>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="tableWidget">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>90</y>
+        <width>771</width>
+        <height>501</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QTableWidget {
+    background-color: white;
+    color: black;
+    gridline-color: #A1B19E;
+    border: 2px solid #A1B19E;
+    font: 10pt &quot;Segoe UI&quot;;
+}
+
+QHeaderView::section {
+    background-color: #A1B19E;
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+    border: 1px solid white;
+}
+/* Styling the Vertical Scroll Bar */
+QScrollBar:vertical {
+    border: none;
+    background: #F8F4F0; /* Light cream background */
+    width: 14px;         /* Make it wide enough to grab easily */
+    margin: 0px 0px 0px 0px;
+}
+
+/* The actual draggable handle */
+QScrollBar::handle:vertical {
+    background: #A1B19E; /* Your signature green */
+    min-height: 30px;
+    border-radius: 7px;
+    margin: 2px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #8E9E8B; /* Darker green when hovering */
+}
+
+/* Hide the arrows at the top and bottom for a modern look */
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0px;
+}</string>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="autoScroll">
+       <bool>false</bool>
+      </property>
+      <attribute name="horizontalHeaderStretchLastSection">
+       <bool>true</bool>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>ID Équipe</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Nom</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Spécialité</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Membres</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Chef </string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>état d' équipe</string>
+       </property>
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+     </widget>
+     <widget class="QFrame" name="frame_4">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>90</y>
+        <width>271</width>
+        <height>481</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QFrame {
+     /* Very light cream to contrast the table */
+	background-color: rgb(248, 237, 227);
+    border: 2px solid #A1B19E;
+    border-radius: 15px;
+}
+
+/* Style for all buttons inside this frame */
+QPushButton {
+    background-color: #A1B19E;
+    color: white;
+    border-radius: 8px;
+    padding: 10px;
+    font-weight: bold;
+    font-family: &quot;Segoe UI&quot;;
+    border: none;
+}
+
+QPushButton:hover {
+    background-color: #8E9E8B; /* Darker green on hover */
+}
+
+QPushButton#btnDelete {
+    background-color: #c97d7d; /* Soft red for delete to warn the user */
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="pushButton_20">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>440</y>
+         <width>271</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>supprimer</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_21">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>390</y>
+         <width>271</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>modifié</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_22">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>340</y>
+         <width>271</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Ajouter</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_6">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>280</y>
+         <width>271</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(121, 135, 119);
+font: 700 italic 16pt &quot;Segoe UI&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Gestion des équipe</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_7">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>271</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(121, 135, 119);
+font: 700 italic 16pt &quot;Segoe UI&quot;;</string>
+       </property>
+       <property name="text">
+        <string>   Tri des équipes</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_23">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>80</y>
+         <width>111</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #A1B19E; /* Your green */
+    color: white;
+    border-radius: 10px;      /* This rounds the corners */
+    padding: 5px 15px;        /* Adds space inside so text doesn't touch the edge */
+    border: none;
+}
+
+QPushButton:hover {
+    background-color: #8E9E8B; /* Darkens when you hover over it */
+}</string>
+       </property>
+       <property name="text">
+        <string>trier par</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBox_3">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>210</y>
+         <width>111</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">/* The text next to the checkbox */
+QCheckBox {
+    color: black;
+    font: 10pt &quot;Segoe UI&quot;;
+    spacing: 8px; /* Space between the box and the text */
+}
+
+/* The actual square box */
+QCheckBox::indicator {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #A1B19E; /* Your green */
+    border-radius: 4px;        /* Soft edges */
+    background-color: white;
+}
+
+/* When the user hovers over the box */
+QCheckBox::indicator:hover {
+    border: 2px solid #8E9E8B; /* Darker green */
+    background-color: #F4F7F3;
+}
+
+/* Style for the 'Checked' state */
+QCheckBox::indicator:checked {
+    background-color: #A1B19E; /* Fill with green when checked */
+    border: 2px solid #A1B19E;
+    /* This creates a simple white 'L' shape as a checkmark */
+    image: url(check_mark.png); /* If you have an icon, or use the styling below */
+}
+
+/* If you don't have an icon file, you can use a background color 
+   or a different border style to show it is selected */
+QCheckBox::indicator:checked {
+    background-color: #A1B19E;
+    image: none; 
+}</string>
+       </property>
+       <property name="text">
+        <string>Croissant</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBox_4">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>210</y>
+         <width>121</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">/* The text next to the checkbox */
+QCheckBox {
+    color: black;
+    font: 10pt &quot;Segoe UI&quot;;
+    spacing: 8px; /* Space between the box and the text */
+}
+
+/* The actual square box */
+QCheckBox::indicator {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #A1B19E; /* Your green */
+    border-radius: 4px;        /* Soft edges */
+    background-color: white;
+}
+
+/* When the user hovers over the box */
+QCheckBox::indicator:hover {
+    border: 2px solid #8E9E8B; /* Darker green */
+    background-color: #F4F7F3;
+}
+
+/* Style for the 'Checked' state */
+QCheckBox::indicator:checked {
+    background-color: #A1B19E; /* Fill with green when checked */
+    border: 2px solid #A1B19E;
+    /* This creates a simple white 'L' shape as a checkmark */
+    image: url(check_mark.png); /* If you have an icon, or use the styling below */
+}
+
+/* If you don't have an icon file, you can use a background color 
+   or a different border style to show it is selected */
+QCheckBox::indicator:checked {
+    background-color: #A1B19E;
+    image: none; 
+}</string>
+       </property>
+       <property name="text">
+        <string>Décroissant</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_8">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>170</y>
+         <width>91</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(121, 135, 119);
+font: 700 italic 16pt &quot;Segoe UI&quot;;</string>
+       </property>
+       <property name="text">
+        <string>ordre</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBox_2">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>80</y>
+         <width>111</width>
+         <height>44</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">/* The main box before clicking */
+QComboBox {
+    background-color: #ffffff;
+    border: 2px solid #A1B19E;
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: #000000;
+    font: 10pt &quot;Segoe UI&quot;;
+    min-height: 30px;
+}
+
+/* Style for the little arrow area on the right */
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 30px;
+    border-left: 1px solid #A1B19E;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+/* The actual arrow icon */
+QComboBox::down-arrow {
+    image: none;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 7px solid #A1B19E; /* Green downward triangle */
+}
+
+/* Styling the popup list that appears */
+QComboBox QAbstractItemView {
+    border: 2px solid #A1B19E;
+    background-color: #ffffff;
+    selection-background-color: #A1B19E; /* Green highlight when hovering */
+    selection-color: #ffffff;
+    outline: none;
+}</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Nom</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Nom chef</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>ID</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Specialité</string>
+        </property>
+       </item>
+      </widget>
+     </widget>
+     <widget class="QPushButton" name="pushButton_14">
+      <property name="geometry">
+       <rect>
+        <x>980</x>
+        <y>40</y>
+        <width>71</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: #A1B19E; /* Your green */
+    color: white;
+    border-radius: 10px;      /* This rounds the corners */
+    padding: 5px 15px;        /* Adds space inside so text doesn't touch the edge */
+    border: none;
+}
+
+QPushButton:hover {
+    background-color: #8E9E8B; /* Darkens when you hover over it */
+}</string>
+      </property>
+      <property name="text">
+       <string>search</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_stat">
+     <widget class="QFrame" name="frame_5">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>1011</width>
+        <height>481</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QFrame {
+     /* Very light cream to contrast the table */
+	background-color: rgb(248, 237, 227);
+    border: 2px solid #A1B19E;
+    border-radius: 15px;
+}
+
+/* Style for all buttons inside this frame */
+QPushButton {
+    background-color: #A1B19E;
+    color: white;
+    border-radius: 8px;
+    padding: 10px;
+    font-weight: bold;
+    font-family: &quot;Segoe UI&quot;;
+    border: none;
+}
+
+QPushButton:hover {
+    background-color: #8E9E8B; /* Darker green on hover */
+}
+
+QPushButton#btnDelete {
+    background-color: #c97d7d; /* Soft red for delete to warn the user */
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Raised</enum>
+      </property>
+      <widget class="QLabel" name="label_9">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>250</y>
+         <width>271</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(121, 135, 119);
+font: 700 italic 16pt &quot;Segoe UI&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Notes &amp; Évaluations</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_10">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>271</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(121, 135, 119);
+font: 700 italic 16pt &quot;Segoe UI&quot;;</string>
+       </property>
+       <property name="text">
+        <string>performance</string>
+       </property>
+      </widget>
+      <widget class="Line" name="line">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>230</y>
+         <width>1011</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+      </widget>
+      <widget class="Line" name="line_2">
+       <property name="geometry">
+        <rect>
+         <x>510</x>
+         <y>0</y>
+         <width>16</width>
+         <height>481</height>
+        </rect>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Orientation::Vertical</enum>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_11">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>0</y>
+         <width>291</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(121, 135, 119);
+font: 700 italic 16pt &quot;Segoe UI&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Réussites  &amp; Objectifs</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_12">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>250</y>
+         <width>271</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(121, 135, 119);
+font: 700 italic 16pt &quot;Segoe UI&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Vitesse de Broyage</string>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="listWidget_2">
+       <property name="geometry">
+        <rect>
+         <x>540</x>
+         <y>60</y>
+         <width>441</width>
+         <height>151</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">/* Ensure the list container itself is visible */
+QListWidget {
+    background-color: #fcfaf8; /* Very light cream to match your app background */
+    border: 1px solid #A1B19E;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+/* Create the &quot;Card&quot; look for each task */
+QListWidget::item {
+    background-color: #ffffff; 
+    color: #333333;
+    border: 1px solid #A1B19E;
+    border-radius: 5px;
+    margin: 4px;
+    padding: 10px;
+}
+
+QListWidget::item:hover {
+    background-color: #f0f2ef;
+}</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>liste des mission réussite</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QPlainTextEdit" name="plainTextEdit">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>310</y>
+         <width>471</width>
+         <height>161</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPlainTextEdit {
+    background-color: #ffffff;
+    border: 1px solid #A1B19E; /* Votre vert signature */
+    border-radius: 8px;
+    padding: 10px;
+    color: #333333;
+}</string>
+       </property>
+      </widget>
+      <widget class="QPlainTextEdit" name="plainTextEdit_2">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>60</y>
+         <width>471</width>
+         <height>161</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPlainTextEdit {
+    background-color: #ffffff;
+    border: 1px solid #A1B19E; /* Votre vert signature */
+    border-radius: 8px;
+    padding: 10px;
+    color: #333333;
+}</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_13">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>440</y>
+         <width>231</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(121, 135, 119);
+font: 700 italic 16pt &quot;Segoe UI&quot;;</string>
+       </property>
+       <property name="text">
+        <string>effectif:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_14">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>400</y>
+         <width>231</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(121, 135, 119);
+font: 700 italic 16pt &quot;Segoe UI&quot;;</string>
+       </property>
+       <property name="text">
+        <string>rendement:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_15">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>360</y>
+         <width>231</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(121, 135, 119);
+font: 700 italic 16pt &quot;Segoe UI&quot;;</string>
+       </property>
+       <property name="text">
+        <string>durée:</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_plannification">
+     <widget class="QLineEdit" name="lineEdit_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>20</y>
+        <width>971</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+    background-color: white;
+    border: 2px solid rgb(161, 177, 158);
+    border-radius: 15px;
+    color: black; /* This is the text you type */
+    padding: 5px 15px;
+    font: 700 10pt &quot;Segoe UI&quot;;
+    min-width: 550px; /* Essential to show your long placeholder text */
+}
+
+QLineEdit:focus {
+    border: 2px solid black;
+}
+
+/* This styles the 'recherche des equipes...' text before you type */
+QLineEdit::placeholder {
+    color: #666666; /* Dark grey placeholder */
+    font-style: italic;
+    font-weight: 400;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>recherche des equipes par ID, NOM, CHEF, ETAT ...pour inspecter son emploi</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_24">
+      <property name="geometry">
+       <rect>
+        <x>970</x>
+        <y>20</y>
+        <width>71</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: #A1B19E; /* Your green */
+    color: white;
+    border-radius: 10px;      /* This rounds the corners */
+    padding: 5px 15px;        /* Adds space inside so text doesn't touch the edge */
+    border: none;
+}
+
+QPushButton:hover {
+    background-color: #8E9E8B; /* Darkens when you hover over it */
+}</string>
+      </property>
+      <property name="text">
+       <string>search</string>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="listWidget">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>60</y>
+        <width>311</width>
+        <height>481</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">/* Ensure the list container itself is visible */
+QListWidget {
+    background-color: #fcfaf8; /* Very light cream to match your app background */
+    border: 1px solid #A1B19E;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+/* Create the &quot;Card&quot; look for each task */
+QListWidget::item {
+    background-color: #ffffff; 
+    color: #333333;
+    border: 1px solid #A1B19E;
+    border-radius: 5px;
+    margin: 4px;
+    padding: 10px;
+}
+
+QListWidget::item:hover {
+    background-color: #f0f2ef;
+}</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>task list</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QCalendarWidget" name="calendarWidget">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>60</y>
+        <width>611</width>
+        <height>481</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">/* --- 1. THE MAIN BACKGROUND --- */
+QCalendarWidget QWidget {
+    background-color: #ffffff; /* Change this to change the overall background color */
+}
+
+/* --- 2. THE TOP BAR (Month and Year Selector) --- */
+QCalendarWidget #qt_calendar_navigationbar {
+    background-color: #A1B19E; /* Change this for the top header background */
+    border-bottom: 1px solid #8E9E8B;
+}
+
+/* --- 3. THE BUTTONS AT THE TOP (Arrows and Month/Year text) --- */
+QCalendarWidget QToolButton {
+    color: #ffffff;             /* Change this for the text color of month/year */
+    background-color: transparent; 
+    font-weight: bold;
+    border: none;
+}
+
+/* --- 4. THE FIX FOR THE BLACK BARS (First Line and First Column) --- */
+/* This targets the &quot;Header&quot; sections which are usually black by default */
+QCalendarWidget QHeaderView::section {
+    background-color: #f9f9f9; /* Change this to fix the black background of the headers */
+    color: #A1B19E;           /* Change this for the color of &quot;lun, mar...&quot; and week numbers */
+    padding: 3px;
+    border: none;
+}
+
+/* --- 5. THE CALENDAR GRID (The Day Numbers) --- */
+QCalendarWidget QAbstractItemView {
+    background-color: #ffffff; /* Change this for the background of the date grid */
+    color: #333333;           /* Change this for the color of the numbers */
+    selection-background-color: #A1B19E; /* Color when you click a date */
+    selection-color: #ffffff;           /* Text color of the selected date */
+    outline: none;
+}
+
+/* --- 6. WEEKEND COLORING (Optional) --- */
+/* This targets specific colors for Saturday and Sunday if you want them different */
+QCalendarWidget QAbstractItemView:disabled { 
+    color: #dcdcdc; /* Color for days outside the current month */
+}</string>
+      </property>
+      <property name="gridVisible">
+       <bool>false</bool>
+      </property>
+      <property name="navigationBarVisible">
+       <bool>true</bool>
+      </property>
+      <property name="dateEditEnabled">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_6"/>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources>
+  <include location="style.qrc"/>
+ </resources>
+ <connections/>
+</ui>
