@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>logo_oil_press.png</file>
+    </qresource>
+</RCC>
