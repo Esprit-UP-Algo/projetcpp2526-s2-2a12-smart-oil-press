@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RCC>
+    <qresource>
+        <file>stylesheet.qss</file>
+        <file>assets/oil_press.png</file>
+    </qresource>
+</RCC>
