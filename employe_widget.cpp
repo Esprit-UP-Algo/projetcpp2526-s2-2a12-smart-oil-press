@@ -5,6 +5,9 @@ EmployeWidget::EmployeWidget(QWidget *parent) : QWidget(parent), ui(new Ui::Empl
 {
     ui->setupUi(this);
     
+    // Default to Connexion tab on startup
+    setAuthenticated(false);
+
     // Style spinbox and combobox to make arrows visible
     styleSpinboxesAndComboboxes();
     
@@ -22,7 +25,9 @@ EmployeWidget::EmployeWidget(QWidget *parent) : QWidget(parent), ui(new Ui::Empl
     // Navigue vers l'onglet Mot de passe oublié
     connect(ui->btnNavigateForgot, &QPushButton::clicked, this, [this]() {
         int idx = ui->tabWidget->indexOf(ui->tabMotPasseOublie);
-        if (idx != -1) ui->tabWidget->setCurrentIndex(idx);
+        if (idx != -1) {
+            ui->tabWidget->setCurrentIndex(idx);
+        }
     });
     // Envoyer code pour réinitialisation
     connect(ui->btnEnvoyerCode, &QPushButton::clicked, this, [this]() {
@@ -35,7 +40,9 @@ EmployeWidget::EmployeWidget(QWidget *parent) : QWidget(parent), ui(new Ui::Empl
     // Retour à l'onglet Connexion
     connect(ui->btnBackToLogin, &QPushButton::clicked, this, [this]() {
         int idx = ui->tabWidget->indexOf(ui->tabConnexion);
-        if (idx != -1) ui->tabWidget->setCurrentIndex(idx);
+        if (idx != -1) {
+            ui->tabWidget->setCurrentIndex(idx);
+        }
     });
 }
 
@@ -47,4 +54,47 @@ void EmployeWidget::styleSpinboxesAndComboboxes()
 {
     // The QSS stylesheet now handles arrow display with SVG images
     // This function is kept for future customizations if needed
+}
+
+void EmployeWidget::setAuthenticated(bool authenticated)
+{
+    emit authenticatedChanged(authenticated);
+
+    auto setTabVisible = [this](QWidget *tab, bool visible) {
+        const int idx = ui->tabWidget->indexOf(tab);
+        if (idx != -1) {
+            ui->tabWidget->setTabVisible(idx, visible);
+        }
+    };
+
+    if (authenticated) {
+        setTabVisible(ui->tabConnexion, false);
+        setTabVisible(ui->tabMotPasseOublie, false);
+        setTabVisible(ui->tabAjouter, true);
+        setTabVisible(ui->tabListe, true);
+        setTabVisible(ui->tabSupprimer, true);
+        setTabVisible(ui->tabModifier, true);
+        setTabVisible(ui->tabStatistiques, true);
+        setTabVisible(ui->tabExportPdf, true);
+
+        const int idx = ui->tabWidget->indexOf(ui->tabListe);
+        if (idx != -1) {
+            ui->tabWidget->setCurrentIndex(idx);
+        }
+    } else {
+        setTabVisible(ui->tabAjouter, false);
+        setTabVisible(ui->tabListe, false);
+        setTabVisible(ui->tabSupprimer, false);
+        setTabVisible(ui->tabModifier, false);
+        setTabVisible(ui->tabStatistiques, false);
+        setTabVisible(ui->tabExportPdf, false);
+        setTabVisible(ui->tabConnexion, true);
+        // Keep hidden from tab bar but allow navigation via button
+        setTabVisible(ui->tabMotPasseOublie, false);
+
+        const int idx = ui->tabWidget->indexOf(ui->tabConnexion);
+        if (idx != -1) {
+            ui->tabWidget->setCurrentIndex(idx);
+        }
+    }
 }

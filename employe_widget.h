@@ -14,6 +14,8 @@ public:
     explicit EmployeWidget(QWidget *parent = nullptr);
     ~EmployeWidget();
 
+    void setAuthenticated(bool authenticated);
+
 signals:
     void addRequested();
     void deleteRequested();
@@ -26,6 +28,7 @@ signals:
     void forgotSendCodeRequested(const QString &userOrEmail);
     void resetPasswordRequested(const QString &code, const QString &newPassword);
     void backToLoginRequested();
+    void authenticatedChanged(bool authenticated);
 
 private:
     Ui::EmployeWidget *ui;

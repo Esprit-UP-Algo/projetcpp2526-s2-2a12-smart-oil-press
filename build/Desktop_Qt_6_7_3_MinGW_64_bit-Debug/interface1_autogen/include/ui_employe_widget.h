@@ -171,16 +171,25 @@ public:
     QSpacerItem *verticalSpacer_export;
     QWidget *tabConnexion;
     QVBoxLayout *vertical_connexion;
-    QGroupBox *groupConnexion;
+    QHBoxLayout *hLogoConn;
+    QLabel *logoLabelConn;
+    QLabel *label_app_title;
+    QSpacerItem *spacerLogoH;
+    QSpacerItem *spacerTop;
+    QHBoxLayout *hCenterConn;
+    QSpacerItem *spacerLeftConn;
+    QWidget *loginFormContainer;
+    QVBoxLayout *vLoginForm;
+    QLabel *label_login_title;
     QFormLayout *formConnexion;
     QLabel *label_user_conn;
     QLineEdit *line_user_conn;
     QLabel *label_pass_conn;
     QLineEdit *line_pass_conn;
-    QHBoxLayout *hButtonsConn;
     QPushButton *btnSeConnecter;
-    QSpacerItem *spacerConnH;
     QPushButton *btnNavigateForgot;
+    QSpacerItem *spacerRightConn;
+    QSpacerItem *spacerBottom;
     QWidget *tabMotPasseOublie;
     QVBoxLayout *vertical_mdp_oublie;
     QGroupBox *groupFPStep1;
@@ -199,9 +208,6 @@ public:
     QHBoxLayout *hButtons_mdp;
     QPushButton *btnResetPassword;
     QPushButton *btnBackToLogin;
-    QGroupBox *groupFPMessages;
-    QVBoxLayout *vFPMessages;
-    QTextEdit *textEdit_fp_messages;
 
     void setupUi(QWidget *EmployeWidget)
     {
@@ -888,53 +894,120 @@ public:
         tabConnexion = new QWidget();
         tabConnexion->setObjectName("tabConnexion");
         vertical_connexion = new QVBoxLayout(tabConnexion);
+        vertical_connexion->setSpacing(0);
+        vertical_connexion->setContentsMargins(0, 0, 0, 0);
         vertical_connexion->setObjectName("vertical_connexion");
-        groupConnexion = new QGroupBox(tabConnexion);
-        groupConnexion->setObjectName("groupConnexion");
-        formConnexion = new QFormLayout(groupConnexion);
+        hLogoConn = new QHBoxLayout();
+        hLogoConn->setSpacing(12);
+        hLogoConn->setObjectName("hLogoConn");
+        hLogoConn->setContentsMargins(20, 20, -1, -1);
+        logoLabelConn = new QLabel(tabConnexion);
+        logoLabelConn->setObjectName("logoLabelConn");
+        logoLabelConn->setPixmap(QPixmap(QString::fromUtf8(":/images/logo.png")));
+        logoLabelConn->setScaledContents(true);
+        logoLabelConn->setMaximumWidth(80);
+        logoLabelConn->setMaximumHeight(80);
+
+        hLogoConn->addWidget(logoLabelConn);
+
+        label_app_title = new QLabel(tabConnexion);
+        label_app_title->setObjectName("label_app_title");
+        QFont font;
+        font.setPointSize(16);
+        font.setBold(true);
+        label_app_title->setFont(font);
+
+        hLogoConn->addWidget(label_app_title);
+
+        spacerLogoH = new QSpacerItem(0, 0, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        hLogoConn->addItem(spacerLogoH);
+
+
+        vertical_connexion->addLayout(hLogoConn);
+
+        spacerTop = new QSpacerItem(0, 0, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+
+        vertical_connexion->addItem(spacerTop);
+
+        hCenterConn = new QHBoxLayout();
+        hCenterConn->setObjectName("hCenterConn");
+        spacerLeftConn = new QSpacerItem(0, 0, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        hCenterConn->addItem(spacerLeftConn);
+
+        loginFormContainer = new QWidget(tabConnexion);
+        loginFormContainer->setObjectName("loginFormContainer");
+        loginFormContainer->setMinimumWidth(450);
+        loginFormContainer->setMaximumWidth(550);
+        vLoginForm = new QVBoxLayout(loginFormContainer);
+        vLoginForm->setSpacing(20);
+        vLoginForm->setObjectName("vLoginForm");
+        vLoginForm->setContentsMargins(0, 0, 0, 0);
+        label_login_title = new QLabel(loginFormContainer);
+        label_login_title->setObjectName("label_login_title");
+        label_login_title->setAlignment(Qt::AlignCenter);
+        QFont font1;
+        font1.setPointSize(14);
+        font1.setBold(true);
+        label_login_title->setFont(font1);
+
+        vLoginForm->addWidget(label_login_title);
+
+        formConnexion = new QFormLayout();
+        formConnexion->setSpacing(12);
         formConnexion->setObjectName("formConnexion");
-        label_user_conn = new QLabel(groupConnexion);
+        label_user_conn = new QLabel(loginFormContainer);
         label_user_conn->setObjectName("label_user_conn");
 
         formConnexion->setWidget(0, QFormLayout::LabelRole, label_user_conn);
 
-        line_user_conn = new QLineEdit(groupConnexion);
+        line_user_conn = new QLineEdit(loginFormContainer);
         line_user_conn->setObjectName("line_user_conn");
+        line_user_conn->setMinimumHeight(40);
 
         formConnexion->setWidget(0, QFormLayout::FieldRole, line_user_conn);
 
-        label_pass_conn = new QLabel(groupConnexion);
+        label_pass_conn = new QLabel(loginFormContainer);
         label_pass_conn->setObjectName("label_pass_conn");
 
         formConnexion->setWidget(1, QFormLayout::LabelRole, label_pass_conn);
 
-        line_pass_conn = new QLineEdit(groupConnexion);
+        line_pass_conn = new QLineEdit(loginFormContainer);
         line_pass_conn->setObjectName("line_pass_conn");
         line_pass_conn->setEchoMode(QLineEdit::Password);
+        line_pass_conn->setMinimumHeight(40);
 
         formConnexion->setWidget(1, QFormLayout::FieldRole, line_pass_conn);
 
 
-        vertical_connexion->addWidget(groupConnexion);
+        vLoginForm->addLayout(formConnexion);
 
-        hButtonsConn = new QHBoxLayout();
-        hButtonsConn->setObjectName("hButtonsConn");
-        btnSeConnecter = new QPushButton(tabConnexion);
+        btnSeConnecter = new QPushButton(loginFormContainer);
         btnSeConnecter->setObjectName("btnSeConnecter");
+        btnSeConnecter->setMinimumHeight(44);
+        btnSeConnecter->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
 
-        hButtonsConn->addWidget(btnSeConnecter);
+        vLoginForm->addWidget(btnSeConnecter);
 
-        spacerConnH = new QSpacerItem(0, 0, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
-
-        hButtonsConn->addItem(spacerConnH);
-
-        btnNavigateForgot = new QPushButton(tabConnexion);
+        btnNavigateForgot = new QPushButton(loginFormContainer);
         btnNavigateForgot->setObjectName("btnNavigateForgot");
 
-        hButtonsConn->addWidget(btnNavigateForgot);
+        vLoginForm->addWidget(btnNavigateForgot);
 
 
-        vertical_connexion->addLayout(hButtonsConn);
+        hCenterConn->addWidget(loginFormContainer);
+
+        spacerRightConn = new QSpacerItem(0, 0, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        hCenterConn->addItem(spacerRightConn);
+
+
+        vertical_connexion->addLayout(hCenterConn);
+
+        spacerBottom = new QSpacerItem(0, 0, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+
+        vertical_connexion->addItem(spacerBottom);
 
         tabWidget->addTab(tabConnexion, QString());
         tabMotPasseOublie = new QWidget();
@@ -1016,20 +1089,6 @@ public:
 
 
         vertical_mdp_oublie->addWidget(groupFPStep2);
-
-        groupFPMessages = new QGroupBox(tabMotPasseOublie);
-        groupFPMessages->setObjectName("groupFPMessages");
-        vFPMessages = new QVBoxLayout(groupFPMessages);
-        vFPMessages->setObjectName("vFPMessages");
-        textEdit_fp_messages = new QTextEdit(groupFPMessages);
-        textEdit_fp_messages->setObjectName("textEdit_fp_messages");
-        textEdit_fp_messages->setReadOnly(true);
-        textEdit_fp_messages->setMaximumHeight(100);
-
-        vFPMessages->addWidget(textEdit_fp_messages);
-
-
-        vertical_mdp_oublie->addWidget(groupFPMessages);
 
         tabWidget->addTab(tabMotPasseOublie, QString());
 
@@ -1176,11 +1235,17 @@ public:
         label_id_export->setText(QCoreApplication::translate("EmployeWidget", "ID Employ\303\251 (pour la fiche)", nullptr));
         groupMessagesExport->setTitle(QCoreApplication::translate("EmployeWidget", "Messages", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tabExportPdf), QCoreApplication::translate("EmployeWidget", "Export PDF", nullptr));
-        groupConnexion->setTitle(QCoreApplication::translate("EmployeWidget", "Connexion administrateur", nullptr));
+        label_app_title->setText(QCoreApplication::translate("EmployeWidget", "Smart Oil Press", nullptr));
+        label_app_title->setStyleSheet(QCoreApplication::translate("EmployeWidget", "color: #798777;", nullptr));
+        label_login_title->setText(QCoreApplication::translate("EmployeWidget", "Connexion administrateur", nullptr));
+        label_login_title->setStyleSheet(QCoreApplication::translate("EmployeWidget", "color: #798777;", nullptr));
         label_user_conn->setText(QCoreApplication::translate("EmployeWidget", "Identifiant", nullptr));
+        label_user_conn->setStyleSheet(QCoreApplication::translate("EmployeWidget", "color: #2C2C2C; font-weight: bold;", nullptr));
         label_pass_conn->setText(QCoreApplication::translate("EmployeWidget", "Mot de passe", nullptr));
+        label_pass_conn->setStyleSheet(QCoreApplication::translate("EmployeWidget", "color: #2C2C2C; font-weight: bold;", nullptr));
         btnSeConnecter->setText(QCoreApplication::translate("EmployeWidget", "Se connecter", nullptr));
         btnNavigateForgot->setText(QCoreApplication::translate("EmployeWidget", "Mot de passe oubli\303\251 ?", nullptr));
+        btnNavigateForgot->setStyleSheet(QCoreApplication::translate("EmployeWidget", "QPushButton { background-color: transparent; color: #A2B29F; border: none; text-decoration: underline; font-size: 10pt; padding: 4px; } QPushButton:hover { color: #798777; }", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tabConnexion), QCoreApplication::translate("EmployeWidget", "Connexion", nullptr));
         groupFPStep1->setTitle(QCoreApplication::translate("EmployeWidget", "\303\211tape 1 \342\200\224 Demander code", nullptr));
         label_user_email_fp->setText(QCoreApplication::translate("EmployeWidget", "Identifiant / Email", nullptr));
@@ -1191,7 +1256,6 @@ public:
         label_confirm_fp->setText(QCoreApplication::translate("EmployeWidget", "Confirmation", nullptr));
         btnResetPassword->setText(QCoreApplication::translate("EmployeWidget", "R\303\251initialiser", nullptr));
         btnBackToLogin->setText(QCoreApplication::translate("EmployeWidget", "Retour \303\240 Connexion", nullptr));
-        groupFPMessages->setTitle(QCoreApplication::translate("EmployeWidget", "Messages", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tabMotPasseOublie), QCoreApplication::translate("EmployeWidget", "Mot de passe oubli\303\251", nullptr));
         (void)EmployeWidget;
     } // retranslateUi

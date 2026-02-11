@@ -401,22 +401,106 @@
     <widget class="QWidget" name="tabConnexion">
      <attribute name="title"><string>Connexion</string></attribute>
      <layout class="QVBoxLayout" name="vertical_connexion">
+      <property name="spacing"><number>0</number></property>
+      <property name="margin"><number>0</number></property>
       <item>
-       <widget class="QGroupBox" name="groupConnexion"><property name="title"><string>Connexion administrateur</string></property>
-        <layout class="QFormLayout" name="formConnexion">
-        <item row="0" column="0"><widget class="QLabel" name="label_user_conn"><property name="text"><string>Identifiant</string></property></widget></item>
-        <item row="0" column="1"><widget class="QLineEdit" name="line_user_conn"/></item>
-        <item row="1" column="0"><widget class="QLabel" name="label_pass_conn"><property name="text"><string>Mot de passe</string></property></widget></item>
-        <item row="1" column="1"><widget class="QLineEdit" name="line_pass_conn"><property name="echoMode"><enum>QLineEdit::Password</enum></property></widget></item>
-        </layout>
-       </widget>
+       <layout class="QHBoxLayout" name="hLogoConn">
+        <property name="spacing"><number>12</number></property>
+        <property name="leftMargin"><number>20</number></property>
+        <property name="topMargin"><number>20</number></property>
+        <item>
+         <widget class="QLabel" name="logoLabelConn">
+          <property name="pixmap">
+           <pixmap resource="resources.qrc">:/images/logo.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+          <property name="maximumWidth"><number>80</number></property>
+          <property name="maximumHeight"><number>80</number></property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_app_title">
+          <property name="text"><string>Smart Oil Press</string></property>
+          <property name="font">
+           <font>
+            <pointsize>16</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet"><string>color: #798777;</string></property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="spacerLogoH">
+          <property name="orientation"><enum>Qt::Horizontal</enum></property>
+         </spacer>
+        </item>
+       </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="hButtonsConn">
-        <item><widget class="QPushButton" name="btnSeConnecter"><property name="text"><string>Se connecter</string></property></widget></item>
-        <item><spacer name="spacerConnH"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
-        <item><widget class="QPushButton" name="btnNavigateForgot"><property name="text"><string>Mot de passe oublié ?</string></property></widget></item>
+       <spacer name="spacerTop">
+        <property name="orientation"><enum>Qt::Vertical</enum></property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="hCenterConn">
+        <item>
+         <spacer name="spacerLeftConn">
+          <property name="orientation"><enum>Qt::Horizontal</enum></property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QWidget" name="loginFormContainer">
+          <property name="minimumWidth"><number>450</number></property>
+          <property name="maximumWidth"><number>550</number></property>
+          <layout class="QVBoxLayout" name="vLoginForm">
+           <property name="spacing"><number>20</number></property>
+           <item>
+            <widget class="QLabel" name="label_login_title">
+             <property name="text"><string>Connexion administrateur</string></property>
+             <property name="alignment"><set>Qt::AlignCenter</set></property>
+             <property name="font">
+              <font>
+               <pointsize>14</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet"><string>color: #798777;</string></property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QFormLayout" name="formConnexion">
+             <property name="spacing"><number>12</number></property>
+             <item row="0" column="0"><widget class="QLabel" name="label_user_conn"><property name="text"><string>Identifiant</string></property><property name="styleSheet"><string>color: #2C2C2C; font-weight: bold;</string></property></widget></item>
+             <item row="0" column="1"><widget class="QLineEdit" name="line_user_conn"><property name="minimumHeight"><number>40</number></property></widget></item>
+             <item row="1" column="0"><widget class="QLabel" name="label_pass_conn"><property name="text"><string>Mot de passe</string></property><property name="styleSheet"><string>color: #2C2C2C; font-weight: bold;</string></property></widget></item>
+             <item row="1" column="1"><widget class="QLineEdit" name="line_pass_conn"><property name="echoMode"><enum>QLineEdit::Password</enum></property><property name="minimumHeight"><number>40</number></property></widget></item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnSeConnecter"><property name="text"><string>Se connecter</string></property><property name="minimumHeight"><number>44</number></property><property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property></widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnNavigateForgot"><property name="text"><string>Mot de passe oublié ?</string></property><property name="styleSheet"><string>QPushButton { background-color: transparent; color: #A2B29F; border: none; text-decoration: underline; font-size: 10pt; padding: 4px; } QPushButton:hover { color: #798777; }</string></property></widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <spacer name="spacerRightConn">
+          <property name="orientation"><enum>Qt::Horizontal</enum></property>
+         </spacer>
+        </item>
        </layout>
+      </item>
+      <item>
+       <spacer name="spacerBottom">
+        <property name="orientation"><enum>Qt::Vertical</enum></property>
+       </spacer>
       </item>
      </layout>
     </widget>
@@ -447,18 +531,6 @@
           <item><widget class="QPushButton" name="btnResetPassword"><property name="text"><string>Réinitialiser</string></property></widget></item>
           <item><widget class="QPushButton" name="btnBackToLogin"><property name="text"><string>Retour à Connexion</string></property></widget></item>
          </layout>
-        </item>
-        </layout>
-       </widget>
-      </item>
-      <item>
-       <widget class="QGroupBox" name="groupFPMessages"><property name="title"><string>Messages</string></property>
-        <layout class="QVBoxLayout" name="vFPMessages">
-        <item>
-         <widget class="QTextEdit" name="textEdit_fp_messages">
-          <property name="readOnly"><bool>true</bool></property>
-          <property name="maximumHeight"><number>100</number></property>
-         </widget>
         </item>
         </layout>
        </widget>

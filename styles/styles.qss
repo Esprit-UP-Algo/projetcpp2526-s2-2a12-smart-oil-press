@@ -612,5 +612,78 @@ QToolTip {
 }
 
 /* ============================================================================
+   LOGIN PAGE - Connexion Tab
+   ============================================================================ */
+QWidget#tabConnexion {
+    background-color: #F8EDE3;
+}
+
+QWidget#loginFormContainer {
+    background-color: #FFFFFF;
+    border: 2px solid #BDD2B6;
+    border-radius: 12px;
+    padding: 24px;
+}
+
+/* Login form labels */
+QWidget#tabConnexion QLabel[name*="label_user_conn"],
+QWidget#tabConnexion QLabel[name*="label_pass_conn"] {
+    color: #798777;
+    font-size: 11pt;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+/* Login form inputs */
+QWidget#tabConnexion QLineEdit {
+    background-color: #FFFEF9;
+    border: 1px solid #D5D5D5;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 11pt;
+    min-height: 40px;
+}
+
+QWidget#tabConnexion QLineEdit:focus {
+    border: 2px solid #A2B29F;
+    background-color: #FFFBF5;
+}
+
+/* Login button - prominent green */
+QWidget#tabConnexion QPushButton[name="btnSeConnecter"] {
+    background-color: #6FA66F;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 24px;
+    font-weight: bold;
+    font-size: 11pt;
+    min-height: 44px;
+}
+
+QWidget#tabConnexion QPushButton[name="btnSeConnecter"]:hover {
+    background-color: #7CB87C;
+    border: 1px solid #6FA66F;
+}
+
+QWidget#tabConnexion QPushButton[name="btnSeConnecter"]:pressed {
+    background-color: #63945F;
+}
+
+/* Forgot password link button */
+QWidget#tabConnexion QPushButton[name="btnNavigateForgot"] {
+    background-color: transparent;
+    color: #A2B29F;
+    border: none;
+    text-decoration: underline;
+    font-size: 10pt;
+    padding: 4px;
+}
+
+QWidget#tabConnexion QPushButton[name="btnNavigateForgot"]:hover {
+    color: #798777;
+}
+
+/* ============================================================================
    FIN - End of Stylesheet
    ============================================================================ */

@@ -138,7 +138,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Application de Gestion - Tableau de bord", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Smart Oil Press Management", nullptr));
         btnEmploye->setText(QCoreApplication::translate("MainWindow", "EMPLOY\303\211", nullptr));
         btnEquipe->setText(QCoreApplication::translate("MainWindow", "\303\211QUIPE", nullptr));
         btnClient->setText(QCoreApplication::translate("MainWindow", "CLIENT", nullptr));
