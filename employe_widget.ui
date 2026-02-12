@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EmployeWidget</class>
+ <widget class="QWidget" name="EmployeWidget">
+  <property name="minimumSize">
+   <size>
+    <width>600</width>
+    <height>400</height>
+   </size>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <widget class="QWidget" name="tabAjouter">
+      <attribute name="title">
+       <string>Ajouter un employé</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_ajouter">
+       <item>
+        <layout class="QGridLayout" name="grid_ajouter">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_id"><property name="text"><string>ID</string></property></widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="lineEdit_id"><property name="readOnly"><bool>true</bool></property></widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_nom">
+           <property name="text"><string>Nom</string></property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="lineEdit_nom"/>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_prenom"><property name="text"><string>Prénom</string></property></widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLineEdit" name="lineEdit_prenom"/>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_age"><property name="text"><string>Âge</string></property></widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QSpinBox" name="spinBox_age"><property name="minimum"><number>16</number></property><property name="maximum"><number>120</number></property></widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_tel"><property name="text"><string>Téléphone</string></property></widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QLineEdit" name="lineEdit_tel"/>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="label_spec"><property name="text"><string>Spécialité</string></property></widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QComboBox" name="combo_spec">
+           <item><property name="text"><string>Admin</string></property></item>
+           <item><property name="text"><string>Manager</string></property></item>
+           <item><property name="text"><string>Technicien</string></property></item>
+           <item><property name="text"><string>Magasinier</string></property></item>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="label_salaire"><property name="text"><string>Salaire</string></property></widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QDoubleSpinBox" name="doubleSpin_salaire"><property name="prefix"><string>€ </string></property><property name="decimals"><number>2</number></property></widget>
+         </item>
+         <item row="7" column="0">
+          <widget class="QLabel" name="label_anciennete"><property name="text"><string>Ancienneté</string></property></widget>
+         </item>
+         <item row="7" column="1">
+          <widget class="QSpinBox" name="spin_anciennete"/>
+         </item>
+         <item row="8" column="0">
+          <widget class="QLabel" name="label_disp"><property name="text"><string>Disponibilité</string></property></widget>
+         </item>
+         <item row="8" column="1">
+          <widget class="QComboBox" name="combo_disp"><item><property name="text"><string>Actif</string></property></item><item><property name="text"><string>Suspendu</string></property></item></widget>
+         </item>
+         <item row="9" column="0">
+          <widget class="QLabel" name="label_heures"><property name="text"><string>Heures / semaine</string></property></widget>
+         </item>
+         <item row="9" column="1">
+          <widget class="QSpinBox" name="spin_heures"><property name="maximum"><number>168</number></property></widget>
+         </item>
+         <item row="10" column="0">
+          <widget class="QLabel" name="label_fourn"><property name="text"><string>Fournisseurs traités</string></property></widget>
+         </item>
+         <item row="10" column="1">
+          <widget class="QSpinBox" name="spin_fourn"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="hButtonsAjouter">
+         <item>
+          <spacer name="spacerH"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnAjouter"><property name="text"><string>Ajouter</string></property></widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabListe">
+      <attribute name="title"><string>Liste des employés</string></attribute>
+      <layout class="QHBoxLayout" name="hLayout_liste">
+       <item>
+        <widget class="QFrame" name="sidebarListe">
+         <property name="minimumWidth"><number>150</number></property>
+         <property name="maximumWidth"><number>180</number></property>
+         <layout class="QVBoxLayout" name="vLayout_sidebar">
+          <property name="margin"><number>4</number></property>
+          <property name="spacing"><number>4</number></property>
+          <item>
+           <widget class="QGroupBox" name="groupSearch">
+            <property name="title"><string>Recherche</string></property>
+            <layout class="QVBoxLayout" name="vSearch">
+             <item>
+              <widget class="QLabel" name="label_search_id"><property name="text"><string>ID</string></property></widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="search_id"><property name="placeholderText"><string>Entrez ID...</string></property></widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_search_nom"><property name="text"><string>Nom</string></property></widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="search_nom"><property name="placeholderText"><string>Entrez nom...</string></property></widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_search_tel"><property name="text"><string>Téléphone</string></property></widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="search_tel"><property name="placeholderText"><string>Entrez tel...</string></property></widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_search_spec"><property name="text"><string>Spécialité</string></property></widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="search_spec">
+               <item><property name="text"><string>-- Tous --</string></property></item>
+               <item><property name="text"><string>Admin</string></property></item>
+               <item><property name="text"><string>Manager</string></property></item>
+               <item><property name="text"><string>Technicien</string></property></item>
+               <item><property name="text"><string>Magasinier</string></property></item>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_search_disp"><property name="text"><string>Disponibilité</string></property></widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="search_disp">
+               <item><property name="text"><string>-- Tous --</string></property></item>
+               <item><property name="text"><string>Actif</string></property></item>
+               <item><property name="text"><string>Suspendu</string></property></item>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="groupSort">
+            <property name="title"><string>Tri</string></property>
+            <layout class="QVBoxLayout" name="vSort">
+             <item>
+              <widget class="QRadioButton" name="sort_nom"><property name="text"><string>Nom</string></property></widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="sort_salaire"><property name="text"><string>Salaire</string></property></widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="sort_anciennete"><property name="text"><string>Ancienneté</string></property></widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="sort_age"><property name="text"><string>Âge</string></property></widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="sort_heures"><property name="text"><string>Heures</string></property></widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="sort_fournisseurs"><property name="text"><string>Fournisseurs</string></property></widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="groupOrder">
+            <property name="title"><string>Ordre</string></property>
+            <layout class="QVBoxLayout" name="vOrder">
+             <item>
+              <widget class="QRadioButton" name="order_asc"><property name="text"><string>Croissant</string></property><property name="checked"><bool>true</bool></property></widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="order_desc"><property name="text"><string>Décroissant</string></property></widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_liste"><property name="orientation"><enum>Qt::Vertical</enum></property></spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="mainListe">
+         <layout class="QVBoxLayout" name="vLayout_tableArea">
+          <item>
+           <widget class="QTableWidget" name="table_employes">
+            <property name="columnCount"><number>11</number></property>
+            <column><property name="text"><string>ID</string></property></column>
+            <column><property name="text"><string>Nom</string></property></column>
+            <column><property name="text"><string>Prénom</string></property></column>
+            <column><property name="text"><string>Âge</string></property></column>
+            <column><property name="text"><string>Téléphone</string></property></column>
+            <column><property name="text"><string>Spécialité</string></property></column>
+            <column><property name="text"><string>Salaire</string></property></column>
+            <column><property name="text"><string>Ancienneté</string></property></column>
+            <column><property name="text"><string>Disponibilité</string></property></column>
+            <column><property name="text"><string>Heures</string></property></column>
+            <column><property name="text"><string>Fournisseurs</string></property></column>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabSupprimer">
+      <attribute name="title"><string>Supprimer un employé</string></attribute>
+      <layout class="QVBoxLayout" name="vertical_supprimer">
+       <item>
+        <layout class="QFormLayout" name="formSuppr">
+         <item row="0" column="0"><widget class="QLabel" name="label_id_suppr"><property name="text"><string>ID Employé</string></property></widget></item>
+         <item row="0" column="1"><widget class="QLineEdit" name="lineEdit_id_suppr"/></item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnSupprimerConfirm"><property name="text"><string>Supprimer</string></property></widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabModifier">
+      <attribute name="title"><string>Modifier un employé</string></attribute>
+      <layout class="QVBoxLayout" name="vertical_modifier">
+       <item>
+        <layout class="QFormLayout" name="formModifier">
+         <item row="0" column="0"><widget class="QLabel" name="label_id_mod"><property name="text"><string>ID Employé</string></property></widget></item>
+         <item row="0" column="1"><widget class="QLineEdit" name="lineEdit_id_mod"><property name="readOnly"><bool>true</bool></property></widget></item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_prefill"><property name="title"><string>Modifier les données</string></property>
+         <layout class="QGridLayout" name="grid_prefill">
+          <item row="0" column="0"><widget class="QLabel" name="label_nom_mod"><property name="text"><string>Nom</string></property></widget></item>
+          <item row="0" column="1"><widget class="QLineEdit" name="lineEdit_nom_mod"/></item>
+          <item row="1" column="0"><widget class="QLabel" name="label_prenom_mod"><property name="text"><string>Prénom</string></property></widget></item>
+          <item row="1" column="1"><widget class="QLineEdit" name="lineEdit_prenom_mod"/></item>
+          <item row="2" column="0"><widget class="QLabel" name="label_age_mod"><property name="text"><string>Âge</string></property></widget></item>
+          <item row="2" column="1"><widget class="QSpinBox" name="spinBox_age_mod"><property name="minimum"><number>16</number></property><property name="maximum"><number>120</number></property></widget></item>
+          <item row="3" column="0"><widget class="QLabel" name="label_tel_mod"><property name="text"><string>Téléphone</string></property></widget></item>
+          <item row="3" column="1"><widget class="QLineEdit" name="lineEdit_tel_mod"/></item>
+          <item row="4" column="0"><widget class="QLabel" name="label_spec_mod"><property name="text"><string>Spécialité</string></property></widget></item>
+          <item row="4" column="1"><widget class="QComboBox" name="combo_spec_mod"><item><property name="text"><string>Admin</string></property></item><item><property name="text"><string>Manager</string></property></item><item><property name="text"><string>Technicien</string></property></item><item><property name="text"><string>Magasinier</string></property></item></widget></item>
+          <item row="5" column="0"><widget class="QLabel" name="label_salaire_mod"><property name="text"><string>Salaire</string></property></widget></item>
+          <item row="5" column="1"><widget class="QDoubleSpinBox" name="doubleSpin_salaire_mod"><property name="prefix"><string>€ </string></property><property name="decimals"><number>2</number></property></widget></item>
+          <item row="6" column="0"><widget class="QLabel" name="label_anciennete_mod"><property name="text"><string>Ancienneté</string></property></widget></item>
+          <item row="6" column="1"><widget class="QSpinBox" name="spin_anciennete_mod"/></item>
+          <item row="7" column="0"><widget class="QLabel" name="label_disp_mod"><property name="text"><string>Disponibilité</string></property></widget></item>
+          <item row="7" column="1"><widget class="QComboBox" name="combo_disp_mod"><item><property name="text"><string>Actif</string></property></item><item><property name="text"><string>Suspendu</string></property></item></widget></item>
+          <item row="8" column="0"><widget class="QLabel" name="label_heures_mod"><property name="text"><string>Heures / semaine</string></property></widget></item>
+          <item row="8" column="1"><widget class="QSpinBox" name="spin_heures_mod"><property name="maximum"><number>168</number></property></widget></item>
+          <item row="9" column="0"><widget class="QLabel" name="label_fourn_mod"><property name="text"><string>Fournisseurs traités</string></property></widget></item>
+          <item row="9" column="1"><widget class="QSpinBox" name="spin_fourn_mod"/></item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnModifierConfirm"><property name="text"><string>Mettre à jour</string></property></widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabStatistiques">
+      <attribute name="title"><string>Statistiques</string></attribute>
+      <layout class="QVBoxLayout" name="vertical_statistiques">
+       <item>
+        <widget class="QGroupBox" name="groupEffectifs"><property name="title"><string>Effectifs</string></property>
+         <layout class="QVBoxLayout" name="vEffectifs">
+          <item><widget class="QLabel" name="label_total_employes"><property name="text"><string>Nombre total d'employés : 0</string></property></widget></item>
+          <item><widget class="QLabel" name="label_par_specialite"><property name="text"><string>Nombre par spécialité :</string></property></widget></item>
+          <item>
+           <widget class="QTableWidget" name="table_effectifs_spec">
+            <property name="maximumHeight"><number>150</number></property>
+            <property name="columnCount"><number>2</number></property>
+            <column><property name="text"><string>Spécialité</string></property></column>
+            <column><property name="text"><string>Nombre</string></property></column>
+           </widget>
+          </item>
+          <item><widget class="QLabel" name="label_par_disponibilite"><property name="text"><string>Nombre par disponibilité :</string></property></widget></item>
+          <item>
+           <widget class="QTableWidget" name="table_effectifs_disp">
+            <property name="maximumHeight"><number>120</number></property>
+            <property name="columnCount"><number>2</number></property>
+            <column><property name="text"><string>Disponibilité</string></property></column>
+            <column><property name="text"><string>Nombre</string></property></column>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupFinances"><property name="title"><string>Finances</string></property>
+         <layout class="QVBoxLayout" name="vFinances">
+          <item><widget class="QLabel" name="label_masse_salariale"><property name="text"><string>Masse salariale totale : 0.00 €</string></property></widget></item>
+          <item><widget class="QLabel" name="label_salaire_moyen"><property name="text"><string>Salaire moyen : 0.00 €</string></property></widget></item>
+          <item><widget class="QLabel" name="label_par_specialite_sal"><property name="text"><string>Masse salariale par spécialité :</string></property></widget></item>
+          <item>
+           <widget class="QTableWidget" name="table_finances_spec">
+            <property name="maximumHeight"><number>150</number></property>
+            <property name="columnCount"><number>2</number></property>
+            <column><property name="text"><string>Spécialité</string></property></column>
+            <column><property name="text"><string>Masse salariale (€)</string></property></column>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupPerformance"><property name="title"><string>Performance</string></property>
+         <layout class="QVBoxLayout" name="vPerformance">
+          <item><widget class="QLabel" name="label_anciennete_moyenne"><property name="text"><string>Ancienneté moyenne : 0 ans</string></property></widget></item>
+          <item><widget class="QLabel" name="label_heures_moyennes"><property name="text"><string>Heures de travail moyennes : 0 h/semaine</string></property></widget></item>
+          <item><widget class="QLabel" name="label_fournisseurs_moyen"><property name="text"><string>Nombre moyen de fournisseurs : 0</string></property></widget></item>
+          <item>
+           <spacer name="spacerPerf"><property name="orientation"><enum>Qt::Vertical</enum></property></spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_stats"><property name="orientation"><enum>Qt::Vertical</enum></property></spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabExportPdf">
+      <attribute name="title"><string>Export PDF</string></attribute>
+      <layout class="QVBoxLayout" name="vertical_export_pdf">
+       <item>
+        <widget class="QGroupBox" name="groupExportOptions"><property name="title"><string>Options d'export</string></property>
+         <layout class="QVBoxLayout" name="vExportOptions">
+          <item>
+           <widget class="QPushButton" name="btnExportListeComplete">
+            <property name="text"><string>📄 Exporter la liste complète des employés (PDF)</string></property>
+            <property name="minimumHeight"><number>50</number></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnExportRapportRH">
+            <property name="text"><string>📊 Exporter un rapport statistiques RH (PDF)</string></property>
+            <property name="minimumHeight"><number>50</number></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnExportFicheEmploye">
+            <property name="text"><string>📋 Exporter la fiche d'un employé par ID (PDF)</string></property>
+            <property name="minimumHeight"><number>50</number></property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupIdExport"><property name="title"><string>Paramètres d'export</string></property>
+         <layout class="QFormLayout" name="formIdExport">
+          <item row="0" column="0"><widget class="QLabel" name="label_id_export"><property name="text"><string>ID Employé (pour la fiche)</string></property></widget></item>
+          <item row="0" column="1"><widget class="QLineEdit" name="lineEdit_id_export"/></item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupMessagesExport"><property name="title"><string>Messages</string></property>
+         <layout class="QVBoxLayout" name="vMessagesExport">
+          <item>
+           <widget class="QTextEdit" name="textEdit_export_messages">
+            <property name="readOnly"><bool>true</bool></property>
+            <property name="maximumHeight"><number>100</number></property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_export"><property name="orientation"><enum>Qt::Vertical</enum></property></spacer>
+       </item>
+      </layout>
+     </widget>
+    <widget class="QWidget" name="tabConnexion">
+     <attribute name="title"><string>Connexion</string></attribute>
+     <layout class="QVBoxLayout" name="vertical_connexion">
+      <property name="spacing"><number>0</number></property>
+      <property name="margin"><number>0</number></property>
+      <item>
+       <layout class="QHBoxLayout" name="hLogoConn">
+        <property name="spacing"><number>12</number></property>
+        <property name="leftMargin"><number>20</number></property>
+        <property name="topMargin"><number>20</number></property>
+        <item>
+         <widget class="QLabel" name="logoLabelConn">
+          <property name="pixmap">
+           <pixmap resource="resources.qrc">:/images/logo.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+          <property name="maximumWidth"><number>80</number></property>
+          <property name="maximumHeight"><number>80</number></property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_app_title">
+          <property name="text"><string>Smart Oil Press</string></property>
+          <property name="font">
+           <font>
+            <pointsize>16</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet"><string>color: #798777;</string></property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="spacerLogoH">
+          <property name="orientation"><enum>Qt::Horizontal</enum></property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="spacerTop">
+        <property name="orientation"><enum>Qt::Vertical</enum></property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="hCenterConn">
+        <item>
+         <spacer name="spacerLeftConn">
+          <property name="orientation"><enum>Qt::Horizontal</enum></property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QWidget" name="loginFormContainer">
+          <property name="minimumWidth"><number>450</number></property>
+          <property name="maximumWidth"><number>550</number></property>
+          <layout class="QVBoxLayout" name="vLoginForm">
+           <property name="spacing"><number>20</number></property>
+           <item>
+            <widget class="QLabel" name="label_login_title">
+             <property name="text"><string>Connexion administrateur</string></property>
+             <property name="alignment"><set>Qt::AlignCenter</set></property>
+             <property name="font">
+              <font>
+               <pointsize>14</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet"><string>color: #798777;</string></property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QFormLayout" name="formConnexion">
+             <property name="spacing"><number>12</number></property>
+             <item row="0" column="0"><widget class="QLabel" name="label_user_conn"><property name="text"><string>Identifiant</string></property><property name="styleSheet"><string>color: #2C2C2C; font-weight: bold;</string></property></widget></item>
+             <item row="0" column="1"><widget class="QLineEdit" name="line_user_conn"><property name="minimumHeight"><number>40</number></property></widget></item>
+             <item row="1" column="0"><widget class="QLabel" name="label_pass_conn"><property name="text"><string>Mot de passe</string></property><property name="styleSheet"><string>color: #2C2C2C; font-weight: bold;</string></property></widget></item>
+             <item row="1" column="1"><widget class="QLineEdit" name="line_pass_conn"><property name="echoMode"><enum>QLineEdit::Password</enum></property><property name="minimumHeight"><number>40</number></property></widget></item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnSeConnecter"><property name="text"><string>Se connecter</string></property><property name="minimumHeight"><number>44</number></property><property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property></widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnNavigateForgot"><property name="text"><string>Mot de passe oublié ?</string></property><property name="styleSheet"><string>QPushButton { background-color: transparent; color: #A2B29F; border: none; text-decoration: underline; font-size: 10pt; padding: 4px; } QPushButton:hover { color: #798777; }</string></property></widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <spacer name="spacerRightConn">
+          <property name="orientation"><enum>Qt::Horizontal</enum></property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="spacerBottom">
+        <property name="orientation"><enum>Qt::Vertical</enum></property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+
+    <widget class="QWidget" name="tabMotPasseOublie">
+     <attribute name="title"><string>Mot de passe oublié</string></attribute>
+     <layout class="QVBoxLayout" name="vertical_mdp_oublie">
+      <item>
+       <widget class="QGroupBox" name="groupFPStep1"><property name="title"><string>Étape 1 — Demander code</string></property>
+        <layout class="QFormLayout" name="formFP1">
+        <item row="0" column="0"><widget class="QLabel" name="label_user_email_fp"><property name="text"><string>Identifiant / Email</string></property></widget></item>
+        <item row="0" column="1"><widget class="QLineEdit" name="line_user_email_fp"/></item>
+        <item row="1" column="0" colspan="2"><widget class="QPushButton" name="btnEnvoyerCode"><property name="text"><string>Envoyer code</string></property></widget></item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupFPStep2"><property name="title"><string>Étape 2 — Réinitialiser</string></property>
+        <layout class="QFormLayout" name="formFP2">
+        <item row="0" column="0"><widget class="QLabel" name="label_code_fp"><property name="text"><string>Code</string></property></widget></item>
+        <item row="0" column="1"><widget class="QLineEdit" name="line_code_fp"/></item>
+        <item row="1" column="0"><widget class="QLabel" name="label_newpass_fp"><property name="text"><string>Nouveau mot de passe</string></property></widget></item>
+        <item row="1" column="1"><widget class="QLineEdit" name="line_newpass_fp"><property name="echoMode"><enum>QLineEdit::Password</enum></property></widget></item>
+        <item row="2" column="0"><widget class="QLabel" name="label_confirm_fp"><property name="text"><string>Confirmation</string></property></widget></item>
+        <item row="2" column="1"><widget class="QLineEdit" name="line_confirm_fp"><property name="echoMode"><enum>QLineEdit::Password</enum></property></widget></item>
+        <item row="3" column="0" colspan="2">
+         <layout class="QHBoxLayout" name="hButtons_mdp">
+          <item><widget class="QPushButton" name="btnResetPassword"><property name="text"><string>Réinitialiser</string></property></widget></item>
+          <item><widget class="QPushButton" name="btnBackToLogin"><property name="text"><string>Retour à Connexion</string></property></widget></item>
+         </layout>
+        </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
