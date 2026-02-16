@@ -2,11 +2,15 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QStackedWidget>
+#include <QFrame>
+#include <QPushButton>
+#include <QLabel>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
 
 QT_BEGIN_NAMESPACE
-namespace Ui {
-class MainWindow;
-}
+namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -18,51 +22,37 @@ public:
     ~MainWindow();
 
 private slots:
-    // Navigation menu
-    void onBtnEmployeeClicked();
-    void onBtnTeamClicked();
-    void onBtnClientClicked();
-    void onBtnLaboratoryClicked();
-    void onBtnOrderClicked();
-    void onBtnMachineClicked();
+    void on_btnCommande_clicked();
+    void on_btnEquipe_clicked();
+    void on_btnClient_clicked();
+    void on_btnLaboratoire_clicked();
+    void on_btnFournisseur_clicked();
+    void on_btnMachine_clicked();
 
-    // CRUD actions for orders
-    void onActionNew();
-    void onActionEdit();
-    void onActionDelete();
-    void onActionSendEmail();
-    void onActionExportPDF();
-    void onActionRefresh();
-    void onActionExit();
+    // Slots pour les fonctionnalités
+    void on_btnAjouter_clicked();
+    void on_btnSupprimer_clicked();
+    void on_btnModifier_clicked();
+    void on_btnCharger_clicked();
+    void on_btnExportListe_clicked();
+    void on_btnExportRapport_clicked();
+    void on_btnExportFiche_clicked();
+    void on_btnEnvoyerEmail_clicked();
 
-    // Quick action buttons
-    void onBtnNewCommandeClicked();
-    void onBtnEditCommandeClicked();
-    void onBtnDeleteCommandeClicked();
-    void onBtnEnvoyerEmailClicked();
-
-    // Navigation from machine to order
-    void onBtnCommandeFromProduitClicked();
-
-    // Advanced features
-    void onGroupBoxStatsByTypeClicked();
-    void onGroupBoxStatsDepensesClicked();
-    void onGroupBoxCalendrierClicked();
-
-    // Search and filters
-    void onSearchTextChanged(const QString &text);
-    void onFilterChanged();
+    // Slots pour le tri
+    void on_radioButton_dateArrivage_toggled(bool checked);
+    void on_radioButton_montant_toggled(bool checked);
+    void on_radioButton_quantite_toggled(bool checked);
+    void on_radioButton_dateSortie_toggled(bool checked);
+    void on_radioButton_croissant_toggled(bool checked);
+    void on_radioButton_decroissant_toggled(bool checked);
 
 private:
     Ui::MainWindow *ui;
-
-    // Helper methods
+    void setupNavigation();
     void setupConnections();
-    void setupTableData();
-    void updateQuickInfo();
-    void updateStatistics();
-    void showCrudDialog(const QString &title);
-    void showAdvancedFeatureDialog(const QString &title, const QString &description);
-    void applyFilters();
+    void loadStylesheet();
+    void trierTableau();
 };
+
 #endif // MAINWINDOW_H

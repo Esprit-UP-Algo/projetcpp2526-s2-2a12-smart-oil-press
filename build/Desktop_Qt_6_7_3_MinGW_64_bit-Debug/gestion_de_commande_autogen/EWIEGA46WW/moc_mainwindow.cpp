@@ -7,6 +7,7 @@
 *****************************************************************************/
 
 #include "../../../../mainwindow.h"
+#include <QtGui/qtextcursor.h>
 #include <QtCore/qmetatype.h>
 
 #include <QtCore/qtmochelpers.h>
@@ -36,31 +37,28 @@ namespace {
 struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {};
 constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers::stringData(
     "MainWindow",
-    "onBtnEmployeeClicked",
+    "on_btnCommande_clicked",
     "",
-    "onBtnTeamClicked",
-    "onBtnClientClicked",
-    "onBtnLaboratoryClicked",
-    "onBtnOrderClicked",
-    "onBtnMachineClicked",
-    "onActionNew",
-    "onActionEdit",
-    "onActionDelete",
-    "onActionSendEmail",
-    "onActionExportPDF",
-    "onActionRefresh",
-    "onActionExit",
-    "onBtnNewCommandeClicked",
-    "onBtnEditCommandeClicked",
-    "onBtnDeleteCommandeClicked",
-    "onBtnEnvoyerEmailClicked",
-    "onBtnCommandeFromProduitClicked",
-    "onGroupBoxStatsByTypeClicked",
-    "onGroupBoxStatsDepensesClicked",
-    "onGroupBoxCalendrierClicked",
-    "onSearchTextChanged",
-    "text",
-    "onFilterChanged"
+    "on_btnEquipe_clicked",
+    "on_btnClient_clicked",
+    "on_btnLaboratoire_clicked",
+    "on_btnFournisseur_clicked",
+    "on_btnMachine_clicked",
+    "on_btnAjouter_clicked",
+    "on_btnSupprimer_clicked",
+    "on_btnModifier_clicked",
+    "on_btnCharger_clicked",
+    "on_btnExportListe_clicked",
+    "on_btnExportRapport_clicked",
+    "on_btnExportFiche_clicked",
+    "on_btnEnvoyerEmail_clicked",
+    "on_radioButton_dateArrivage_toggled",
+    "checked",
+    "on_radioButton_montant_toggled",
+    "on_radioButton_quantite_toggled",
+    "on_radioButton_dateSortie_toggled",
+    "on_radioButton_croissant_toggled",
+    "on_radioButton_decroissant_toggled"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -73,7 +71,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-      23,   14, // methods
+      20,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -81,29 +79,26 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,  152,    2, 0x08,    1 /* Private */,
-       3,    0,  153,    2, 0x08,    2 /* Private */,
-       4,    0,  154,    2, 0x08,    3 /* Private */,
-       5,    0,  155,    2, 0x08,    4 /* Private */,
-       6,    0,  156,    2, 0x08,    5 /* Private */,
-       7,    0,  157,    2, 0x08,    6 /* Private */,
-       8,    0,  158,    2, 0x08,    7 /* Private */,
-       9,    0,  159,    2, 0x08,    8 /* Private */,
-      10,    0,  160,    2, 0x08,    9 /* Private */,
-      11,    0,  161,    2, 0x08,   10 /* Private */,
-      12,    0,  162,    2, 0x08,   11 /* Private */,
-      13,    0,  163,    2, 0x08,   12 /* Private */,
-      14,    0,  164,    2, 0x08,   13 /* Private */,
-      15,    0,  165,    2, 0x08,   14 /* Private */,
-      16,    0,  166,    2, 0x08,   15 /* Private */,
-      17,    0,  167,    2, 0x08,   16 /* Private */,
-      18,    0,  168,    2, 0x08,   17 /* Private */,
-      19,    0,  169,    2, 0x08,   18 /* Private */,
-      20,    0,  170,    2, 0x08,   19 /* Private */,
-      21,    0,  171,    2, 0x08,   20 /* Private */,
-      22,    0,  172,    2, 0x08,   21 /* Private */,
-      23,    1,  173,    2, 0x08,   22 /* Private */,
-      25,    0,  176,    2, 0x08,   24 /* Private */,
+       1,    0,  134,    2, 0x08,    1 /* Private */,
+       3,    0,  135,    2, 0x08,    2 /* Private */,
+       4,    0,  136,    2, 0x08,    3 /* Private */,
+       5,    0,  137,    2, 0x08,    4 /* Private */,
+       6,    0,  138,    2, 0x08,    5 /* Private */,
+       7,    0,  139,    2, 0x08,    6 /* Private */,
+       8,    0,  140,    2, 0x08,    7 /* Private */,
+       9,    0,  141,    2, 0x08,    8 /* Private */,
+      10,    0,  142,    2, 0x08,    9 /* Private */,
+      11,    0,  143,    2, 0x08,   10 /* Private */,
+      12,    0,  144,    2, 0x08,   11 /* Private */,
+      13,    0,  145,    2, 0x08,   12 /* Private */,
+      14,    0,  146,    2, 0x08,   13 /* Private */,
+      15,    0,  147,    2, 0x08,   14 /* Private */,
+      16,    1,  148,    2, 0x08,   15 /* Private */,
+      18,    1,  151,    2, 0x08,   17 /* Private */,
+      19,    1,  154,    2, 0x08,   19 /* Private */,
+      20,    1,  157,    2, 0x08,   21 /* Private */,
+      21,    1,  160,    2, 0x08,   23 /* Private */,
+      22,    1,  163,    2, 0x08,   25 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -120,15 +115,12 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   24,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::Bool,   17,
+    QMetaType::Void, QMetaType::Bool,   17,
+    QMetaType::Void, QMetaType::Bool,   17,
+    QMetaType::Void, QMetaType::Bool,   17,
+    QMetaType::Void, QMetaType::Bool,   17,
+    QMetaType::Void, QMetaType::Bool,   17,
 
        0        // eod
 };
@@ -142,53 +134,52 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
     qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSMainWindowENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<MainWindow, std::true_type>,
-        // method 'onBtnEmployeeClicked'
+        // method 'on_btnCommande_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'onBtnTeamClicked'
+        // method 'on_btnEquipe_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'onBtnClientClicked'
+        // method 'on_btnClient_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'onBtnLaboratoryClicked'
+        // method 'on_btnLaboratoire_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'onBtnOrderClicked'
+        // method 'on_btnFournisseur_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'onBtnMachineClicked'
+        // method 'on_btnMachine_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'onActionNew'
+        // method 'on_btnAjouter_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'onActionEdit'
+        // method 'on_btnSupprimer_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'onActionDelete'
+        // method 'on_btnModifier_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'onActionSendEmail'
+        // method 'on_btnCharger_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'onActionExportPDF'
+        // method 'on_btnExportListe_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'onActionRefresh'
+        // method 'on_btnExportRapport_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'onActionExit'
+        // method 'on_btnExportFiche_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'onBtnNewCommandeClicked'
+        // method 'on_btnEnvoyerEmail_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'onBtnEditCommandeClicked'
+        // method 'on_radioButton_dateArrivage_toggled'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'onBtnDeleteCommandeClicked'
+        QtPrivate::TypeAndForceComplete<bool, std::false_type>,
+        // method 'on_radioButton_montant_toggled'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'onBtnEnvoyerEmailClicked'
+        QtPrivate::TypeAndForceComplete<bool, std::false_type>,
+        // method 'on_radioButton_quantite_toggled'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'onBtnCommandeFromProduitClicked'
+        QtPrivate::TypeAndForceComplete<bool, std::false_type>,
+        // method 'on_radioButton_dateSortie_toggled'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'onGroupBoxStatsByTypeClicked'
+        QtPrivate::TypeAndForceComplete<bool, std::false_type>,
+        // method 'on_radioButton_croissant_toggled'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'onGroupBoxStatsDepensesClicked'
+        QtPrivate::TypeAndForceComplete<bool, std::false_type>,
+        // method 'on_radioButton_decroissant_toggled'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'onGroupBoxCalendrierClicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'onSearchTextChanged'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
-        // method 'onFilterChanged'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>
+        QtPrivate::TypeAndForceComplete<bool, std::false_type>
     >,
     nullptr
 } };
@@ -199,29 +190,26 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<MainWindow *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->onBtnEmployeeClicked(); break;
-        case 1: _t->onBtnTeamClicked(); break;
-        case 2: _t->onBtnClientClicked(); break;
-        case 3: _t->onBtnLaboratoryClicked(); break;
-        case 4: _t->onBtnOrderClicked(); break;
-        case 5: _t->onBtnMachineClicked(); break;
-        case 6: _t->onActionNew(); break;
-        case 7: _t->onActionEdit(); break;
-        case 8: _t->onActionDelete(); break;
-        case 9: _t->onActionSendEmail(); break;
-        case 10: _t->onActionExportPDF(); break;
-        case 11: _t->onActionRefresh(); break;
-        case 12: _t->onActionExit(); break;
-        case 13: _t->onBtnNewCommandeClicked(); break;
-        case 14: _t->onBtnEditCommandeClicked(); break;
-        case 15: _t->onBtnDeleteCommandeClicked(); break;
-        case 16: _t->onBtnEnvoyerEmailClicked(); break;
-        case 17: _t->onBtnCommandeFromProduitClicked(); break;
-        case 18: _t->onGroupBoxStatsByTypeClicked(); break;
-        case 19: _t->onGroupBoxStatsDepensesClicked(); break;
-        case 20: _t->onGroupBoxCalendrierClicked(); break;
-        case 21: _t->onSearchTextChanged((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
-        case 22: _t->onFilterChanged(); break;
+        case 0: _t->on_btnCommande_clicked(); break;
+        case 1: _t->on_btnEquipe_clicked(); break;
+        case 2: _t->on_btnClient_clicked(); break;
+        case 3: _t->on_btnLaboratoire_clicked(); break;
+        case 4: _t->on_btnFournisseur_clicked(); break;
+        case 5: _t->on_btnMachine_clicked(); break;
+        case 6: _t->on_btnAjouter_clicked(); break;
+        case 7: _t->on_btnSupprimer_clicked(); break;
+        case 8: _t->on_btnModifier_clicked(); break;
+        case 9: _t->on_btnCharger_clicked(); break;
+        case 10: _t->on_btnExportListe_clicked(); break;
+        case 11: _t->on_btnExportRapport_clicked(); break;
+        case 12: _t->on_btnExportFiche_clicked(); break;
+        case 13: _t->on_btnEnvoyerEmail_clicked(); break;
+        case 14: _t->on_radioButton_dateArrivage_toggled((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
+        case 15: _t->on_radioButton_montant_toggled((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
+        case 16: _t->on_radioButton_quantite_toggled((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
+        case 17: _t->on_radioButton_dateSortie_toggled((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
+        case 18: _t->on_radioButton_croissant_toggled((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
+        case 19: _t->on_radioButton_decroissant_toggled((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
         default: ;
         }
     }
@@ -246,13 +234,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 23)
+        if (_id < 20)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 23;
+        _id -= 20;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 23)
+        if (_id < 20)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 23;
+        _id -= 20;
     }
     return _id;
 }

@@ -1,26 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QApplication>
 #include <QMessageBox>
-#include <QTableWidgetItem>
-#include <QHeaderView>
-#include <QTextCharFormat>
-#include <QColor>
-#include <QDialog>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QLabel>
-#include <QLineEdit>
-#include <QTextEdit>
-#include <QPushButton>
-#include <QFormLayout>
-#include <QComboBox>
-#include <QDateEdit>
-#include <QDoubleSpinBox>
-#include <QCheckBox>
-#include <QGroupBox>
-#include <QTabWidget>
-#include <QTableWidget>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -28,377 +9,62 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // ────────────────────────────────────────────────
-    // Style directement intégré
-    // ────────────────────────────────────────────────
-    QString styleSheet = R"(
-/* Smart Oil Press Management - Stylesheet */
+    // Charger le stylesheet
+    loadStylesheet();
 
-/* ============================================
-   COULEURS PRINCIPALES
-   ============================================ */
+    // Configuration initiale
+    ui->stackedMain->setCurrentWidget(ui->pageCommandes);
+    ui->statusbar->showMessage("Prêt");
 
-QMainWindow {
-    background-color: #F8EDE3;
-}
+    // Connecter les boutons de navigation
+    setupNavigation();
 
-QWidget {
-    background-color: #F8EDE3;
-    color: #798777;
-}
-
-/* ============================================
-   TOOLBAR
-   ============================================ */
-QToolBar {
-    background-color: #A2B29F;
-    border-bottom: 2px solid #BDD2B6;
-    spacing: 5px;
-    padding: 5px;
-}
-
-QToolBar::separator {
-    background-color: #BDD2B6;
-    width: 2px;
-    margin: 0px 5px;
-}
-
-/* ============================================
-   GROUPBOX
-   ============================================ */
-QGroupBox {
-    background-color: #F8EDE3;
-    border: 2px solid #A2B29F;
-    border-radius: 5px;
-    margin-top: 10px;
-    padding-top: 10px;
-    color: #798777;
-    font-weight: bold;
-}
-
-QGroupBox::title {
-    subcontrol-origin: margin;
-    left: 10px;
-    padding: 0px 5px 0px 5px;
-}
-
-/* ============================================
-   LABELS
-   ============================================ */
-QLabel {
-    color: #798777;
-    background-color: transparent;
-}
-
-/* ============================================
-   LINE EDIT / INPUT
-   ============================================ */
-QLineEdit {
-    background-color: #ffffff;
-    color: #798777;
-    border: 2px solid #BDD2B6;
-    border-radius: 4px;
-    padding: 5px;
-    font-size: 11pt;
-}
-
-QLineEdit:focus {
-    border: 2px solid #A2B29F;
-    background-color: #F8EDE3;
-}
-
-QLineEdit::placeholder {
-    color: #a0a0a0;
-}
-
-/* ============================================
-   COMBOBOX
-   ============================================ */
-QComboBox {
-    background-color: #ffffff;
-    color: #798777;
-    border: 2px solid #BDD2B6;
-    border-radius: 4px;
-    padding: 5px;
-    font-size: 11pt;
-}
-
-QComboBox::drop-down {
-    background-color: #BDD2B6;
-    border: none;
-    border-radius: 3px;
-}
-
-QComboBox::down-arrow {
-    image: none;
-    background-color: #BDD2B6;
-}
-
-QComboBox:focus {
-    border: 2px solid #A2B29F;
-}
-
-/* ============================================
-   BUTTONS
-   ============================================ */
-QPushButton {
-    background-color: #A2B29F;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    padding: 8px 15px;
-    font-weight: bold;
-    font-size: 11pt;
-}
-
-QPushButton:hover {
-    background-color: #BDD2B6;
-    color: #798777;
-}
-
-QPushButton:pressed {
-    background-color: #798777;
-    color: #F8EDE3;
-}
-
-QPushButton:disabled {
-    background-color: #6d6d6d;
-    color: #a0a0a0;
-}
-
-/* ============================================
-   TABLES
-   ============================================ */
-QTableWidget {
-    background-color: #ffffff;
-    alternate-background-color: #F8EDE3;
-    gridline-color: #A2B29F;
-    border: 1px solid #A2B29F;
-    border-radius: 4px;
-}
-
-QTableWidget::item {
-    padding: 5px;
-    color: #798777;
-}
-
-QTableWidget::item:selected {
-    background-color: #BDD2B6;
-    color: #798777;
-}
-
-QHeaderView::section {
-    background-color: #A2B29F;
-    color: #F8EDE3;
-    padding: 5px;
-    border: 1px solid #BDD2B6;
-    font-weight: bold;
-}
-
-/* ============================================
-   SPINBOX / DOUBLESPINBOX
-   ============================================ */
-QSpinBox, QDoubleSpinBox {
-    background-color: #ffffff;
-    color: #798777;
-    border: 2px solid #BDD2B6;
-    border-radius: 4px;
-    padding: 5px;
-}
-
-QSpinBox::up-button, QDoubleSpinBox::up-button {
-    background-color: #BDD2B6;
-    border: none;
-    width: 20px;
-}
-
-QSpinBox::down-button, QDoubleSpinBox::down-button {
-    background-color: #BDD2B6;
-    border: none;
-    width: 20px;
-}
-
-/* ============================================
-   CHECKBOXES & RADIOBUTTONS
-   ============================================ */
-QCheckBox, QRadioButton {
-    color: #798777;
-    background-color: transparent;
-    spacing: 5px;
-}
-
-QCheckBox::indicator, QRadioButton::indicator {
-    width: 18px;
-    height: 18px;
-    border: 2px solid #BDD2B6;
-    border-radius: 3px;
-}
-
-QCheckBox::indicator:checked, QRadioButton::indicator:checked {
-    background-color: #A2B29F;
-    border: 2px solid #A2B29F;
-}
-
-QCheckBox::indicator:hover, QRadioButton::indicator:hover {
-    border: 2px solid #798777;
-}
-
-/* ============================================
-   DIALOG
-   ============================================ */
-QDialog {
-    background-color: #F8EDE3;
-}
-
-/* ============================================
-   MENUBARS & MENUS
-   ============================================ */
-QMenuBar {
-    background-color: #A2B29F;
-    color: #F8EDE3;
-    border-bottom: 2px solid #BDD2B6;
-}
-
-QMenuBar::item:selected {
-    background-color: #BDD2B6;
-    color: #798777;
-}
-
-QMenu {
-    background-color: #A2B29F;
-    color: #F8EDE3;
-    border: 1px solid #BDD2B6;
-}
-
-QMenu::item:selected {
-    background-color: #BDD2B6;
-    color: #798777;
-}
-
-/* ============================================
-   SPLITTER
-   ============================================ */
-QSplitter::handle {
-    background-color: #BDD2B6;
-    width: 2px;
-}
-
-QSplitter::handle:hover {
-    background-color: #A2B29F;
-}
-
-/* ============================================
-   SCROLLBAR
-   ============================================ */
-QScrollBar:vertical {
-    background-color: #F8EDE3;
-    width: 12px;
-    border: 1px solid #A2B29F;
-}
-
-QScrollBar::handle:vertical {
-    background-color: #BDD2B6;
-    border-radius: 6px;
-    min-height: 20px;
-}
-
-QScrollBar::handle:vertical:hover {
-    background-color: #A2B29F;
-}
-
-QScrollBar:horizontal {
-    background-color: #F8EDE3;
-    height: 12px;
-    border: 1px solid #A2B29F;
-}
-
-QScrollBar::handle:horizontal {
-    background-color: #BDD2B6;
-    border-radius: 6px;
-    min-width: 20px;
-}
-
-QScrollBar::handle:horizontal:hover {
-    background-color: #A2B29F;
-}
-
-/* ============================================
-   TABS
-   ============================================ */
-QTabWidget::pane {
-    border: 1px solid #A2B29F;
-    background-color: #F8EDE3;
-}
-
-QTabBar::tab {
-    background-color: #A2B29F;
-    color: #F8EDE3;
-    padding: 8px 20px;
-    border: 1px solid #BDD2B6;
-    border-bottom: none;
-    border-radius: 4px 4px 0px 0px;
-}
-
-QTabBar::tab:selected {
-    background-color: #BDD2B6;
-    color: #798777;
-    font-weight: bold;
-}
-
-QTabBar::tab:hover {
-    background-color: #B5BAB0;
-}
-
-/* ============================================
-   STATUS BAR & PROGRESS BAR
-   ============================================ */
-QStatusBar {
-    background-color: #A2B29F;
-    color: #F8EDE3;
-    border-top: 2px solid #BDD2B6;
-}
-
-QProgressBar {
-    background-color: #F8EDE3;
-    border: 2px solid #BDD2B6;
-    border-radius: 4px;
-    text-align: center;
-    color: #798777;
-}
-
-QProgressBar::chunk {
-    background-color: #BDD2B6;
-    border-radius: 2px;
-}
-
-/* ============================================
-   TOOLTIPS
-   ============================================ */
-QToolTip {
-    background-color: #BDD2B6;
-    color: #798777;
-    border: 1px solid #A2B29F;
-    border-radius: 4px;
-    padding: 3px;
-}
-)";
-
-    qApp->setStyleSheet(styleSheet);
-
-    // ────────────────────────────────────────────────
-    // Configuration des connexions et données
-    // ────────────────────────────────────────────────
+    // Connecter les fonctionnalités
     setupConnections();
-    setupTableData();
-    updateStatistics();
 
-    // Configurer le calendrier
+    // Ajouter des données d'exemple dans le tableau
+    ui->tableWidget_commandes->setRowCount(4);
+
+    QStringList etats = {"En cours", "Validée", "Prête", "Annulée"};
+
+    for (int i = 0; i < 4; i++) {
+        ui->tableWidget_commandes->setItem(i, 0, new QTableWidgetItem(QString("CMD00%1").arg(i+1)));
+        ui->tableWidget_commandes->setItem(i, 1, new QTableWidgetItem(QString("Commande test %1").arg(i+1)));
+        ui->tableWidget_commandes->setItem(i, 2, new QTableWidgetItem(QString("Fournisseur %1").arg(char('A' + i))));
+        ui->tableWidget_commandes->setItem(i, 3, new QTableWidgetItem(QString("01/0%1/2026").arg(i+2)));
+        ui->tableWidget_commandes->setItem(i, 4, new QTableWidgetItem(QString("15/0%1/2026").arg(i+2)));
+        ui->tableWidget_commandes->setItem(i, 5, new QTableWidgetItem(etats[i % 4]));
+        ui->tableWidget_commandes->setItem(i, 6, new QTableWidgetItem(QString::number((i+1) * 10)));
+        ui->tableWidget_commandes->setItem(i, 7, new QTableWidgetItem(QString("€ %1.00").arg((i+1) * 1250)));
+    }
+
+    ui->tableWidget_commandes->horizontalHeader()->setStretchLastSection(true);
+
+    // Données d'exemple pour les tableaux de statistiques
+    ui->tableWidget_depenses->setRowCount(3);
+    ui->tableWidget_depenses->setItem(0, 0, new QTableWidgetItem("Janvier 2026"));
+    ui->tableWidget_depenses->setItem(0, 1, new QTableWidgetItem("€ 12500.00"));
+    ui->tableWidget_depenses->setItem(1, 0, new QTableWidgetItem("Février 2026"));
+    ui->tableWidget_depenses->setItem(1, 1, new QTableWidgetItem("€ 15800.00"));
+    ui->tableWidget_depenses->setItem(2, 0, new QTableWidgetItem("Mars 2026"));
+    ui->tableWidget_depenses->setItem(2, 1, new QTableWidgetItem("€ 14200.00"));
+
+    ui->tableWidget_top->setRowCount(3);
+    ui->tableWidget_top->setItem(0, 0, new QTableWidgetItem("Huile d'olive"));
+    ui->tableWidget_top->setItem(0, 1, new QTableWidgetItem("150"));
+    ui->tableWidget_top->setItem(1, 0, new QTableWidgetItem("Huile de tournesol"));
+    ui->tableWidget_top->setItem(1, 1, new QTableWidgetItem("120"));
+    ui->tableWidget_top->setItem(2, 0, new QTableWidgetItem("Huile de colza"));
+    ui->tableWidget_top->setItem(2, 1, new QTableWidgetItem("85"));
+
+    // Données d'exemple pour la liste du calendrier
+    ui->listWidget_commandes->addItem("CMD001 - Fournisseur A (En cours) - Prête le 20/02");
+    ui->listWidget_commandes->addItem("CMD002 - Fournisseur B (Prête) - Prête aujourd'hui");
+    ui->listWidget_commandes->addItem("CMD003 - Fournisseur C (Validée) - Prête le 25/02");
+
+    // Valeurs par défaut pour la date du calendrier
     QDate today = QDate::currentDate();
-    ui->dateFrom->setDate(today.addDays(-30));
-    ui->dateTo->setDate(today);
-
-    // Page par défaut
-    ui->stackedPages->setCurrentWidget(ui->pageOrder);
+    ui->calendarWidget->setSelectedDate(today);
 }
 
 MainWindow::~MainWindow()
@@ -406,662 +72,828 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::loadStylesheet()
+{
+    QString styleSheet = R"(
+/* ============================================================================
+   Smart Oil Press - QSS Stylesheet
+   ============================================================================
+   Palette:
+   - Primary: #F8EDE3 (Beige clair)
+   - Sections: #BDD2B6 (Vert pâle)
+   - Interactive: #A2B29F (Vert moyen)
+   - Sidebar: #798777 (Vert foncé)
+   - Success: #6FA66F
+   - Warning: #E6C36A
+   - Error: #C97A7A
+   - Info: #7DA3A1
+   ============================================================================ */
+
+/* ============================================================================
+   GENERAL - QWidget
+   ============================================================================ */
+QWidget {
+    background-color: #F8EDE3;
+    color: #2C2C2C;
+}
+
+QMainWindow {
+    background-color: #F8EDE3;
+}
+
+/* ============================================================================
+   SIDEBAR / NAVIGATION
+   ============================================================================ */
+QFrame#navFrame {
+    background-color: #798777;
+    border: 1px solid #6B7B6B;
+}
+
+/* ============================================================================
+   BUTTONS - GENERAL
+   ============================================================================ */
+QPushButton {
+    background-color: #A2B29F;
+    color: #FFFFFF;
+    border: 1px solid #798777;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-weight: bold;
+    font-size: 11pt;
+    min-height: 36px;
+    outline: none;
+}
+
+QPushButton:hover {
+    background-color: #BDD2B6;
+    border: 1px solid #A2B29F;
+}
+
+QPushButton:pressed {
+    background-color: #9FA59C;
+    border: 1px solid #798777;
+}
+
+QPushButton:disabled {
+    background-color: #D3D3D3;
+    color: #808080;
+    border: 1px solid #BEBEBE;
+}
+
+/* ============================================================================
+   BUTTONS - SIDEBAR
+   ============================================================================ */
+QFrame#navFrame QPushButton {
+    background-color: #798777;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 0px;
+    padding: 12px 16px;
+    font-size: 10pt;
+    font-weight: bold;
+    min-height: 48px;
+    text-align: left;
+    margin: 2px 0px;
+}
+
+QFrame#navFrame QPushButton:hover {
+    background-color: #A2B29F;
+    border-left: 4px solid #BDD2B6;
+    padding-left: 12px;
+}
+
+QFrame#navFrame QPushButton:pressed {
+    background-color: #BDD2B6;
+    color: #798777;
+    border-left: 4px solid #798777;
+    padding-left: 12px;
+}
+
+/* ============================================================================
+   BUTTONS - COLORED (Success, Error, Warning)
+   ============================================================================ */
+QPushButton#btnAjouter,
+QPushButton#btnExportListe,
+QPushButton#btnExportRapport,
+QPushButton#btnExportFiche,
+QPushButton#btnEnvoyerEmail {
+    background-color: #6FA66F;
+    border: 1px solid #5D945D;
+}
+
+QPushButton#btnAjouter:hover,
+QPushButton#btnExportListe:hover,
+QPushButton#btnExportRapport:hover,
+QPushButton#btnExportFiche:hover,
+QPushButton#btnEnvoyerEmail:hover {
+    background-color: #7CB87C;
+    border: 1px solid #6FA66F;
+}
+
+QPushButton#btnSupprimer,
+QPushButton#btnReset {
+    background-color: #C97A7A;
+    border: 1px solid #B86B6B;
+}
+
+QPushButton#btnSupprimer:hover,
+QPushButton#btnReset:hover {
+    background-color: #E08989;
+    border: 1px solid #C97A7A;
+}
+
+QPushButton#btnModifier,
+QPushButton#btnCharger {
+    background-color: #E6C36A;
+    border: 1px solid #D9B55F;
+}
+
+QPushButton#btnModifier:hover,
+QPushButton#btnCharger:hover {
+    background-color: #F0D188;
+    border: 1px solid #E6C36A;
+}
+
+/* ============================================================================
+   FORMS - INPUT FIELDS
+   ============================================================================ */
+QLineEdit {
+    background-color: #FFFFFF;
+    color: #2C2C2C;
+    border: 1px solid #D5D5D5;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 10pt;
+    selection-background-color: #BDD2B6;
+}
+
+QLineEdit:focus {
+    border: 2px solid #A2B29F;
+    background-color: #FFFEF9;
+}
+
+QPlainTextEdit,
+QTextEdit {
+    background-color: #FFFFFF;
+    color: #2C2C2C;
+    border: 1px solid #D5D5D5;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 10pt;
+    selection-background-color: #BDD2B6;
+}
+
+QPlainTextEdit:focus,
+QTextEdit:focus {
+    border: 2px solid #A2B29F;
+    background-color: #FFFEF9;
+}
+
+/* ============================================================================
+   FORMS - COMBOBOX
+   ============================================================================ */
+QComboBox {
+    background-color: #FFFFFF;
+    color: #2C2C2C;
+    border: 1px solid #D5D5D5;
+    border-radius: 4px;
+    padding: 6px 8px;
+    padding-right: 4px;
+    font-size: 10pt;
+    min-height: 32px;
+    min-width: 100px;
+}
+
+QComboBox:focus {
+    border: 2px solid #A2B29F;
+}
+
+QComboBox::drop-down {
+    border: 0px;
+    border-left: 1px solid #D5D5D5;
+    width: 32px;
+    height: 28px;
+    background-color: #A2B29F;
+    margin-right: 2px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #FFFFFF;
+    color: #2C2C2C;
+    border: 1px solid #D5D5D5;
+    selection-background-color: #BDD2B6;
+    padding: 4px;
+}
+
+/* ============================================================================
+   FORMS - SPINBOX / DOUBLESPINBOX / DATEEDIT
+   ============================================================================ */
+QSpinBox,
+QDoubleSpinBox,
+QDateEdit {
+    background-color: #FFFFFF;
+    color: #2C2C2C;
+    border: 1px solid #D5D5D5;
+    border-radius: 4px;
+    padding-left: 8px;
+    padding-right: 4px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-size: 10pt;
+    min-height: 32px;
+    min-width: 100px;
+}
+
+QSpinBox:focus,
+QDoubleSpinBox:focus,
+QDateEdit:focus {
+    border: 2px solid #A2B29F;
+}
+
+QSpinBox::up-button,
+QDoubleSpinBox::up-button,
+QDateEdit::up-button,
+QSpinBox::down-button,
+QDoubleSpinBox::down-button,
+QDateEdit::down-button {
+    background-color: #BDD2B6;
+    border: 1px solid #A2B29F;
+    border-radius: 2px;
+    width: 32px;
+    height: 14px;
+    padding: 0px;
+    margin: 1px;
+}
+
+QSpinBox::up-button:hover,
+QDoubleSpinBox::up-button:hover,
+QDateEdit::up-button:hover,
+QSpinBox::down-button:hover,
+QDoubleSpinBox::down-button:hover,
+QDateEdit::down-button:hover {
+    background-color: #A2B29F;
+}
+
+/* ============================================================================
+   LABELS
+   ============================================================================ */
+QLabel {
+    color: #2C2C2C;
+    font-size: 10pt;
+    background-color: transparent;
+}
+
+QLabel#label {
+    font-weight: bold;
+    font-size: 12pt;
+    color: #798777;
+}
+
+/* ============================================================================
+   TABLES
+   ============================================================================ */
+QTableWidget {
+    background-color: #FFFFFF;
+    alternate-background-color: #F5F0EA;
+    color: #2C2C2C;
+    border: 1px solid #D5D5D5;
+    border-radius: 4px;
+    gridline-color: #E8E0D5;
+    font-size: 9pt;
+}
+
+QTableWidget::item {
+    padding: 6px;
+}
+
+QTableWidget::item:selected {
+    background-color: #BDD2B6;
+    color: #2C2C2C;
+}
+
+QHeaderView::section {
+    background-color: #A2B29F;
+    color: #FFFFFF;
+    padding: 8px;
+    border: none;
+    border-right: 1px solid #798777;
+    font-weight: bold;
+    font-size: 9pt;
+    text-align: center;
+}
+
+QHeaderView::section:hover {
+    background-color: #9FA59C;
+}
+
+/* ============================================================================
+   GROUPBOX
+   ============================================================================ */
+QGroupBox {
+    color: #798777;
+    background-color: #FFFFFF;
+    border: 1px solid #D5D5D5;
+    border-radius: 6px;
+    margin-top: 12px;
+    padding-top: 12px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 8px;
+    font-weight: bold;
+    font-size: 10pt;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    margin-left: 10px;
+    padding: 0px 4px 0px 4px;
+    color: #798777;
+}
+
+/* Minimize sidebar groupboxes */
+QFrame#sidebarListe QGroupBox {
+    margin-top: 4px;
+    padding-top: 6px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: 4px;
+    font-size: 9pt;
+}
+
+QFrame#sidebarListe QGroupBox::title {
+    margin-left: 4px;
+    padding: 0px 2px 0px 2px;
+    font-size: 8.5pt;
+}
+
+QFrame#sidebarListe QLabel {
+    font-size: 8pt;
+    margin: 2px 0px 0px 0px;
+    padding: 2px 0px;
+}
+
+QFrame#sidebarListe QLineEdit {
+    padding: 2px 4px;
+    font-size: 8pt;
+    height: 20px;
+}
+
+QFrame#sidebarListe QComboBox {
+    padding: 2px 4px;
+    font-size: 8pt;
+    height: 20px;
+}
+
+QFrame#sidebarListe QRadioButton {
+    font-size: 8pt;
+    spacing: 2px;
+    margin: 2px 0px;
+    padding: 0px 2px;
+}
+
+/* ============================================================================
+   TABS
+   ============================================================================ */
+QTabWidget::pane {
+    border: 1px solid #D5D5D5;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+}
+
+QTabBar::tab {
+    background-color: #D5D5D5;
+    color: #2C2C2C;
+    padding: 8px 20px;
+    border: 1px solid #D5D5D5;
+    border-bottom: none;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    min-width: 100px;
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+QTabBar::tab:hover {
+    background-color: #BDD2B6;
+    color: #2C2C2C;
+}
+
+QTabBar::tab:selected {
+    background-color: #FFFFFF;
+    color: #798777;
+    border-bottom: 2px solid #A2B29F;
+}
+
+/* ============================================================================
+   SCROLLBAR
+   ============================================================================ */
+QScrollBar:vertical {
+    background-color: #F8EDE3;
+    width: 14px;
+    border: 0px;
+    border-radius: 7px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #A2B29F;
+    border-radius: 7px;
+    min-height: 20px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #BDD2B6;
+}
+
+QScrollBar:horizontal {
+    background-color: #F8EDE3;
+    height: 14px;
+    border: 0px;
+    border-radius: 7px;
+}
+
+QScrollBar::handle:horizontal {
+    background-color: #A2B29F;
+    border-radius: 7px;
+    min-width: 20px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background-color: #BDD2B6;
+}
+
+/* ============================================================================
+   MENUBAR
+   ============================================================================ */
+QMenuBar {
+    background-color: #798777;
+    color: #FFFFFF;
+    border-bottom: 1px solid #5F7B5F;
+    spacing: 8px;
+    padding: 4px;
+}
+
+QMenuBar::item:selected {
+    background-color: #A2B29F;
+    border-radius: 4px;
+}
+
+/* ============================================================================
+   MENU
+   ============================================================================ */
+QMenu {
+    background-color: #FFFFFF;
+    color: #2C2C2C;
+    border: 1px solid #D5D5D5;
+    padding: 4px 0px;
+    border-radius: 4px;
+}
+
+QMenu::item:selected {
+    background-color: #BDD2B6;
+    padding: 4px 16px;
+}
+
+/* ============================================================================
+   STATUSBAR
+   ============================================================================ */
+QStatusBar {
+    background-color: #798777;
+    color: #FFFFFF;
+    border-top: 1px solid #6B7B6B;
+    padding: 4px;
+    font-size: 9pt;
+}
+
+/* ============================================================================
+   CHECKBOXES & RADIOBUTTONS
+   ============================================================================ */
+QCheckBox,
+QRadioButton {
+    color: #2C2C2C;
+    spacing: 6px;
+    font-size: 10pt;
+    background-color: transparent;
+}
+
+QCheckBox::indicator,
+QRadioButton::indicator {
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    border: 2px solid #A2B29F;
+    background-color: #FFFFFF;
+}
+
+QCheckBox::indicator:hover,
+QRadioButton::indicator:hover {
+    border: 2px solid #BDD2B6;
+    background-color: #FFFEF9;
+}
+
+QCheckBox::indicator:checked,
+QRadioButton::indicator:checked {
+    background-color: #A2B29F;
+    border: 2px solid #798777;
+}
+
+QCheckBox::indicator:checked:hover,
+QRadioButton::indicator:checked:hover {
+    background-color: #BDD2B6;
+}
+
+QRadioButton::indicator {
+    border-radius: 9px;
+    width: 18px;
+    height: 18px;
+}
+
+/* ============================================================================
+   TOOLTIPS
+   ============================================================================ */
+QToolTip {
+    background-color: #798777;
+    color: #FFFFFF;
+    border: 1px solid #A2B29F;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 9pt;
+}
+
+/* ============================================================================
+   CALENDAR WIDGET
+   ============================================================================ */
+QCalendarWidget QWidget {
+    background-color: #FFFFFF;
+    color: #2C2C2C;
+}
+
+QCalendarWidget QToolButton {
+    background-color: #A2B29F;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px;
+    padding: 6px;
+    font-weight: bold;
+}
+
+QCalendarWidget QToolButton:hover {
+    background-color: #BDD2B6;
+}
+
+QCalendarWidget QMenu {
+    background-color: #FFFFFF;
+    border: 1px solid #D5D5D5;
+}
+
+QCalendarWidget QSpinBox {
+    background-color: #FFFFFF;
+    border: 1px solid #D5D5D5;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+QCalendarWidget QTableView {
+    border: 1px solid #D5D5D5;
+    background-color: #FFFFFF;
+    selection-background-color: #BDD2B6;
+}
+
+/* ============================================================================
+   FIN - End of Stylesheet
+   ============================================================================ */
+)";
+
+    qApp->setStyleSheet(styleSheet);
+}
+
+void MainWindow::setupNavigation()
+{
+    // Connecter les signaux des boutons aux slots
+    connect(ui->btnCommande, &QPushButton::clicked, this, &MainWindow::on_btnCommande_clicked);
+    connect(ui->btnEquipe, &QPushButton::clicked, this, &MainWindow::on_btnEquipe_clicked);
+    connect(ui->btnClient, &QPushButton::clicked, this, &MainWindow::on_btnClient_clicked);
+    connect(ui->btnLaboratoire, &QPushButton::clicked, this, &MainWindow::on_btnLaboratoire_clicked);
+    connect(ui->btnFournisseur, &QPushButton::clicked, this, &MainWindow::on_btnFournisseur_clicked);
+    connect(ui->btnMachine, &QPushButton::clicked, this, &MainWindow::on_btnMachine_clicked);
+}
+
 void MainWindow::setupConnections()
 {
-    // Connecter les boutons du menu latéral
-    connect(ui->btnEmployee, &QPushButton::clicked, this, &MainWindow::onBtnEmployeeClicked);
-    connect(ui->btnTeam, &QPushButton::clicked, this, &MainWindow::onBtnTeamClicked);
-    connect(ui->btnClient, &QPushButton::clicked, this, &MainWindow::onBtnClientClicked);
-    connect(ui->btnLaboratory, &QPushButton::clicked, this, &MainWindow::onBtnLaboratoryClicked);
-    connect(ui->btnOrder, &QPushButton::clicked, this, &MainWindow::onBtnOrderClicked);
-    connect(ui->btnMachine, &QPushButton::clicked, this, &MainWindow::onBtnMachineClicked);
+    // Boutons d'action
+    connect(ui->btnAjouter, &QPushButton::clicked, this, &MainWindow::on_btnAjouter_clicked);
+    connect(ui->btnSupprimer, &QPushButton::clicked, this, &MainWindow::on_btnSupprimer_clicked);
+    connect(ui->btnCharger, &QPushButton::clicked, this, &MainWindow::on_btnCharger_clicked);
+    connect(ui->btnModifier, &QPushButton::clicked, this, &MainWindow::on_btnModifier_clicked);
+    connect(ui->btnExportListe, &QPushButton::clicked, this, &MainWindow::on_btnExportListe_clicked);
+    connect(ui->btnExportRapport, &QPushButton::clicked, this, &MainWindow::on_btnExportRapport_clicked);
+    connect(ui->btnExportFiche, &QPushButton::clicked, this, &MainWindow::on_btnExportFiche_clicked);
+    connect(ui->btnEnvoyerEmail, &QPushButton::clicked, this, &MainWindow::on_btnEnvoyerEmail_clicked);
 
-    // Connecter les actions de la toolbar/menu
-    connect(ui->actionNew, &QAction::triggered, this, &MainWindow::onActionNew);
-    connect(ui->actionEdit, &QAction::triggered, this, &MainWindow::onActionEdit);
-    connect(ui->actionDelete, &QAction::triggered, this, &MainWindow::onActionDelete);
-    connect(ui->actionEnvoyerEmail, &QAction::triggered, this, &MainWindow::onActionSendEmail);
-    connect(ui->actionExportPDF, &QAction::triggered, this, &MainWindow::onActionExportPDF);
-    connect(ui->actionRefresh, &QAction::triggered, this, &MainWindow::onActionRefresh);
-    connect(ui->actionExit, &QAction::triggered, this, &MainWindow::onActionExit);
-
-    // Connecter les boutons d'actions rapides
-    connect(ui->btnNewCommande, &QPushButton::clicked, this, &MainWindow::onBtnNewCommandeClicked);
-    connect(ui->btnEditCommande, &QPushButton::clicked, this, &MainWindow::onBtnEditCommandeClicked);
-    connect(ui->btnDeleteCommande, &QPushButton::clicked, this, &MainWindow::onBtnDeleteCommandeClicked);
-    connect(ui->btnEnvoyerEmail, &QPushButton::clicked, this, &MainWindow::onBtnEnvoyerEmailClicked);
-
-    // Connecter la navigation depuis la page Machine
-    connect(ui->btnCommandeFromProduit, &QPushButton::clicked, this, &MainWindow::onBtnCommandeFromProduitClicked);
-
-    // Connecter les fonctionnalités avancées
-    connect(ui->groupBoxStatsByType, &QGroupBox::clicked, this, &MainWindow::onGroupBoxStatsByTypeClicked);
-    connect(ui->groupBoxStatsDepenses, &QGroupBox::clicked, this, &MainWindow::onGroupBoxStatsDepensesClicked);
-    connect(ui->groupBoxCalendrier, &QGroupBox::clicked, this, &MainWindow::onGroupBoxCalendrierClicked);
-
-    // Connecter la sélection dans la table
-    connect(ui->tableCommandes, &QTableWidget::itemSelectionChanged, this, &MainWindow::updateQuickInfo);
-
-    // Connecter les filtres
-    connect(ui->lineEditSearch, &QLineEdit::textChanged, this, &MainWindow::onSearchTextChanged);
-    connect(ui->comboFournisseur, &QComboBox::currentTextChanged, this, &MainWindow::onFilterChanged);
-    connect(ui->comboStatus, &QComboBox::currentTextChanged, this, &MainWindow::onFilterChanged);
-    connect(ui->dateFrom, &QDateEdit::dateChanged, this, &MainWindow::onFilterChanged);
-    connect(ui->dateTo, &QDateEdit::dateChanged, this, &MainWindow::onFilterChanged);
+    // Radio buttons pour le tri
+    connect(ui->radioButton_dateArrivage, &QRadioButton::toggled, this, &MainWindow::on_radioButton_dateArrivage_toggled);
+    connect(ui->radioButton_montant, &QRadioButton::toggled, this, &MainWindow::on_radioButton_montant_toggled);
+    connect(ui->radioButton_quantite, &QRadioButton::toggled, this, &MainWindow::on_radioButton_quantite_toggled);
+    connect(ui->radioButton_dateSortie, &QRadioButton::toggled, this, &MainWindow::on_radioButton_dateSortie_toggled);
+    connect(ui->radioButton_croissant, &QRadioButton::toggled, this, &MainWindow::on_radioButton_croissant_toggled);
+    connect(ui->radioButton_decroissant, &QRadioButton::toggled, this, &MainWindow::on_radioButton_decroissant_toggled);
 }
 
-void MainWindow::setupTableData()
+void MainWindow::on_btnCommande_clicked()
 {
-    // Configurer la table avec des données de test
-    QStringList headers = {"ID", "Libellé", "Fournisseur", "État", "Date Arrivée", "Date Sortie", "Montant Total"};
-    ui->tableCommandes->setColumnCount(headers.size());
+    ui->stackedMain->setCurrentWidget(ui->pageCommandes);
+    ui->statusbar->showMessage("Page: Gestion des commandes");
+}
 
-    for (int i = 0; i < headers.size(); ++i) {
-        QTableWidgetItem *header = new QTableWidgetItem(headers[i]);
-        ui->tableCommandes->setHorizontalHeaderItem(i, header);
+void MainWindow::on_btnEquipe_clicked()
+{
+    ui->stackedMain->setCurrentWidget(ui->pageEquipe);
+    ui->statusbar->showMessage("Page: Gestion des équipes");
+}
+
+void MainWindow::on_btnClient_clicked()
+{
+    ui->stackedMain->setCurrentWidget(ui->pageClient);
+    ui->statusbar->showMessage("Page: Gestion des clients");
+}
+
+void MainWindow::on_btnLaboratoire_clicked()
+{
+    ui->stackedMain->setCurrentWidget(ui->pageLaboratoire);
+    ui->statusbar->showMessage("Page: Gestion du laboratoire");
+}
+
+void MainWindow::on_btnFournisseur_clicked()
+{
+    ui->stackedMain->setCurrentWidget(ui->pageFournisseur);
+    ui->statusbar->showMessage("Page: Gestion des fournisseurs");
+}
+
+void MainWindow::on_btnMachine_clicked()
+{
+    ui->stackedMain->setCurrentWidget(ui->pageMachine);
+    ui->statusbar->showMessage("Page: Gestion des machines");
+}
+
+void MainWindow::on_btnAjouter_clicked()
+{
+    QString libelle = ui->lineEdit_libelle->text();
+    if (libelle.isEmpty()) {
+        QMessageBox::warning(this, "Erreur", "Veuillez saisir un libellé");
+        return;
     }
 
-    // Données de test
-    QStringList commandesData = {
-        "CMD001,Huile d'olive vierge extra,Fournisseur A,En cours,2024-01-15,2024-01-20,1500.00€",
-        "CMD002,Presse hydraulique 20T,Fournisseur B,Validée,2024-01-10,2024-01-25,2300.00€",
-        "CMD003,Filtres à huile premium,Fournisseur C,Prête,2024-01-05,2024-01-30,1800.00€",
-        "CMD004,Bouteilles verre 500ml,Fournisseur A,Annulée,2024-01-12,2024-01-12,900.00€",
-        "CMD005,Machine d'embouteillage,Fournisseur D,En cours,2024-01-18,,3500.00€",
-        "CMD006,Étiquettes personnalisées,Fournisseur B,Prête,2024-01-08,2024-01-28,650.00€"
-    };
+    QMessageBox::information(this, "Succès", "Commande ajoutée avec succès !");
+    ui->statusbar->showMessage("Commande ajoutée");
+}
 
-    ui->tableCommandes->setRowCount(commandesData.size());
-
-    for (int row = 0; row < commandesData.size(); ++row) {
-        QStringList fields = commandesData[row].split(',');
-        for (int col = 0; col < fields.size() && col < headers.size(); ++col) {
-            QTableWidgetItem *item = new QTableWidgetItem(fields[col]);
-            ui->tableCommandes->setItem(row, col, item);
-        }
+void MainWindow::on_btnSupprimer_clicked()
+{
+    QString id = ui->lineEdit_id_supprimer->text();
+    if (id.isEmpty()) {
+        QMessageBox::warning(this, "Erreur", "Veuillez saisir un ID");
+        return;
     }
 
-    // Ajuster la largeur des colonnes
-    ui->tableCommandes->resizeColumnsToContents();
-}
-
-// ==================== NAVIGATION MENU ====================
-
-void MainWindow::onBtnEmployeeClicked()
-{
-    ui->stackedPages->setCurrentWidget(ui->pageEmployee);
-    showCrudDialog("Gestion des Employés");
-}
-
-void MainWindow::onBtnTeamClicked()
-{
-    ui->stackedPages->setCurrentWidget(ui->pageTeam);
-    showCrudDialog("Gestion des Équipes");
-}
-
-void MainWindow::onBtnClientClicked()
-{
-    ui->stackedPages->setCurrentWidget(ui->pageClient);
-    showCrudDialog("Gestion des Clients");
-}
-
-void MainWindow::onBtnLaboratoryClicked()
-{
-    ui->stackedPages->setCurrentWidget(ui->pageLaboratory);
-    showCrudDialog("Gestion des Laboratoires");
-}
-
-void MainWindow::onBtnOrderClicked()
-{
-    ui->stackedPages->setCurrentWidget(ui->pageOrder);
-    onActionRefresh(); // Rafraîchir les données
-}
-
-void MainWindow::onBtnMachineClicked()
-{
-    ui->stackedPages->setCurrentWidget(ui->pageMachine);
-    showCrudDialog("Gestion des Machines/Produits");
-}
-
-// ==================== CRUD ACTIONS ====================
-
-void MainWindow::onActionNew()
-{
-    QString currentPage = ui->stackedPages->currentWidget()->objectName();
-
-    if (currentPage == "pageOrder") {
-        showCrudDialog("Nouvelle Commande");
-    } else if (currentPage == "pageEmployee") {
-        showCrudDialog("Nouvel Employé");
-    } else if (currentPage == "pageClient") {
-        showCrudDialog("Nouveau Client");
-    } else if (currentPage == "pageMachine") {
-        showCrudDialog("Nouvelle Machine/Produit");
-    } else {
-        showCrudDialog("Nouvel Élément");
+    int reponse = QMessageBox::question(this, "Confirmation",
+                                        "Voulez-vous vraiment supprimer la commande " + id + " ?");
+    if (reponse == QMessageBox::Yes) {
+        QMessageBox::information(this, "Succès", "Commande supprimée !");
+        ui->statusbar->showMessage("Commande supprimée");
+        ui->lineEdit_id_supprimer->clear();
     }
 }
 
-void MainWindow::onActionEdit()
+void MainWindow::on_btnCharger_clicked()
 {
-    QString currentPage = ui->stackedPages->currentWidget()->objectName();
-
-    if (currentPage == "pageOrder") {
-        if (ui->tableCommandes->currentRow() >= 0) {
-            showCrudDialog("Modifier Commande");
-        } else {
-            QMessageBox::warning(this, "Aucune sélection",
-                                 "Veuillez sélectionner une commande à modifier.");
-        }
-    } else {
-        showCrudDialog("Modifier Élément");
-    }
-}
-
-void MainWindow::onActionDelete()
-{
-    QString currentPage = ui->stackedPages->currentWidget()->objectName();
-
-    if (currentPage == "pageOrder") {
-        int currentRow = ui->tableCommandes->currentRow();
-        if (currentRow >= 0) {
-            QMessageBox::StandardButton reply;
-            reply = QMessageBox::question(this, "Confirmation",
-                                          "Êtes-vous sûr de vouloir supprimer cette commande ?",
-                                          QMessageBox::Yes | QMessageBox::No);
-
-            if (reply == QMessageBox::Yes) {
-                ui->tableCommandes->removeRow(currentRow);
-                updateStatistics();
-                QMessageBox::information(this, "Succès", "Commande supprimée avec succès.");
-            }
-        } else {
-            QMessageBox::warning(this, "Aucune sélection",
-                                 "Veuillez sélectionner une commande à supprimer.");
-        }
-    } else {
-        QMessageBox::information(this, "Suppression",
-                                 "Fonctionnalité de suppression pour cette page.");
-    }
-}
-
-void MainWindow::onActionSendEmail()
-{
-    QDialog *emailDialog = new QDialog(this);
-    emailDialog->setWindowTitle("Envoyer Email");
-    emailDialog->setMinimumSize(500, 400);
-
-    QVBoxLayout *layout = new QVBoxLayout(emailDialog);
-
-    QLabel *label = new QLabel("Interface d'envoi d'email", emailDialog);
-    QTextEdit *messageEdit = new QTextEdit(emailDialog);
-    messageEdit->setPlaceholderText("Écrivez votre message ici...");
-    messageEdit->setMinimumHeight(200);
-
-    QPushButton *sendBtn = new QPushButton("Envoyer", emailDialog);
-    QPushButton *cancelBtn = new QPushButton("Annuler", emailDialog);
-
-    QHBoxLayout *buttonLayout = new QHBoxLayout();
-    buttonLayout->addWidget(sendBtn);
-    buttonLayout->addWidget(cancelBtn);
-
-    layout->addWidget(label);
-    layout->addWidget(messageEdit);
-    layout->addLayout(buttonLayout);
-
-    connect(sendBtn, &QPushButton::clicked, emailDialog, [emailDialog, messageEdit]() {
-        QMessageBox::information(emailDialog, "Email envoyé",
-                                 "L'email a été envoyé avec succès.");
-        emailDialog->accept();
-    });
-
-    connect(cancelBtn, &QPushButton::clicked, emailDialog, &QDialog::reject);
-
-    emailDialog->exec();
-    delete emailDialog;
-}
-
-void MainWindow::onActionExportPDF()
-{
-    QDialog *exportDialog = new QDialog(this);
-    exportDialog->setWindowTitle("Exporter en PDF");
-    exportDialog->setMinimumSize(400, 300);
-
-    QVBoxLayout *layout = new QVBoxLayout(exportDialog);
-
-    QLabel *label = new QLabel("Options d'export PDF", exportDialog);
-
-    QGroupBox *optionsGroup = new QGroupBox("Options", exportDialog);
-    QVBoxLayout *optionsLayout = new QVBoxLayout(optionsGroup);
-
-    QCheckBox *includeDetails = new QCheckBox("Inclure les détails", optionsGroup);
-    QCheckBox *includeStats = new QCheckBox("Inclure les statistiques", optionsGroup);
-    QCheckBox *includeCalendar = new QCheckBox("Inclure le calendrier", optionsGroup);
-
-    includeDetails->setChecked(true);
-    includeStats->setChecked(true);
-
-    optionsLayout->addWidget(includeDetails);
-    optionsLayout->addWidget(includeStats);
-    optionsLayout->addWidget(includeCalendar);
-
-    QPushButton *exportBtn = new QPushButton("Exporter", exportDialog);
-    QPushButton *cancelBtn = new QPushButton("Annuler", exportDialog);
-
-    QHBoxLayout *buttonLayout = new QHBoxLayout();
-    buttonLayout->addWidget(exportBtn);
-    buttonLayout->addWidget(cancelBtn);
-
-    layout->addWidget(label);
-    layout->addWidget(optionsGroup);
-    layout->addLayout(buttonLayout);
-
-    connect(exportBtn, &QPushButton::clicked, exportDialog, [exportDialog]() {
-        QMessageBox::information(exportDialog, "Export réussi",
-                                 "Le PDF a été exporté avec succès.\nFichier: commandes_export.pdf");
-        exportDialog->accept();
-    });
-
-    connect(cancelBtn, &QPushButton::clicked, exportDialog, &QDialog::reject);
-
-    exportDialog->exec();
-    delete exportDialog;
-}
-
-void MainWindow::onActionRefresh()
-{
-    // Simulation de chargement de données
-    setupTableData();
-    updateStatistics();
-
-    // Mettre à jour les textes des statistiques avancées
-    QString statsTypesText = "=== ANALYSE PAR TYPE DE PRODUIT ===\n\n"
-                             "• Huiles: 45 unités (Stock: Normal)\n"
-                             "• Machines: 12 unités (Stock: Bas)\n"
-                             "• Emballages: 120 unités (Stock: Élevé)\n"
-                             "• Pièces détachées: 67 unités (Stock: Normal)\n\n"
-                             "=== ALERTES STOCK ===\n"
-                             "⚠ 2 produits en niveau critique\n"
-                             "⚠ 5 produits à réapprovisionner";
-
-    ui->statsTypes->setPlainText(statsTypesText);
-
-    QString statsDepensesText = "=== DÉPENSES MENSUELLES 2024 ===\n\n"
-                                "• Janvier: 12,500€\n"
-                                "• Février: 14,200€\n"
-                                "• Mars: 11,800€\n"
-                                "• Avril: 13,100€\n\n"
-                                "=== TENDANCE ===\n"
-                                "📈 Augmentation de 8% vs 2023\n\n"
-                                "=== RUPTURES ===\n"
-                                "• Produit A: 2 occurrences\n"
-                                "• Produit B: 1 occurrence\n"
-                                "• Produit C: 0 occurrence";
-
-    ui->statsDepenses->setPlainText(statsDepensesText);
-
-    // Marquer des dates importantes dans le calendrier
-    QTextCharFormat importantFormat;
-    importantFormat.setBackground(QColor("#BDD2B6"));
-    importantFormat.setFontWeight(QFont::Bold);
-
-    QDate today = QDate::currentDate();
-    ui->calendarCommandes->setDateTextFormat(today.addDays(3), importantFormat);
-    ui->calendarCommandes->setDateTextFormat(today.addDays(10), importantFormat);
-    ui->calendarCommandes->setDateTextFormat(today.addDays(15), importantFormat);
-}
-
-void MainWindow::onActionExit()
-{
-    QApplication::quit();
-}
-
-// ==================== QUICK ACTION BUTTONS ====================
-
-void MainWindow::onBtnNewCommandeClicked()
-{
-    onActionNew();
-}
-
-void MainWindow::onBtnEditCommandeClicked()
-{
-    onActionEdit();
-}
-
-void MainWindow::onBtnDeleteCommandeClicked()
-{
-    onActionDelete();
-}
-
-void MainWindow::onBtnEnvoyerEmailClicked()
-{
-    onActionSendEmail();
-}
-
-// ==================== NAVIGATION FROM MACHINE ====================
-
-void MainWindow::onBtnCommandeFromProduitClicked()
-{
-    // Naviguer vers la page Commande
-    ui->stackedPages->setCurrentWidget(ui->pageOrder);
-
-    // Ouvrir le dialogue de création de commande
-    onActionNew();
-}
-
-// ==================== ADVANCED FEATURES ====================
-
-void MainWindow::onGroupBoxStatsByTypeClicked()
-{
-    showAdvancedFeatureDialog("Analyse Avancée par Type/Stock",
-                              "Cette fonctionnalité avancée permet:\n"
-                              "• Analyse détaillée des stocks par catégorie\n"
-                              "• Prévisions de réapprovisionnement\n"
-                              "• Suivi des tendances d'achat\n"
-                              "• Alertes automatiques de rupture\n"
-                              "• Optimisation des niveaux de stock");
-}
-
-void MainWindow::onGroupBoxStatsDepensesClicked()
-{
-    showAdvancedFeatureDialog("Analyse Avancée des Dépenses",
-                              "Cette fonctionnalité avancée permet:\n"
-                              "• Analyse comparative mois par mois\n"
-                              "• Prévisions budgétaires\n"
-                              "• Identification des économies potentielles\n"
-                              "• Suivi des fournisseurs (coût/qualité)\n"
-                              "• Rapport de rentabilité par produit");
-}
-
-void MainWindow::onGroupBoxCalendrierClicked()
-{
-    showAdvancedFeatureDialog("Calendrier Avancé des Commandes",
-                              "Cette fonctionnalité avancée permet:\n"
-                              "• Vue mensuelle/annuelle des commandes\n"
-                              "• Alertes de dates d'échéance\n"
-                              "• Planification des livraisons\n"
-                              "• Gestion des conflits de planning\n"
-                              "• Export vers Outlook/Google Calendar");
-}
-
-// ==================== SEARCH AND FILTERS ====================
-
-void MainWindow::onSearchTextChanged(const QString &text)
-{
-    applyFilters();
-}
-
-void MainWindow::onFilterChanged()
-{
-    applyFilters();
-}
-
-void MainWindow::applyFilters()
-{
-    QString searchText = ui->lineEditSearch->text().toLower();
-    QString selectedFournisseur = ui->comboFournisseur->currentText();
-    QString selectedStatus = ui->comboStatus->currentText();
-    QDate dateFrom = ui->dateFrom->date();
-    QDate dateTo = ui->dateTo->date();
-
-    for (int row = 0; row < ui->tableCommandes->rowCount(); ++row) {
-        bool shouldShow = true;
-
-        // Filtrer par texte de recherche
-        if (!searchText.isEmpty()) {
-            bool found = false;
-            for (int col = 0; col < ui->tableCommandes->columnCount(); ++col) {
-                QTableWidgetItem *item = ui->tableCommandes->item(row, col);
-                if (item && item->text().toLower().contains(searchText)) {
-                    found = true;
-                    break;
-                }
-            }
-            shouldShow = shouldShow && found;
-        }
-
-        // Filtrer par fournisseur
-        if (selectedFournisseur != "Toutes") {
-            QTableWidgetItem *fournisseurItem = ui->tableCommandes->item(row, 2);
-            if (fournisseurItem && fournisseurItem->text() != selectedFournisseur) {
-                shouldShow = false;
-            }
-        }
-
-        // Filtrer par statut
-        if (selectedStatus != "Tous") {
-            QTableWidgetItem *statusItem = ui->tableCommandes->item(row, 3);
-            if (statusItem && statusItem->text() != selectedStatus) {
-                shouldShow = false;
-            }
-        }
-
-        // Filtrer par date
-        QTableWidgetItem *dateItem = ui->tableCommandes->item(row, 4);
-        if (dateItem && !dateItem->text().isEmpty()) {
-            QDate orderDate = QDate::fromString(dateItem->text(), "yyyy-MM-dd");
-            if (orderDate < dateFrom || orderDate > dateTo) {
-                shouldShow = false;
-            }
-        }
-
-        // Afficher ou masquer la ligne
-        ui->tableCommandes->setRowHidden(row, !shouldShow);
+    QString id = ui->lineEdit_id_modifier->text();
+    if (id.isEmpty()) {
+        QMessageBox::warning(this, "Erreur", "Veuillez saisir un ID");
+        return;
     }
 
-    updateStatistics();
+    // Simulation de chargement
+    ui->lineEdit_libelle_mod->setText("Commande chargée");
+    ui->combo_fournisseur_mod->setCurrentIndex(1);
+    ui->lineEdit_id_modifier->setReadOnly(true);
+
+    QMessageBox::information(this, "Succès", "Données chargées pour la commande " + id);
 }
 
-// ==================== HELPER METHODS ====================
-
-void MainWindow::updateQuickInfo()
+void MainWindow::on_btnModifier_clicked()
 {
-    int currentRow = ui->tableCommandes->currentRow();
-    if (currentRow >= 0 && !ui->tableCommandes->isRowHidden(currentRow)) {
-        ui->quickEtat->setText(ui->tableCommandes->item(currentRow, 3)->text());
-        ui->quickFournisseur->setText(ui->tableCommandes->item(currentRow, 2)->text());
-        ui->quickDateArrivee->setText(ui->tableCommandes->item(currentRow, 4)->text());
-        ui->quickDateSortie->setText(ui->tableCommandes->item(currentRow, 5)->text());
-        ui->quickMontant->setText(ui->tableCommandes->item(currentRow, 6)->text());
-    } else {
-        ui->quickEtat->setText("-");
-        ui->quickFournisseur->setText("-");
-        ui->quickDateArrivee->setText("-");
-        ui->quickDateSortie->setText("-");
-        ui->quickMontant->setText("-");
-    }
-}
-
-void MainWindow::updateStatistics()
-{
-    int total = 0;
-    int enCours = 0;
-    int validee = 0;
-    int prete = 0;
-    int annulee = 0;
-
-    for (int i = 0; i < ui->tableCommandes->rowCount(); ++i) {
-        if (!ui->tableCommandes->isRowHidden(i)) {
-            total++;
-            QString etat = ui->tableCommandes->item(i, 3)->text();
-            if (etat == "En cours") enCours++;
-            else if (etat == "Validée") validee++;
-            else if (etat == "Prête") prete++;
-            else if (etat == "Annulée") annulee++;
-        }
+    QString id = ui->lineEdit_id_modifier->text();
+    if (id.isEmpty()) {
+        QMessageBox::warning(this, "Erreur", "Veuillez charger une commande d'abord");
+        return;
     }
 
-    ui->statTotal->setText(QString::number(total));
-    ui->statEnCours->setText(QString::number(enCours));
-    ui->statValidee->setText(QString::number(validee));
-    ui->statPrete->setText(QString::number(prete));
-    ui->statAnnulee->setText(QString::number(annulee));
+    QMessageBox::information(this, "Succès", "Commande modifiée avec succès !");
+    ui->statusbar->showMessage("Commande modifiée");
 }
 
-void MainWindow::showCrudDialog(const QString &title)
+void MainWindow::on_btnExportListe_clicked()
 {
-    QDialog *dialog = new QDialog(this);
-    dialog->setWindowTitle(title);
-    dialog->setMinimumSize(500, 400);
+    ui->textEdit_messages->append("📄 Export de la liste complète des commandes en PDF...");
+    ui->textEdit_messages->append("✅ Export terminé avec succès !");
+    ui->statusbar->showMessage("Export PDF: Liste complète");
+}
 
-    QVBoxLayout *mainLayout = new QVBoxLayout(dialog);
+void MainWindow::on_btnExportRapport_clicked()
+{
+    ui->textEdit_messages->append("📊 Export du rapport statistiques en PDF...");
+    ui->textEdit_messages->append("✅ Rapport exporté avec succès !");
+    ui->statusbar->showMessage("Export PDF: Rapport statistiques");
+}
 
-    QLabel *titleLabel = new QLabel(title, dialog);
-    titleLabel->setAlignment(Qt::AlignCenter);
-    QFont titleFont = titleLabel->font();
-    titleFont.setPointSize(14);
-    titleFont.setBold(true);
-    titleLabel->setFont(titleFont);
-
-    QFormLayout *formLayout = new QFormLayout();
-
-    // Champs génériques selon le type
-    if (title.contains("Commande")) {
-        formLayout->addRow("ID Commande:", new QLineEdit(dialog));
-        formLayout->addRow("Libellé:", new QLineEdit(dialog));
-
-        QComboBox *fournisseurCombo = new QComboBox(dialog);
-        fournisseurCombo->addItems({"Fournisseur A", "Fournisseur B", "Fournisseur C", "Fournisseur D"});
-        formLayout->addRow("Fournisseur:", fournisseurCombo);
-
-        QComboBox *statusCombo = new QComboBox(dialog);
-        statusCombo->addItems({"En cours", "Validée", "Prête", "Annulée"});
-        formLayout->addRow("État:", statusCombo);
-
-        formLayout->addRow("Date Arrivée:", new QDateEdit(QDate::currentDate(), dialog));
-        formLayout->addRow("Date Sortie:", new QDateEdit(QDate::currentDate().addDays(7), dialog));
-
-        QDoubleSpinBox *montantSpin = new QDoubleSpinBox(dialog);
-        montantSpin->setRange(0, 100000);
-        montantSpin->setPrefix("€ ");
-        formLayout->addRow("Montant:", montantSpin);
-    } else if (title.contains("Employé")) {
-        formLayout->addRow("Nom:", new QLineEdit(dialog));
-        formLayout->addRow("Prénom:", new QLineEdit(dialog));
-        formLayout->addRow("Email:", new QLineEdit(dialog));
-        formLayout->addRow("Téléphone:", new QLineEdit(dialog));
-
-        QComboBox *posteCombo = new QComboBox(dialog);
-        posteCombo->addItems({"Gestionnaire", "Technicien", "Commercial", "Administratif"});
-        formLayout->addRow("Poste:", posteCombo);
-    } else {
-        formLayout->addRow("Nom:", new QLineEdit(dialog));
-        QTextEdit *descEdit = new QTextEdit(dialog);
-        descEdit->setMaximumHeight(100);
-        formLayout->addRow("Description:", descEdit);
+void MainWindow::on_btnExportFiche_clicked()
+{
+    QString id = ui->lineEdit_id_export->text();
+    if (id.isEmpty()) {
+        QMessageBox::warning(this, "Erreur", "Veuillez saisir un ID de commande");
+        return;
     }
 
-    QPushButton *saveBtn = new QPushButton("Enregistrer", dialog);
-    QPushButton *cancelBtn = new QPushButton("Annuler", dialog);
-
-    QHBoxLayout *buttonLayout = new QHBoxLayout();
-    buttonLayout->addWidget(saveBtn);
-    buttonLayout->addWidget(cancelBtn);
-
-    mainLayout->addWidget(titleLabel);
-    mainLayout->addLayout(formLayout);
-    mainLayout->addStretch();
-    mainLayout->addLayout(buttonLayout);
-
-    connect(saveBtn, &QPushButton::clicked, dialog, [dialog, this]() {
-        QMessageBox::information(dialog, "Succès", "Enregistrement effectué avec succès.");
-        dialog->accept();
-        onActionRefresh(); // Rafraîchir les données
-    });
-
-    connect(cancelBtn, &QPushButton::clicked, dialog, &QDialog::reject);
-
-    dialog->exec();
-    delete dialog;
+    ui->textEdit_messages->append("📋 Export de la fiche commande " + id + " en PDF...");
+    ui->textEdit_messages->append("✅ Fiche exportée avec succès !");
+    ui->statusbar->showMessage("Export PDF: Fiche commande " + id);
 }
 
-void MainWindow::showAdvancedFeatureDialog(const QString &title, const QString &description)
+void MainWindow::on_btnEnvoyerEmail_clicked()
 {
-    QDialog *dialog = new QDialog(this);
-    dialog->setWindowTitle(title);
-    dialog->setMinimumSize(700, 500);
+    QString email = ui->lineEdit_email_client->text();
+    QString id = ui->lineEdit_id_email->text();
 
-    QVBoxLayout *mainLayout = new QVBoxLayout(dialog);
+    if (email.isEmpty() || id.isEmpty()) {
+        QMessageBox::warning(this, "Erreur", "Veuillez saisir l'email et l'ID de la commande");
+        return;
+    }
 
-    // En-tête
-    QLabel *titleLabel = new QLabel(title, dialog);
-    titleLabel->setAlignment(Qt::AlignCenter);
-    QFont titleFont = titleLabel->font();
-    titleFont.setPointSize(16);
-    titleFont.setBold(true);
-    titleLabel->setFont(titleFont);
-    titleLabel->setStyleSheet("color: #798777; padding: 10px;");
+    if (!email.contains("@")) {
+        QMessageBox::warning(this, "Erreur", "Email invalide");
+        return;
+    }
 
-    // Description
-    QLabel *descLabel = new QLabel(description, dialog);
-    descLabel->setAlignment(Qt::AlignLeft);
-    descLabel->setWordWrap(true);
-    descLabel->setStyleSheet("background-color: #F8EDE3; padding: 15px; border-radius: 5px;");
+    ui->textEdit_messages->append("📧 Envoi d'email à " + email + " pour la commande " + id + "...");
+    ui->textEdit_messages->append("✅ Email envoyé avec succès ! La commande " + id + " est prête.");
+    ui->statusbar->showMessage("Email envoyé à " + email);
 
-    // Onglets pour différentes vues
-    QTabWidget *tabWidget = new QTabWidget(dialog);
+    QMessageBox::information(this, "Succès", "Email de notification envoyé au client !");
+}
 
-    // Onglet 1: Vue détaillée
-    QWidget *tab1 = new QWidget();
-    QVBoxLayout *tab1Layout = new QVBoxLayout(tab1);
+// Fonctions de tri
+void MainWindow::trierTableau()
+{
+    int colonne = 0;
+    Qt::SortOrder ordre = Qt::AscendingOrder;
 
-    QTableWidget *detailTable = new QTableWidget(10, 5, tab1);
-    QStringList headers = {"Métrique", "Valeur", "Évolution", "Seuil", "Statut"};
-    detailTable->setHorizontalHeaderLabels(headers);
-    tab1Layout->addWidget(detailTable);
-    tabWidget->addTab(tab1, "Vue détaillée");
+    // Déterminer la colonne de tri
+    if (ui->radioButton_dateArrivage->isChecked())
+        colonne = 3; // Colonne date arrivage
+    else if (ui->radioButton_montant->isChecked())
+        colonne = 7; // Colonne montant
+    else if (ui->radioButton_quantite->isChecked())
+        colonne = 6; // Colonne quantité
+    else if (ui->radioButton_dateSortie->isChecked())
+        colonne = 4; // Colonne date sortie
 
-    // Onglet 2: Graphiques
-    QWidget *tab2 = new QWidget();
-    QVBoxLayout *tab2Layout = new QVBoxLayout(tab2);
+    // Déterminer l'ordre
+    if (ui->radioButton_decroissant->isChecked())
+        ordre = Qt::DescendingOrder;
 
-    QLabel *graphLabel = new QLabel("📈 Visualisation graphique des données\n\n"
-                                    "• Graphique 1: Évolution des stocks\n"
-                                    "• Graphique 2: Dépenses mensuelles\n"
-                                    "• Graphique 3: Tendance des commandes", tab2);
-    graphLabel->setAlignment(Qt::AlignCenter);
-    graphLabel->setMinimumHeight(300);
-    graphLabel->setStyleSheet("background-color: #BDD2B6; border-radius: 5px; padding: 20px;");
-    tab2Layout->addWidget(graphLabel);
-    tabWidget->addTab(tab2, "Graphiques");
+    ui->tableWidget_commandes->sortByColumn(colonne, ordre);
 
-    // Onglet 3: Export/Rapports
-    QWidget *tab3 = new QWidget();
-    QVBoxLayout *tab3Layout = new QVBoxLayout(tab3);
+    QString message = "Table trié par " + ui->radioButton_dateArrivage->text() +
+                      " (" + (ordre == Qt::AscendingOrder ? "Croissant" : "Décroissant") + ")";
+    ui->statusbar->showMessage(message);
+}
 
-    QGroupBox *exportGroup = new QGroupBox("Options d'export", tab3);
-    QVBoxLayout *exportLayout = new QVBoxLayout(exportGroup);
+void MainWindow::on_radioButton_dateArrivage_toggled(bool checked)
+{
+    if (checked) trierTableau();
+}
 
-    exportLayout->addWidget(new QCheckBox("Exporter en PDF"));
-    exportLayout->addWidget(new QCheckBox("Exporter en Excel"));
-    exportLayout->addWidget(new QCheckBox("Exporter en CSV"));
-    exportLayout->addWidget(new QCheckBox("Générer un rapport automatique"));
+void MainWindow::on_radioButton_montant_toggled(bool checked)
+{
+    if (checked) trierTableau();
+}
 
-    tab3Layout->addWidget(exportGroup);
-    tabWidget->addTab(tab3, "Export/Rapports");
+void MainWindow::on_radioButton_quantite_toggled(bool checked)
+{
+    if (checked) trierTableau();
+}
 
-    // Boutons
-    QPushButton *closeBtn = new QPushButton("Fermer", dialog);
-    QPushButton *generateBtn = new QPushButton("Générer Rapport", dialog);
+void MainWindow::on_radioButton_dateSortie_toggled(bool checked)
+{
+    if (checked) trierTableau();
+}
 
-    QHBoxLayout *buttonLayout = new QHBoxLayout();
-    buttonLayout->addWidget(generateBtn);
-    buttonLayout->addStretch();
-    buttonLayout->addWidget(closeBtn);
+void MainWindow::on_radioButton_croissant_toggled(bool checked)
+{
+    if (checked) trierTableau();
+}
 
-    mainLayout->addWidget(titleLabel);
-    mainLayout->addWidget(descLabel);
-    mainLayout->addWidget(tabWidget);
-    mainLayout->addLayout(buttonLayout);
-
-    connect(generateBtn, &QPushButton::clicked, dialog, [dialog]() {
-        QMessageBox::information(dialog, "Rapport généré",
-                                 "Le rapport avancé a été généré avec succès.\n"
-                                 "Consultez le dossier 'Rapports' pour plus de détails.");
-    });
-
-    connect(closeBtn, &QPushButton::clicked, dialog, &QDialog::accept);
-
-    dialog->exec();
-    delete dialog;
+void MainWindow::on_radioButton_decroissant_toggled(bool checked)
+{
+    if (checked) trierTableau();
 }
