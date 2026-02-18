@@ -40,6 +40,7 @@ class Ui_CommandeWidget
 {
 public:
     QVBoxLayout *verticalLayout;
+    QLabel *label;
     QTabWidget *tabWidget;
     QWidget *tabAjouter;
     QVBoxLayout *verticalLayout_ajouter;
@@ -198,6 +199,12 @@ public:
         CommandeWidget->setMinimumSize(QSize(600, 400));
         verticalLayout = new QVBoxLayout(CommandeWidget);
         verticalLayout->setObjectName("verticalLayout");
+        label = new QLabel(CommandeWidget);
+        label->setObjectName("label");
+        label->setAlignment(Qt::AlignCenter);
+
+        verticalLayout->addWidget(label);
+
         tabWidget = new QTabWidget(CommandeWidget);
         tabWidget->setObjectName("tabWidget");
         tabAjouter = new QWidget();
@@ -958,6 +965,7 @@ public:
 
     void retranslateUi(QWidget *CommandeWidget)
     {
+        label->setText(QCoreApplication::translate("CommandeWidget", "GESTION DES COMMANDES", nullptr));
         labelNumCommande->setText(QCoreApplication::translate("CommandeWidget", "Num\303\251ro de commande :", nullptr));
         labelClient->setText(QCoreApplication::translate("CommandeWidget", "Client :", nullptr));
         labelProduit->setText(QCoreApplication::translate("CommandeWidget", "Produit :", nullptr));
