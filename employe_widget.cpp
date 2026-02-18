@@ -1,5 +1,6 @@
 #include "employe_widget.h"
 #include "ui_employe_widget.h"
+#include <QTabBar>
 
 EmployeWidget::EmployeWidget(QWidget *parent) : QWidget(parent), ui(new Ui::EmployeWidget)
 {
@@ -24,9 +25,9 @@ EmployeWidget::EmployeWidget(QWidget *parent) : QWidget(parent), ui(new Ui::Empl
     });
     // Navigue vers l'onglet Mot de passe oublié
     connect(ui->btnNavigateForgot, &QPushButton::clicked, this, [this]() {
-        int idx = ui->tabWidget->indexOf(ui->tabMotPasseOublie);
-        if (idx != -1) {
-            ui->tabWidget->setCurrentIndex(idx);
+        const int forgotIdx = ui->tabWidget->indexOf(ui->tabMotPasseOublie);
+        if (forgotIdx != -1) {
+            ui->tabWidget->setCurrentIndex(forgotIdx);
         }
     });
     // Envoyer code pour réinitialisation
@@ -39,9 +40,9 @@ EmployeWidget::EmployeWidget(QWidget *parent) : QWidget(parent), ui(new Ui::Empl
     });
     // Retour à l'onglet Connexion
     connect(ui->btnBackToLogin, &QPushButton::clicked, this, [this]() {
-        int idx = ui->tabWidget->indexOf(ui->tabConnexion);
-        if (idx != -1) {
-            ui->tabWidget->setCurrentIndex(idx);
+        const int loginIdx = ui->tabWidget->indexOf(ui->tabConnexion);
+        if (loginIdx != -1) {
+            ui->tabWidget->setCurrentIndex(loginIdx);
         }
     });
 }
@@ -68,6 +69,7 @@ void EmployeWidget::setAuthenticated(bool authenticated)
     };
 
     if (authenticated) {
+        ui->tabWidget->tabBar()->setVisible(true);
         setTabVisible(ui->tabConnexion, false);
         setTabVisible(ui->tabMotPasseOublie, false);
         setTabVisible(ui->tabAjouter, true);
@@ -82,6 +84,7 @@ void EmployeWidget::setAuthenticated(bool authenticated)
             ui->tabWidget->setCurrentIndex(idx);
         }
     } else {
+        ui->tabWidget->tabBar()->setVisible(false);
         setTabVisible(ui->tabAjouter, false);
         setTabVisible(ui->tabListe, false);
         setTabVisible(ui->tabSupprimer, false);
@@ -89,8 +92,7 @@ void EmployeWidget::setAuthenticated(bool authenticated)
         setTabVisible(ui->tabStatistiques, false);
         setTabVisible(ui->tabExportPdf, false);
         setTabVisible(ui->tabConnexion, true);
-        // Keep hidden from tab bar but allow navigation via button
-        setTabVisible(ui->tabMotPasseOublie, false);
+        setTabVisible(ui->tabMotPasseOublie, true);
 
         const int idx = ui->tabWidget->indexOf(ui->tabConnexion);
         if (idx != -1) {

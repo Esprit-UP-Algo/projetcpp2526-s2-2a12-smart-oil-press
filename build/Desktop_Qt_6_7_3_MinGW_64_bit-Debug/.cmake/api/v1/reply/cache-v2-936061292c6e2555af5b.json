@@ -203,7 +203,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "-DQT_QML_DEBUG"
+			"value" : ""
 		},
 		{
 			"name" : "CMAKE_CXX_FLAGS_DEBUG",
@@ -231,7 +231,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "-DQT_QML_DEBUG"
+			"value" : ""
 		},
 		{
 			"name" : "CMAKE_CXX_FLAGS_MINSIZEREL",
@@ -2238,6 +2238,42 @@
 			"value" : "OFF"
 		},
 		{
+			"name" : "QT_FEATURE_cups",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Qt feature: cups (from target Qt6::PrintSupport)"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "OFF"
+		},
+		{
+			"name" : "QT_FEATURE_cupsjobwidget",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Qt feature: cupsjobwidget (from target Qt6::PrintSupport)"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "OFF"
+		},
+		{
+			"name" : "QT_FEATURE_cupspassworddialog",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Qt feature: cupspassworddialog (from target Qt6::PrintSupport)"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "ON"
+		},
+		{
 			"name" : "QT_FEATURE_cursor",
 			"properties" : 
 			[
@@ -4230,6 +4266,54 @@
 			"value" : "ON"
 		},
 		{
+			"name" : "QT_FEATURE_printdialog",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Qt feature: printdialog (from target Qt6::PrintSupport)"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "ON"
+		},
+		{
+			"name" : "QT_FEATURE_printer",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Qt feature: printer (from target Qt6::PrintSupport)"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "ON"
+		},
+		{
+			"name" : "QT_FEATURE_printpreviewdialog",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Qt feature: printpreviewdialog (from target Qt6::PrintSupport)"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "ON"
+		},
+		{
+			"name" : "QT_FEATURE_printpreviewwidget",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Qt feature: printpreviewwidget (from target Qt6::PrintSupport)"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "ON"
+		},
+		{
 			"name" : "QT_FEATURE_printsupport",
 			"properties" : 
 			[
@@ -6076,6 +6160,18 @@
 			],
 			"type" : "PATH",
 			"value" : "C:/Qt/6.7.3/mingw_64/lib/cmake/Qt6Gui"
+		},
+		{
+			"name" : "Qt6PrintSupport_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for Qt6PrintSupport."
+				}
+			],
+			"type" : "PATH",
+			"value" : "C:/Qt/6.7.3/mingw_64/lib/cmake/Qt6PrintSupport"
 		},
 		{
 			"name" : "Qt6WidgetsTools_DIR",

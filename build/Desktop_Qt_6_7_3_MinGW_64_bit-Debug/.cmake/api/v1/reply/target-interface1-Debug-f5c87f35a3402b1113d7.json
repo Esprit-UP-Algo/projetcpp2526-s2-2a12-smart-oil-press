@@ -41,7 +41,9 @@
 			"C:/Qt/6.7.3/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateConfig.cmake",
 			"C:/Qt/6.7.3/mingw_64/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake",
 			"C:/Qt/6.7.3/mingw_64/lib/cmake/Qt6Gui/Qt6GuiTargets.cmake",
-			"C:/Qt/6.7.3/mingw_64/lib/cmake/Qt6Gui/Qt6GuiConfig.cmake"
+			"C:/Qt/6.7.3/mingw_64/lib/cmake/Qt6Gui/Qt6GuiConfig.cmake",
+			"C:/Qt/6.7.3/mingw_64/lib/cmake/Qt6PrintSupport/Qt6PrintSupportTargets.cmake",
+			"C:/Qt/6.7.3/mingw_64/lib/cmake/Qt6PrintSupport/Qt6PrintSupportConfig.cmake"
 		],
 		"nodes" : 
 		[
@@ -273,6 +275,32 @@
 				"file" : 13,
 				"line" : 61,
 				"parent" : 40
+			},
+			{
+				"command" : 8,
+				"file" : 4,
+				"line" : 315,
+				"parent" : 7
+			},
+			{
+				"file" : 16,
+				"parent" : 42
+			},
+			{
+				"command" : 7,
+				"file" : 16,
+				"line" : 55,
+				"parent" : 43
+			},
+			{
+				"file" : 15,
+				"parent" : 44
+			},
+			{
+				"command" : 6,
+				"file" : 15,
+				"line" : 61,
+				"parent" : 45
 			}
 		]
 	},
@@ -282,7 +310,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always"
+					"fragment" : "-g -std=gnu++17 -fdiagnostics-color=always"
 				}
 			],
 			"defines" : 
@@ -302,6 +330,10 @@
 				{
 					"backtrace" : 13,
 					"define" : "QT_NEEDS_QMAIN"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "QT_PRINTSUPPORT_LIB"
 				},
 				{
 					"backtrace" : 6,
@@ -362,6 +394,11 @@
 					"backtrace" : 6,
 					"isSystem" : true,
 					"path" : "C:/Qt/6.7.3/mingw_64/include/QtGui"
+				},
+				{
+					"backtrace" : 6,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.7.3/mingw_64/include/QtPrintSupport"
 				}
 			],
 			"language" : "CXX",
@@ -414,12 +451,17 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-DQT_QML_DEBUG -g",
+				"fragment" : "-g",
 				"role" : "flags"
 			},
 			{
 				"fragment" : "-mwindows",
 				"role" : "flags"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "C:\\Qt\\6.7.3\\mingw_64\\lib\\libQt6PrintSupport.a",
+				"role" : "libraries"
 			},
 			{
 				"backtrace" : 6,
@@ -479,6 +521,16 @@
 			{
 				"backtrace" : 41,
 				"fragment" : "-ld3d12",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 46,
+				"fragment" : "-lcomdlg32",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 46,
+				"fragment" : "-lwinspool",
 				"role" : "libraries"
 			},
 			{

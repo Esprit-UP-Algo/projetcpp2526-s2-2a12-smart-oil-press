@@ -18,47 +18,41 @@ MainWindow::MainWindow(QWidget *parent)
         styleFile.close();
     }
 
-    // Instantiate employe widget and add to stacked widget
+    // Only keep the Employe module
     auto *employe = new EmployeWidget(this);
     ui->stackedMain->addWidget(employe);
-
-    // Default page: show employe widget on startup
     ui->stackedMain->setCurrentWidget(employe);
 
-    // Disable navigation until login
-    ui->btnEmploye->setEnabled(false);
+    // Hide navigation frame until login
+    ui->navFrame->setVisible(false);
+
+    // Show all menu buttons, but keep only Employe enabled
+    ui->btnEmploye->setVisible(true);
+    ui->btnEquipe->setVisible(true);
+    ui->btnClient->setVisible(true);
+    ui->btnLaboratoire->setVisible(true);
+    ui->btnCommande->setVisible(true);
+    ui->btnMachine->setVisible(true);
+
+    ui->btnEmploye->setEnabled(true);
     ui->btnEquipe->setEnabled(false);
     ui->btnClient->setEnabled(false);
     ui->btnLaboratoire->setEnabled(false);
     ui->btnCommande->setEnabled(false);
     ui->btnMachine->setEnabled(false);
 
-    // Simple UI navigation: show employe page when button clicked
+    // Menu navigation
     connect(ui->btnEmploye, &QPushButton::clicked, [this, employe]() {
         ui->stackedMain->setCurrentWidget(employe);
     });
+    connect(ui->btnQuit, &QPushButton::clicked, qApp, &QApplication::quit);
 
-    // UI-only login flow: unlock navigation and show welcome page
+    // Show menu and authenticate after login button clicked
     connect(employe, &EmployeWidget::loginRequested, this, [this, employe]() {
-        employe->setAuthenticated(true);
-        ui->btnEmploye->setEnabled(true);
-        ui->btnEquipe->setEnabled(true);
-        ui->btnClient->setEnabled(true);
-        ui->btnLaboratoire->setEnabled(true);
-        ui->btnCommande->setEnabled(true);
-        ui->btnMachine->setEnabled(true);
-        ui->stackedMain->setCurrentWidget(ui->pagePlaceholder);
+        employe->setAuthenticated(true);  // Show employee tabs (Liste, Ajouter, etc.)
+        ui->navFrame->setVisible(true);
+        ui->stackedMain->setCurrentWidget(employe);
     });
-
-    // Hide/show sidebar based on authentication
-    connect(employe, &EmployeWidget::authenticatedChanged, this, [this](bool authenticated) {
-        ui->navFrame->setVisible(authenticated);
-    });
-
-    // Hide sidebar at startup (before login)
-    ui->navFrame->setVisible(false);
-
-    // Other navigation buttons left unimplemented (UI only)
 }
 
 MainWindow::~MainWindow()

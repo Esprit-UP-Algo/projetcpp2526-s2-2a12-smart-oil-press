@@ -39,6 +39,7 @@ public:
     QPushButton *btnLaboratoire;
     QPushButton *btnCommande;
     QPushButton *btnMachine;
+    QPushButton *btnQuit;
     QSpacerItem *verticalSpacer;
     QStackedWidget *stackedMain;
     QWidget *pagePlaceholder;
@@ -100,6 +101,11 @@ public:
 
         navLayout->addWidget(btnMachine);
 
+        btnQuit = new QPushButton(navFrame);
+        btnQuit->setObjectName("btnQuit");
+
+        navLayout->addWidget(btnQuit);
+
         verticalSpacer = new QSpacerItem(0, 0, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
         navLayout->addItem(verticalSpacer);
@@ -145,6 +151,7 @@ public:
         btnLaboratoire->setText(QCoreApplication::translate("MainWindow", "LABORATOIRE", nullptr));
         btnCommande->setText(QCoreApplication::translate("MainWindow", "COMMANDE", nullptr));
         btnMachine->setText(QCoreApplication::translate("MainWindow", "MACHINE", nullptr));
+        btnQuit->setText(QCoreApplication::translate("MainWindow", "QUITTER", nullptr));
         welcomeLabel->setText(QCoreApplication::translate("MainWindow", "Bienvenue dans l'application de gestion", nullptr));
     } // retranslateUi
 
