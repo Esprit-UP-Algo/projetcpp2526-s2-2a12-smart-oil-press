@@ -42,8 +42,15 @@ endif()
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "C:/Users/Hassen/Desktop/gestion_de_commande/*.cpp")
 set(OLD_GLOB
   "C:/Users/Hassen/Desktop/gestion_de_commande/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CompilerIdCXX/CMakeCXXCompilerId.cpp"
+  "C:/Users/Hassen/Desktop/gestion_de_commande/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/gestion_de_commande_autogen/EWIEGA46WW/moc_commande_widget.cpp"
+  "C:/Users/Hassen/Desktop/gestion_de_commande/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/gestion_de_commande_autogen/EWIEGA46WW/moc_employe_widget.cpp"
   "C:/Users/Hassen/Desktop/gestion_de_commande/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/gestion_de_commande_autogen/EWIEGA46WW/moc_mainwindow.cpp"
+  "C:/Users/Hassen/Desktop/gestion_de_commande/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/gestion_de_commande_autogen/EWIEGA46WW/qrc_resources.cpp"
+  "C:/Users/Hassen/Desktop/gestion_de_commande/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/gestion_de_commande_autogen/IVK4DJNV27/moc_commande_model.cpp"
+  "C:/Users/Hassen/Desktop/gestion_de_commande/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/gestion_de_commande_autogen/IVK4DJNV27/moc_employe_model.cpp"
   "C:/Users/Hassen/Desktop/gestion_de_commande/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/gestion_de_commande_autogen/mocs_compilation.cpp"
+  "C:/Users/Hassen/Desktop/gestion_de_commande/commande_widget.cpp"
+  "C:/Users/Hassen/Desktop/gestion_de_commande/employe_widget.cpp"
   "C:/Users/Hassen/Desktop/gestion_de_commande/main.cpp"
   "C:/Users/Hassen/Desktop/gestion_de_commande/mainwindow.cpp"
   )
@@ -64,8 +71,12 @@ endif()
 # _directory_contents at C:/Qt/6.7.3/mingw_64/lib/cmake/Qt6LinguistTools/Qt6LinguistToolsMacros.cmake:55 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "C:/Users/Hassen/Desktop/gestion_de_commande/*.h")
 set(OLD_GLOB
+  "C:/Users/Hassen/Desktop/gestion_de_commande/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/gestion_de_commande_autogen/include/ui_commande_widget.h"
+  "C:/Users/Hassen/Desktop/gestion_de_commande/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/gestion_de_commande_autogen/include/ui_employe_widget.h"
   "C:/Users/Hassen/Desktop/gestion_de_commande/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/gestion_de_commande_autogen/include/ui_mainwindow.h"
   "C:/Users/Hassen/Desktop/gestion_de_commande/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/gestion_de_commande_autogen/moc_predefs.h"
+  "C:/Users/Hassen/Desktop/gestion_de_commande/commande_widget.h"
+  "C:/Users/Hassen/Desktop/gestion_de_commande/employe_widget.h"
   "C:/Users/Hassen/Desktop/gestion_de_commande/mainwindow.h"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
@@ -168,6 +179,8 @@ endif()
 # _directory_contents at C:/Qt/6.7.3/mingw_64/lib/cmake/Qt6LinguistTools/Qt6LinguistToolsMacros.cmake:55 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "C:/Users/Hassen/Desktop/gestion_de_commande/*.ui")
 set(OLD_GLOB
+  "C:/Users/Hassen/Desktop/gestion_de_commande/commande_widget.ui"
+  "C:/Users/Hassen/Desktop/gestion_de_commande/employe_widget.ui"
   "C:/Users/Hassen/Desktop/gestion_de_commande/mainwindow.ui"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")

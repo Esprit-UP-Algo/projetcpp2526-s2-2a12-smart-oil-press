@@ -49,6 +49,7 @@ public:
     QFrame *navFrame;
     QVBoxLayout *navLayout;
     QLabel *logoLabel;
+    QPushButton *btnEmploye;
     QPushButton *btnCommande;
     QPushButton *btnEquipe;
     QPushButton *btnClient;
@@ -213,6 +214,11 @@ public:
         logoLabel->setAlignment(Qt::AlignCenter);
 
         navLayout->addWidget(logoLabel);
+
+        btnEmploye = new QPushButton(navFrame);
+        btnEmploye->setObjectName("btnEmploye");
+
+        navLayout->addWidget(btnEmploye);
 
         btnCommande = new QPushButton(navFrame);
         btnCommande->setObjectName("btnCommande");
@@ -911,7 +917,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedMain->setCurrentIndex(1);
+        stackedMain->setCurrentIndex(0);
         tabWidget->setCurrentIndex(0);
 
 
@@ -922,6 +928,7 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Smart Oil Press - Gestion des Commandes", nullptr));
         logoLabel->setText(QCoreApplication::translate("MainWindow", "SMART OIL", nullptr));
+        btnEmploye->setText(QCoreApplication::translate("MainWindow", "EMPLOY\303\211", nullptr));
         btnCommande->setText(QCoreApplication::translate("MainWindow", "COMMANDE", nullptr));
         btnEquipe->setText(QCoreApplication::translate("MainWindow", "\303\211QUIPE", nullptr));
         btnClient->setText(QCoreApplication::translate("MainWindow", "CLIENT", nullptr));

@@ -35,6 +35,13 @@
         </widget>
        </item>
        <item>
+        <widget class="QPushButton" name="btnEmploye">
+         <property name="text">
+          <string>EMPLOYÉ</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="btnCommande">
          <property name="text">
           <string>COMMANDE</string>
@@ -89,7 +96,7 @@
     <item>
      <widget class="QStackedWidget" name="stackedMain">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <!-- Page d'accueil -->
       <widget class="QWidget" name="pageAccueil">
