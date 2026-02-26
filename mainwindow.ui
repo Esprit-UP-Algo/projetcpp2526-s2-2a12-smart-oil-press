@@ -1,0 +1,2083 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1600</width>
+    <height>1000</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Gestion Machines</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="mainLayout">
+    <item>
+     <widget class="QWidget" name="sideMenu" native="true">
+      <property name="minimumWidth">
+       <number>200</number>
+      </property>
+      <property name="maximumWidth">
+       <number>200</number>
+      </property>
+      <layout class="QVBoxLayout" name="sideMenuLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="labelLogo">
+         <property name="minimumHeight">
+          <number>120</number>
+         </property>
+         <property name="maximumHeight">
+          <number>120</number>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="resources.qrc">:/assets/oil_press.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnEmployee">
+         <property name="text">
+          <string>EMPLOYÉ</string>
+         </property>
+         <!-- StyleSheet supprimé pour enlever la couleur grise -->
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnTeam">
+         <property name="text">
+          <string>ÉQUIPE</string>
+         </property>
+         <!-- StyleSheet supprimé pour enlever la couleur grise -->
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnClient">
+         <property name="text">
+          <string>CLIENT</string>
+         </property>
+         <!-- StyleSheet supprimé pour enlever la couleur grise -->
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnLaboratory">
+         <property name="text">
+          <string>LABORATOIRE</string>
+         </property>
+         <!-- StyleSheet supprimé pour enlever la couleur grise -->
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnOrder">
+         <property name="text">
+          <string>COMMANDE</string>
+         </property>
+         <!-- StyleSheet supprimé pour enlever la couleur grise -->
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnMachine">
+         <property name="text">
+          <string>MACHINE</string>
+         </property>
+         <!-- StyleSheet supprimé pour enlever la couleur grise -->
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_Menu">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QStackedWidget" name="stackedPages">
+      <widget class="QWidget" name="pageEmployee">
+       <layout class="QVBoxLayout">
+        <item>
+         <widget class="QLabel" name="labelPageEmployee">
+          <property name="text">
+           <string>Gestion des Employés</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="objectName">
+           <string>pageTitle</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_Employee">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pageTeam">
+       <layout class="QVBoxLayout">
+        <item>
+         <widget class="QLabel" name="labelPageTeam">
+          <property name="text">
+           <string>Gestion des Équipes</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="objectName">
+           <string>pageTitle</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_Team">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pageClient">
+       <layout class="QVBoxLayout">
+        <item>
+         <widget class="QLabel" name="labelPageClient">
+          <property name="text">
+           <string>Gestion des Clients</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="objectName">
+           <string>pageTitle</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_Client">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pageLaboratory">
+       <layout class="QVBoxLayout">
+        <item>
+         <widget class="QLabel" name="labelPageLaboratory">
+          <property name="text">
+           <string>Gestion du Laboratoire</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="objectName">
+           <string>pageTitle</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_Laboratory">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pageOrder">
+       <layout class="QVBoxLayout">
+        <item>
+         <widget class="QLabel" name="labelPageOrder">
+          <property name="text">
+           <string>Gestion des Commandes</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="objectName">
+           <string>pageTitle</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_Order">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pageMachine">
+       <layout class="QVBoxLayout" name="machineLayout">
+        <item>
+         <widget class="QSplitter" name="splitter">
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
+          <widget class="QWidget" name="leftPanel" native="true">
+           <layout class="QVBoxLayout" name="leftLayout">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QGroupBox" name="groupBoxSearch">
+              <property name="title">
+               <string>🔍 Recherche et Filtres</string>
+              </property>
+              <layout class="QVBoxLayout">
+               <item>
+                <layout class="QHBoxLayout">
+                 <item>
+                  <widget class="QLabel" name="labelSearch">
+                   <property name="text">
+                    <string>Rechercher :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEditSearch">
+                   <property name="placeholderText">
+                    <string>Nom, référence…</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout">
+                 <item>
+                  <widget class="QLabel" name="labelCategory">
+                   <property name="text">
+                    <string>Catégorie :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="comboCategory">
+                   <item>
+                    <property name="text">
+                     <string>Toutes</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Presse</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Moteur</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Filtre</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Capteur</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Autre</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout">
+                 <item>
+                  <widget class="QLabel" name="labelState">
+                   <property name="text">
+                    <string>État :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="comboState">
+                   <item>
+                    <property name="text">
+                     <string>Tous</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>En service</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Panne</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Maintenance</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Hors service</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout">
+                 <item>
+                  <widget class="QLabel" name="labelLocation">
+                   <property name="text">
+                    <string>Localisation :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEditLocation">
+                   <property name="placeholderText">
+                    <string>Atelier, Ligne 1…</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout">
+                 <item>
+                  <widget class="QPushButton" name="btnApplyFilter">
+                   <property name="text">
+                    <string>✅ Appliquer</string>
+                   </property>
+                   <property name="minimumHeight">
+                    <number>35</number>
+                   </property>
+                   <property name="styleSheet">
+                    <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 5px;</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            
+            <!-- Section Tri -->
+            <item>
+             <widget class="QGroupBox" name="groupBoxSort">
+              <property name="title">
+               <string>📊 Tri</string>
+              </property>
+              <layout class="QVBoxLayout">
+               <item>
+                <layout class="QHBoxLayout">
+                 <item>
+                  <widget class="QLabel" name="labelSortBy">
+                   <property name="text">
+                    <string>Trier par :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="comboSortBy">
+                   <item>
+                    <property name="text">
+                     <string>Nom</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Date d'achat</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>État</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Catégorie</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Localisation</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout">
+                 <item>
+                  <widget class="QRadioButton" name="radioCroissant">
+                   <property name="text">
+                    <string>⬆️ Croissant</string>
+                   </property>
+                   <property name="checked">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioDecroissant">
+                   <property name="text">
+                    <string>⬇️ Décroissant</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            
+            <!-- Scanner QR Code -->
+            <item>
+             <widget class="QPushButton" name="btnScanQR_RightPanel">
+              <property name="text">
+               <string>📷 Scanner QR Code</string>
+              </property>
+              <property name="minimumHeight">
+               <number>45</number>
+              </property>
+              <property name="minimumWidth">
+               <number>180</number>
+              </property>
+              <property name="styleSheet">
+               <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 8px;</string>
+              </property>
+              <property name="objectName">
+               <string>btnScanQR</string>
+              </property>
+             </widget>
+            </item>
+            
+            <item>
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Orientation::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="centerPanel" native="true">
+           <layout class="QVBoxLayout">
+            <property name="leftMargin">
+             <number>10</number>
+            </property>
+            <property name="topMargin">
+             <number>10</number>
+            </property>
+            <property name="rightMargin">
+             <number>10</number>
+            </property>
+            <property name="bottomMargin">
+             <number>10</number>
+            </property>
+            <item>
+             <widget class="QTabWidget" name="tabWidget">
+              <property name="currentIndex">
+               <number>0</number>
+              </property>
+              <!-- Onglet 1: Liste des Machines -->
+              <widget class="QWidget" name="tabList">
+               <attribute name="title">
+                <string> Liste des Machines</string>
+               </attribute>
+               <layout class="QVBoxLayout">
+                <item>
+                 <widget class="QTableWidget" name="tableEquipments">
+                  <property name="rowCount">
+                   <number>0</number>
+                  </property>
+                  <property name="columnCount">
+                   <number>6</number>
+                  </property>
+                  <property name="selectionBehavior">
+                   <enum>QAbstractItemView::SelectRows</enum>
+                  </property>
+                  <property name="alternatingRowColors">
+                   <bool>true</bool>
+                  </property>
+                  <column>
+                   <property name="text">
+                    <string>ID MACHINE</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Nom</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Catégorie</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Référence</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Date Achat</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>État</string>
+                   </property>
+                  </column>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout">
+                  <item>
+                   <widget class="QPushButton" name="btnExportPDF">
+                    <property name="text">
+                     <string>📄 Exporter PDF</string>
+                    </property>
+                    <property name="minimumHeight">
+                     <number>35</number>
+                    </property>
+                    <property name="styleSheet">
+                     <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 5px;</string>
+                    </property>
+                    <property name="objectName">
+                     <string>btnExportPDF</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_List">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+              <!-- Onglet 2: Ajouter Machine -->
+              <widget class="QWidget" name="tabAddMachine">
+               <attribute name="title">
+                <string> Ajouter Machine</string>
+               </attribute>
+               <layout class="QVBoxLayout">
+                <item>
+                 <widget class="QLabel" name="labelAdd">
+                  <property name="text">
+                   <string>&lt;h2&gt;Ajouter une nouvelle machine&lt;/h2&gt;</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="frameAdd">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QFormLayout" name="formLayoutAdd">
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="labelAddId">
+                     <property name="text">
+                      <string>ID Machine :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QLineEdit" name="editAddId">
+                     <property name="placeholderText">
+                      <string>MCH-XXX</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QLabel" name="labelAddNom">
+                     <property name="text">
+                      <string>Nom :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QLineEdit" name="editAddNom">
+                     <property name="placeholderText">
+                      <string>Nom de la machine</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="0">
+                    <widget class="QLabel" name="labelAddCategorie">
+                     <property name="text">
+                      <string>Catégorie :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="1">
+                    <widget class="QComboBox" name="comboAddCategorie">
+                     <item>
+                      <property name="text">
+                       <string>Presse</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Moteur</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Filtre</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Capteur</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Autre</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item row="3" column="0">
+                    <widget class="QLabel" name="labelAddReference">
+                     <property name="text">
+                      <string>Référence :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="1">
+                    <widget class="QLineEdit" name="editAddReference">
+                     <property name="placeholderText">
+                      <string>Référence</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="0">
+                    <widget class="QLabel" name="labelAddDate">
+                     <property name="text">
+                      <string>Date d'achat :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="1">
+                    <widget class="QDateEdit" name="dateAddAchat">
+                     <property name="calendarPopup">
+                      <bool>true</bool>
+                     </property>
+                     <property name="date">
+                      <date>
+                       <year>2024</year>
+                       <month>1</month>
+                       <day>1</day>
+                      </date>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="0">
+                    <widget class="QLabel" name="labelAddEtat">
+                     <property name="text">
+                      <string>État :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="1">
+                    <widget class="QComboBox" name="comboAddEtat">
+                     <item>
+                      <property name="text">
+                       <string>En service</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Maintenance</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Panne</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Hors service</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item row="6" column="0">
+                    <widget class="QLabel" name="labelAddLocalisation">
+                     <property name="text">
+                      <string>Localisation :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="6" column="1">
+                    <widget class="QLineEdit" name="editAddLocalisation">
+                     <property name="placeholderText">
+                      <string>Atelier, Ligne...</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout">
+                  <item>
+                   <spacer name="horizontalSpacer_AddLeft">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnAddValider">
+                    <property name="text">
+                     <string>✅ Ajouter</string>
+                    </property>
+                    <property name="minimumHeight">
+                     <number>40</number>
+                    </property>
+                    <property name="styleSheet">
+                     <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 8px;</string>
+                    </property>
+                    <property name="objectName">
+                     <string>btnAjouter</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnAddAnnuler">
+                    <property name="text">
+                     <string>❌ Annuler</string>
+                    </property>
+                    <property name="minimumHeight">
+                     <number>40</number>
+                    </property>
+                    <property name="styleSheet">
+                     <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 8px;</string>
+                    </property>
+                    <property name="objectName">
+                     <string>btnAnnuler</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_AddRight">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_Add">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </widget>
+              <!-- Onglet 3: Modifier Machine -->
+              <widget class="QWidget" name="tabModifier">
+               <attribute name="title">
+                <string> Modifier Machine</string>
+               </attribute>
+               <layout class="QVBoxLayout">
+                <item>
+                 <widget class="QLabel" name="labelModifier">
+                  <property name="text">
+                   <string>&lt;h2&gt;Modifier une machine&lt;/h2&gt;&lt;p&gt;Sélectionnez une machine dans la liste pour la modifier.&lt;/p&gt;</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="frameModifier">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QFormLayout" name="formLayoutModifier">
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="labelModifierId">
+                     <property name="text">
+                      <string>ID Machine :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QComboBox" name="comboModifierId">
+                     <property name="editable">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QLabel" name="labelModifierNom">
+                     <property name="text">
+                      <string>Nom :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QLineEdit" name="editModifierNom"/>
+                   </item>
+                   <item row="2" column="0">
+                    <widget class="QLabel" name="labelModifierCategorie">
+                     <property name="text">
+                      <string>Catégorie :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="1">
+                    <widget class="QComboBox" name="comboModifierCategorie">
+                     <item>
+                      <property name="text">
+                       <string>Presse</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Moteur</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Filtre</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Capteur</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Autre</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item row="3" column="0">
+                    <widget class="QLabel" name="labelModifierReference">
+                     <property name="text">
+                      <string>Référence :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="1">
+                    <widget class="QLineEdit" name="editModifierReference"/>
+                   </item>
+                   <item row="4" column="0">
+                    <widget class="QLabel" name="labelModifierDate">
+                     <property name="text">
+                      <string>Date d'achat :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="1">
+                    <widget class="QDateEdit" name="dateModifierAchat">
+                     <property name="calendarPopup">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="0">
+                    <widget class="QLabel" name="labelModifierEtat">
+                     <property name="text">
+                      <string>État :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="1">
+                    <widget class="QComboBox" name="comboModifierEtat">
+                     <item>
+                      <property name="text">
+                       <string>En service</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Maintenance</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Panne</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Hors service</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item row="6" column="0">
+                    <widget class="QLabel" name="labelModifierLocalisation">
+                     <property name="text">
+                      <string>Localisation :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="6" column="1">
+                    <widget class="QLineEdit" name="editModifierLocalisation"/>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout">
+                  <item>
+                   <spacer name="horizontalSpacer_ModifierLeft">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnModifierValider">
+                    <property name="text">
+                     <string>✅ Valider la modification</string>
+                    </property>
+                    <property name="minimumHeight">
+                     <number>40</number>
+                    </property>
+                    <property name="styleSheet">
+                     <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 8px;</string>
+                    </property>
+                    <property name="objectName">
+                     <string>btnValider</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnModifierAnnuler">
+                    <property name="text">
+                     <string>❌ Annuler</string>
+                    </property>
+                    <property name="minimumHeight">
+                     <number>40</number>
+                    </property>
+                    <property name="styleSheet">
+                     <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 8px;</string>
+                    </property>
+                    <property name="objectName">
+                     <string>btnAnnuler</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_ModifierRight">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_Modifier">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </widget>
+              <!-- Onglet 4: Supprimer Machine -->
+              <widget class="QWidget" name="tabSupprimer">
+               <attribute name="title">
+                <string> Supprimer Machine</string>
+               </attribute>
+               <layout class="QVBoxLayout">
+                <item>
+                 <widget class="QLabel" name="labelSupprimer">
+                  <property name="text">
+                   <string>&lt;h2&gt;Supprimer une machine&lt;/h2&gt;&lt;p&gt;Sélectionnez une machine à supprimer.&lt;/p&gt;</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="frameSupprimer">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QFormLayout" name="formLayoutSupprimer">
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="labelSupprimerId">
+                     <property name="text">
+                      <string>ID Machine :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QComboBox" name="comboSupprimerId">
+                     <property name="editable">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout">
+                  <item>
+                   <spacer name="horizontalSpacer_SupprimerLeft">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnSupprimerValider">
+                    <property name="text">
+                     <string>🗑️ Confirmer la suppression</string>
+                    </property>
+                    <property name="minimumHeight">
+                     <number>40</number>
+                    </property>
+                    <property name="styleSheet">
+                     <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 8px;</string>
+                    </property>
+                    <property name="objectName">
+                     <string>btnSupprimer</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnSupprimerAnnuler">
+                    <property name="text">
+                     <string>❌ Annuler</string>
+                    </property>
+                    <property name="minimumHeight">
+                     <number>40</number>
+                    </property>
+                    <property name="styleSheet">
+                     <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 8px;</string>
+                    </property>
+                    <property name="objectName">
+                     <string>btnAnnuler</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_SupprimerRight">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_Supprimer">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </widget>
+              <!-- Onglet 5: Signaler Panne -->
+              <widget class="QWidget" name="tabPanne">
+               <attribute name="title">
+                <string>Signaler Panne</string>
+               </attribute>
+               <layout class="QVBoxLayout">
+                <item>
+                 <widget class="QLabel" name="labelPanne">
+                  <property name="text">
+                   <string>&lt;h2&gt;Signaler une panne&lt;/h2&gt;&lt;p&gt;Sélectionnez la machine en panne et décrivez le problème.&lt;/p&gt;</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="framePanne">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QFormLayout" name="formLayoutPanne">
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="labelPanneId">
+                     <property name="text">
+                      <string>ID Machine :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QComboBox" name="comboPanneId">
+                     <property name="editable">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QLabel" name="labelPanneType">
+                     <property name="text">
+                      <string>Type de panne :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QComboBox" name="comboPanneType">
+                     <item>
+                      <property name="text">
+                       <string>Panne mécanique</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Panne électrique</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Panne électronique</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Panne hydraulique</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Usure</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Autre</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item row="2" column="0">
+                    <widget class="QLabel" name="labelPanneDescription">
+                     <property name="text">
+                      <string>Description :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="1">
+                    <widget class="QTextEdit" name="textPanneDescription">
+                     <property name="maximumHeight">
+                      <number>100</number>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="0">
+                    <widget class="QLabel" name="labelPanneUrgence">
+                     <property name="text">
+                      <string>Niveau d'urgence :</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="1">
+                    <widget class="QComboBox" name="comboPanneUrgence">
+                     <item>
+                      <property name="text">
+                       <string>Basse</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Moyenne</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Haute</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Critique</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout">
+                  <item>
+                   <spacer name="horizontalSpacer_PanneLeft">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnPanneValider">
+                    <property name="text">
+                     <string>⚠️ Signaler la panne</string>
+                    </property>
+                    <property name="minimumHeight">
+                     <number>40</number>
+                    </property>
+                    <property name="styleSheet">
+                     <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 8px;</string>
+                    </property>
+                    <property name="objectName">
+                     <string>btnSignaler</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnPanneAnnuler">
+                    <property name="text">
+                     <string>❌ Annuler</string>
+                    </property>
+                    <property name="minimumHeight">
+                     <number>40</number>
+                    </property>
+                    <property name="styleSheet">
+                     <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 8px;</string>
+                    </property>
+                    <property name="objectName">
+                     <string>btnAnnuler</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_PanneRight">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_Panne">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </widget>
+              <!-- Onglet 6: Historique des Interventions -->
+              <widget class="QWidget" name="tabHistorique">
+               <attribute name="title">
+                <string> Historique des Interventions</string>
+               </attribute>
+               <layout class="QVBoxLayout" name="historiqueLayout">
+                <item>
+                 <widget class="QTableWidget" name="tableHistorique">
+                  <property name="rowCount">
+                   <number>3</number>
+                  </property>
+                  <property name="columnCount">
+                   <number>6</number>
+                  </property>
+                  <property name="selectionBehavior">
+                   <enum>QAbstractItemView::SelectRows</enum>
+                  </property>
+                  <property name="alternatingRowColors">
+                   <bool>true</bool>
+                  </property>
+                  <column>
+                   <property name="text">
+                    <string>Date</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Machine</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Type d'intervention</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Technicien</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Coût</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Statut</string>
+                   </property>
+                  </column>
+                  <row>
+                   <property name="text">
+                    <string>15/02/2024</string>
+                   </property>
+                   <property name="text">
+                    <string>MCH-001</string>
+                   </property>
+                   <property name="text">
+                    <string>Maintenance préventive</string>
+                   </property>
+                   <property name="text">
+                    <string>Jean Dupont</string>
+                   </property>
+                   <property name="text">
+                    <string>350.00 €</string>
+                   </property>
+                   <property name="text">
+                    <string>Terminé</string>
+                   </property>
+                  </row>
+                  <row>
+                   <property name="text">
+                    <string>10/03/2024</string>
+                   </property>
+                   <property name="text">
+                    <string>MCH-002</string>
+                   </property>
+                   <property name="text">
+                    <string>Réparation</string>
+                   </property>
+                   <property name="text">
+                    <string>Marie Martin</string>
+                   </property>
+                   <property name="text">
+                    <string>520.00 €</string>
+                   </property>
+                   <property name="text">
+                    <string>En cours</string>
+                   </property>
+                  </row>
+                  <row>
+                   <property name="text">
+                    <string>05/04/2024</string>
+                   </property>
+                   <property name="text">
+                    <string>MCH-004</string>
+                   </property>
+                   <property name="text">
+                    <string>Dépannage</string>
+                   </property>
+                   <property name="text">
+                    <string>Pierre Durand</string>
+                   </property>
+                   <property name="text">
+                    <string>120.00 €</string>
+                   </property>
+                   <property name="text">
+                    <string>Terminé</string>
+                   </property>
+                  </row>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout">
+                  <item>
+                   <widget class="QPushButton" name="btnAddIntervention">
+                    <property name="text">
+                     <string>Ajouter intervention</string>
+                    </property>
+                    <property name="minimumHeight">
+                     <number>35</number>
+                    </property>
+                    <property name="styleSheet">
+                     <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 5px;</string>
+                    </property>
+                    <property name="objectName">
+                     <string>btnAjouter</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnExportPDF_Historique">
+                    <property name="text">
+                     <string>📄 Exporter PDF</string>
+                    </property>
+                    <property name="minimumHeight">
+                     <number>35</number>
+                    </property>
+                    <property name="styleSheet">
+                     <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 5px;</string>
+                    </property>
+                    <property name="objectName">
+                     <string>btnExportPDF</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_Historique">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+              <!-- Onglet 7: Statistiques -->
+              <widget class="QWidget" name="tabStatistics">
+               <attribute name="title">
+                <string>📊 Statistiques</string>
+               </attribute>
+               <layout class="QVBoxLayout" name="statisticsLayout">
+                <item>
+                 <widget class="QGroupBox" name="groupBoxStatsCards">
+                  <property name="title">
+                   <string>🎯 Tableau de Bord</string>
+                  </property>
+                  <layout class="QHBoxLayout" name="statsCardsLayout">
+                   <item>
+                    <widget class="QFrame" name="cardTotal">
+                     <property name="minimumHeight">
+                      <number>120</number>
+                     </property>
+                     <layout class="QVBoxLayout">
+                      <item>
+                       <widget class="QLabel" name="labelTotalIcon">
+                        <property name="text">
+                         <string>🖥️</string>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>24</pointsize>
+                         </font>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="labelTotalTitle">
+                        <property name="text">
+                         <string>Total Machines</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="objectName">
+                         <string>cardTitle</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="statTotal">
+                        <property name="text">
+                         <string>4</string>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>28</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="objectName">
+                         <string>statValue</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QFrame" name="cardOperational">
+                     <property name="minimumHeight">
+                      <number>120</number>
+                     </property>
+                     <layout class="QVBoxLayout">
+                      <item>
+                       <widget class="QLabel" name="labelOpIcon">
+                        <property name="text">
+                         <string>✅</string>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>24</pointsize>
+                         </font>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="labelOpTitle">
+                        <property name="text">
+                         <string>Opérationnels</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="objectName">
+                         <string>cardTitle</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="statOp">
+                        <property name="text">
+                         <string>2</string>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>28</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="objectName">
+                         <string>statValue</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QFrame" name="cardMaintenance">
+                     <property name="minimumHeight">
+                      <number>120</number>
+                     </property>
+                     <layout class="QVBoxLayout">
+                      <item>
+                       <widget class="QLabel" name="labelMaintIcon">
+                        <property name="text">
+                         <string>🔧</string>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>24</pointsize>
+                         </font>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="labelMaintTitle">
+                        <property name="text">
+                         <string>Maintenance</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="objectName">
+                         <string>cardTitle</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="statMaint">
+                        <property name="text">
+                         <string>1</string>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>28</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="objectName">
+                         <string>statValue</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QFrame" name="cardDefective">
+                     <property name="minimumHeight">
+                      <number>120</number>
+                     </property>
+                     <layout class="QVBoxLayout">
+                      <item>
+                       <widget class="QLabel" name="labelDefIcon">
+                        <property name="text">
+                         <string>⚠️</string>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>24</pointsize>
+                         </font>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="labelDefTitle">
+                        <property name="text">
+                         <string>En panne</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="objectName">
+                         <string>cardTitle</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="statDef">
+                        <property name="text">
+                         <string>1</string>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>28</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="objectName">
+                         <string>statValue</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSplitter" name="statisticsSplitter">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <widget class="QGroupBox" name="groupBoxCategories">
+                   <property name="title">
+                    <string>📊 Répartition par Catégorie</string>
+                   </property>
+                   <layout class="QVBoxLayout">
+                    <item>
+                     <widget class="QTextEdit" name="statsCategories">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                      <property name="html">
+                       <string>&lt;div style='text-align: center; padding: 15px;'&gt;
+                        &lt;h3&gt;Répartition par Catégorie&lt;/h3&gt;
+                        &lt;table style='width: 100%;'&gt;
+                         &lt;tr&gt;&lt;td&gt;Presse&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+                         &lt;tr&gt;&lt;td&gt;Moteur&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+                         &lt;tr&gt;&lt;td&gt;Filtre&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+                         &lt;tr&gt;&lt;td&gt;Capteur&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+                        &lt;/table&gt;
+                       &lt;/div&gt;</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                  <widget class="QGroupBox" name="groupBoxEtats">
+                   <property name="title">
+                    <string>🔧 État des Machines</string>
+                   </property>
+                   <layout class="QVBoxLayout">
+                    <item>
+                     <widget class="QTextEdit" name="statsBreakdowns">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                      <property name="html">
+                       <string>&lt;div style='text-align: center; padding: 15px;'&gt;
+                        &lt;h3&gt;État des Machines&lt;/h3&gt;
+                        &lt;table style='width: 100%;'&gt;
+                         &lt;tr&gt;&lt;td&gt;En service&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;/tr&gt;
+                         &lt;tr&gt;&lt;td&gt;Maintenance&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+                         &lt;tr&gt;&lt;td&gt;Panne&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+                        &lt;/table&gt;
+                       &lt;/div&gt;</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QGroupBox" name="groupBoxKPIs">
+                  <property name="title">
+                   <string>📈 Indicateurs</string>
+                  </property>
+                  <layout class="QHBoxLayout">
+                   <item>
+                    <widget class="QFrame" name="kpiInterventions">
+                     <layout class="QVBoxLayout">
+                      <item>
+                       <widget class="QLabel" name="labelKpiInterventions">
+                        <property name="text">
+                         <string>Interventions</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="kpiInterventionsValue">
+                        <property name="text">
+                         <string>3</string>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>20</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QFrame" name="kpiCoutTotal">
+                     <layout class="QVBoxLayout">
+                      <item>
+                       <widget class="QLabel" name="labelKpiCoutTotal">
+                        <property name="text">
+                         <string>Coût total</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="kpiCoutTotalValue">
+                        <property name="text">
+                         <string>990.00 €</string>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>20</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout">
+                  <item>
+                   <widget class="QPushButton" name="btnExportPDF_Stats">
+                    <property name="text">
+                     <string>📄 Exporter PDF</string>
+                    </property>
+                    <property name="minimumHeight">
+                     <number>35</number>
+                    </property>
+                    <property name="styleSheet">
+                     <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 5px;</string>
+                    </property>
+                    <property name="objectName">
+                     <string>btnExportPDF</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_Stats">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="objectName">
+    <string>statusBar</string>
+   </property>
+  </widget>
+  <action name="actionExportPDF">
+   <property name="text">
+    <string>&amp;Exporter PDF</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>&amp;Quitter</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
