@@ -1,5 +1,6 @@
 C:/Users/hp/Documents/interface1/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/interface1_autogen/EWIEGA46WW/moc_mainwindow.cpp: C:/Users/hp/Documents/interface1/mainwindow.h \
   C:/Users/hp/Documents/interface1/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/interface1_autogen/moc_predefs.h \
+  C:/Qt/6.7.3/mingw_64/include/QtCore/QString \
   C:/Qt/6.7.3/mingw_64/include/QtCore/q20functional.h \
   C:/Qt/6.7.3/mingw_64/include/QtCore/q20memory.h \
   C:/Qt/6.7.3/mingw_64/include/QtCore/q20type_traits.h \
@@ -143,6 +144,7 @@ C:/Users/hp/Documents/interface1/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/inter
   C:/Qt/6.7.3/mingw_64/include/QtGui/qwindowdefs.h \
   C:/Qt/6.7.3/mingw_64/include/QtGui/qwindowdefs_win.h \
   C:/Qt/6.7.3/mingw_64/include/QtWidgets/QMainWindow \
+  C:/Qt/6.7.3/mingw_64/include/QtWidgets/QWidget \
   C:/Qt/6.7.3/mingw_64/include/QtWidgets/qmainwindow.h \
   C:/Qt/6.7.3/mingw_64/include/QtWidgets/qsizepolicy.h \
   C:/Qt/6.7.3/mingw_64/include/QtWidgets/qtabwidget.h \

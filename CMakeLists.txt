@@ -17,9 +17,6 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
-        employe_widget.cpp
-        employe_widget.h
-        employe_widget.ui
         connection.cpp
         connection.h
 )
