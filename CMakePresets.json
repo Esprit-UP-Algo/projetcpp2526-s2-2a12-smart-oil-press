@@ -1,0 +1,32 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 16,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "qt-mingw-debug",
+      "displayName": "Qt 6.7.3 MinGW64 (Debug)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug",
+      "environment": {
+        "PATH": "C:/Qt/Tools/mingw1120_64/bin;C:/Qt/6.7.3/mingw_64/bin;C:/Qt/Tools/CMake_64/bin;C:/Qt/Tools/Ninja;C:/Windows/System32;C:/Windows"
+      },
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_PREFIX_PATH": "C:/Qt/6.7.3/mingw_64",
+        "CMAKE_C_COMPILER": "C:/Qt/Tools/mingw1120_64/bin/gcc.exe",
+        "CMAKE_CXX_COMPILER": "C:/Qt/Tools/mingw1120_64/bin/g++.exe"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "qt-mingw-debug",
+      "displayName": "Build (Qt 6.7.3 MinGW64 Debug)",
+      "configurePreset": "qt-mingw-debug"
+    }
+  ]
+}

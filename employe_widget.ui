@@ -19,41 +19,29 @@
        <item>
         <layout class="QGridLayout" name="grid_ajouter">
          <item row="0" column="0">
-          <widget class="QLabel" name="label_id"><property name="text"><string>ID</string></property></widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLineEdit" name="lineEdit_id"><property name="readOnly"><bool>true</bool></property></widget>
-         </item>
-         <item row="1" column="0">
           <widget class="QLabel" name="label_nom">
            <property name="text"><string>Nom</string></property>
           </widget>
          </item>
-         <item row="1" column="1">
+         <item row="0" column="1">
           <widget class="QLineEdit" name="lineEdit_nom"/>
          </item>
-         <item row="2" column="0">
+         <item row="1" column="0">
           <widget class="QLabel" name="label_prenom"><property name="text"><string>Prénom</string></property></widget>
          </item>
-         <item row="2" column="1">
+         <item row="1" column="1">
           <widget class="QLineEdit" name="lineEdit_prenom"/>
          </item>
-         <item row="3" column="0">
+         <item row="2" column="0">
           <widget class="QLabel" name="label_age"><property name="text"><string>Âge</string></property></widget>
          </item>
-         <item row="3" column="1">
+         <item row="2" column="1">
           <widget class="QSpinBox" name="spinBox_age"><property name="minimum"><number>16</number></property><property name="maximum"><number>120</number></property></widget>
          </item>
-         <item row="4" column="0">
-          <widget class="QLabel" name="label_tel"><property name="text"><string>Téléphone</string></property></widget>
-         </item>
-         <item row="4" column="1">
-          <widget class="QLineEdit" name="lineEdit_tel"/>
-         </item>
-         <item row="5" column="0">
+         <item row="3" column="0">
           <widget class="QLabel" name="label_spec"><property name="text"><string>Spécialité</string></property></widget>
          </item>
-         <item row="5" column="1">
+         <item row="3" column="1">
           <widget class="QComboBox" name="combo_spec">
            <item><property name="text"><string>Admin</string></property></item>
            <item><property name="text"><string>Manager</string></property></item>
@@ -65,7 +53,11 @@
           <widget class="QLabel" name="label_salaire"><property name="text"><string>Salaire</string></property></widget>
          </item>
          <item row="6" column="1">
-          <widget class="QDoubleSpinBox" name="doubleSpin_salaire"><property name="prefix"><string>€ </string></property><property name="decimals"><number>2</number></property></widget>
+          <widget class="QDoubleSpinBox" name="doubleSpin_salaire">
+           <property name="prefix"><string>€ </string></property>
+           <property name="decimals"><number>2</number></property>
+           <property name="maximum"><double>1000000.00</double></property>
+          </widget>
          </item>
          <item row="7" column="0">
           <widget class="QLabel" name="label_anciennete"><property name="text"><string>Ancienneté</string></property></widget>
@@ -77,7 +69,7 @@
           <widget class="QLabel" name="label_disp"><property name="text"><string>Disponibilité</string></property></widget>
          </item>
          <item row="8" column="1">
-          <widget class="QComboBox" name="combo_disp"><item><property name="text"><string>Actif</string></property></item><item><property name="text"><string>Suspendu</string></property></item></widget>
+          <widget class="QComboBox" name="combo_disp"><item><property name="text"><string>actif</string></property></item><item><property name="text"><string>suspendu</string></property></item></widget>
          </item>
          <item row="9" column="0">
           <widget class="QLabel" name="label_heures"><property name="text"><string>Heures / semaine</string></property></widget>
@@ -90,6 +82,12 @@
          </item>
          <item row="10" column="1">
           <widget class="QSpinBox" name="spin_fourn"/>
+         </item>
+         <item row="11" column="0">
+          <widget class="QLabel" name="label_id_equipe"><property name="text"><string>ID Equipe</string></property></widget>
+         </item>
+         <item row="11" column="1">
+          <widget class="QLineEdit" name="lineEdit_id_equipe"/>
          </item>
         </layout>
        </item>
@@ -132,10 +130,10 @@
               <widget class="QLineEdit" name="search_nom"><property name="placeholderText"><string>Entrez nom...</string></property></widget>
              </item>
              <item>
-              <widget class="QLabel" name="label_search_tel"><property name="text"><string>Téléphone</string></property></widget>
+              <widget class="QLabel" name="label_search_id_equipe"><property name="text"><string>ID Equipe</string></property></widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="search_tel"><property name="placeholderText"><string>Entrez tel...</string></property></widget>
+              <widget class="QLineEdit" name="search_id_equipe"><property name="placeholderText"><string>Entrez ID equipe...</string></property></widget>
              </item>
              <item>
               <widget class="QLabel" name="label_search_spec"><property name="text"><string>Spécialité</string></property></widget>
@@ -216,13 +214,13 @@
             <column><property name="text"><string>Nom</string></property></column>
             <column><property name="text"><string>Prénom</string></property></column>
             <column><property name="text"><string>Âge</string></property></column>
-            <column><property name="text"><string>Téléphone</string></property></column>
             <column><property name="text"><string>Spécialité</string></property></column>
             <column><property name="text"><string>Salaire</string></property></column>
             <column><property name="text"><string>Ancienneté</string></property></column>
             <column><property name="text"><string>Disponibilité</string></property></column>
             <column><property name="text"><string>Heures</string></property></column>
             <column><property name="text"><string>Fournisseurs</string></property></column>
+            <column><property name="text"><string>ID Equipe</string></property></column>
            </widget>
           </item>
          </layout>
@@ -250,7 +248,7 @@
        <item>
         <layout class="QFormLayout" name="formModifier">
          <item row="0" column="0"><widget class="QLabel" name="label_id_mod"><property name="text"><string>ID Employé</string></property></widget></item>
-         <item row="0" column="1"><widget class="QLineEdit" name="lineEdit_id_mod"><property name="readOnly"><bool>true</bool></property></widget></item>
+         <item row="0" column="1"><widget class="QLineEdit" name="lineEdit_id_mod"/></item>
         </layout>
        </item>
        <item>
@@ -262,20 +260,26 @@
           <item row="1" column="1"><widget class="QLineEdit" name="lineEdit_prenom_mod"/></item>
           <item row="2" column="0"><widget class="QLabel" name="label_age_mod"><property name="text"><string>Âge</string></property></widget></item>
           <item row="2" column="1"><widget class="QSpinBox" name="spinBox_age_mod"><property name="minimum"><number>16</number></property><property name="maximum"><number>120</number></property></widget></item>
-          <item row="3" column="0"><widget class="QLabel" name="label_tel_mod"><property name="text"><string>Téléphone</string></property></widget></item>
-          <item row="3" column="1"><widget class="QLineEdit" name="lineEdit_tel_mod"/></item>
           <item row="4" column="0"><widget class="QLabel" name="label_spec_mod"><property name="text"><string>Spécialité</string></property></widget></item>
           <item row="4" column="1"><widget class="QComboBox" name="combo_spec_mod"><item><property name="text"><string>Admin</string></property></item><item><property name="text"><string>Manager</string></property></item><item><property name="text"><string>Technicien</string></property></item><item><property name="text"><string>Magasinier</string></property></item></widget></item>
           <item row="5" column="0"><widget class="QLabel" name="label_salaire_mod"><property name="text"><string>Salaire</string></property></widget></item>
-          <item row="5" column="1"><widget class="QDoubleSpinBox" name="doubleSpin_salaire_mod"><property name="prefix"><string>€ </string></property><property name="decimals"><number>2</number></property></widget></item>
+          <item row="5" column="1">
+           <widget class="QDoubleSpinBox" name="doubleSpin_salaire_mod">
+            <property name="prefix"><string>€ </string></property>
+            <property name="decimals"><number>2</number></property>
+            <property name="maximum"><double>1000000.00</double></property>
+           </widget>
+          </item>
           <item row="6" column="0"><widget class="QLabel" name="label_anciennete_mod"><property name="text"><string>Ancienneté</string></property></widget></item>
           <item row="6" column="1"><widget class="QSpinBox" name="spin_anciennete_mod"/></item>
           <item row="7" column="0"><widget class="QLabel" name="label_disp_mod"><property name="text"><string>Disponibilité</string></property></widget></item>
-          <item row="7" column="1"><widget class="QComboBox" name="combo_disp_mod"><item><property name="text"><string>Actif</string></property></item><item><property name="text"><string>Suspendu</string></property></item></widget></item>
+          <item row="7" column="1"><widget class="QComboBox" name="combo_disp_mod"><item><property name="text"><string>actif</string></property></item><item><property name="text"><string>suspendu</string></property></item></widget></item>
           <item row="8" column="0"><widget class="QLabel" name="label_heures_mod"><property name="text"><string>Heures / semaine</string></property></widget></item>
           <item row="8" column="1"><widget class="QSpinBox" name="spin_heures_mod"><property name="maximum"><number>168</number></property></widget></item>
           <item row="9" column="0"><widget class="QLabel" name="label_fourn_mod"><property name="text"><string>Fournisseurs traités</string></property></widget></item>
           <item row="9" column="1"><widget class="QSpinBox" name="spin_fourn_mod"/></item>
+          <item row="10" column="0"><widget class="QLabel" name="label_id_equipe_mod"><property name="text"><string>ID Equipe</string></property></widget></item>
+          <item row="10" column="1"><widget class="QLineEdit" name="lineEdit_id_equipe_mod"/></item>
          </layout>
         </widget>
        </item>
@@ -541,6 +545,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

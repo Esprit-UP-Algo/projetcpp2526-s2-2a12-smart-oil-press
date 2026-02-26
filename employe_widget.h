@@ -30,9 +30,23 @@ signals:
     void backToLoginRequested();
     void authenticatedChanged(bool authenticated);
 
+private slots:
+    // CRUD Operations
+    void ajouterEmploye();
+    void afficherEmployes();
+    void supprimerEmploye();
+    void modifierEmploye();
+    void chargerEmployePourModification();
+    void onTableRowClicked(int row, int column);
+
 private:
     Ui::EmployeWidget *ui;
     void styleSpinboxesAndComboboxes();
+    void setupCrudConnections();
+    void clearAjouterForm();
+    void clearModifierForm();
+    bool validateAjouterForm();
+    bool validateModifierForm();
 };
 
 #endif // EMPLOYE_WIDGET_H

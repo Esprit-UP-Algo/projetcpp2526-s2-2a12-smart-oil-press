@@ -41,16 +41,12 @@ public:
     QWidget *tabAjouter;
     QVBoxLayout *verticalLayout_ajouter;
     QGridLayout *grid_ajouter;
-    QLabel *label_id;
-    QLineEdit *lineEdit_id;
     QLabel *label_nom;
     QLineEdit *lineEdit_nom;
     QLabel *label_prenom;
     QLineEdit *lineEdit_prenom;
     QLabel *label_age;
     QSpinBox *spinBox_age;
-    QLabel *label_tel;
-    QLineEdit *lineEdit_tel;
     QLabel *label_spec;
     QComboBox *combo_spec;
     QLabel *label_salaire;
@@ -63,6 +59,8 @@ public:
     QSpinBox *spin_heures;
     QLabel *label_fourn;
     QSpinBox *spin_fourn;
+    QLabel *label_id_equipe;
+    QLineEdit *lineEdit_id_equipe;
     QHBoxLayout *hButtonsAjouter;
     QSpacerItem *spacerH;
     QPushButton *btnAjouter;
@@ -76,8 +74,8 @@ public:
     QLineEdit *search_id;
     QLabel *label_search_nom;
     QLineEdit *search_nom;
-    QLabel *label_search_tel;
-    QLineEdit *search_tel;
+    QLabel *label_search_id_equipe;
+    QLineEdit *search_id_equipe;
     QLabel *label_search_spec;
     QComboBox *search_spec;
     QLabel *label_search_disp;
@@ -117,8 +115,6 @@ public:
     QLineEdit *lineEdit_prenom_mod;
     QLabel *label_age_mod;
     QSpinBox *spinBox_age_mod;
-    QLabel *label_tel_mod;
-    QLineEdit *lineEdit_tel_mod;
     QLabel *label_spec_mod;
     QComboBox *combo_spec_mod;
     QLabel *label_salaire_mod;
@@ -131,6 +127,8 @@ public:
     QSpinBox *spin_heures_mod;
     QLabel *label_fourn_mod;
     QSpinBox *spin_fourn_mod;
+    QLabel *label_id_equipe_mod;
+    QLineEdit *lineEdit_id_equipe_mod;
     QPushButton *btnModifierConfirm;
     QWidget *tabStatistiques;
     QVBoxLayout *vertical_statistiques;
@@ -224,63 +222,42 @@ public:
         verticalLayout_ajouter->setObjectName("verticalLayout_ajouter");
         grid_ajouter = new QGridLayout();
         grid_ajouter->setObjectName("grid_ajouter");
-        label_id = new QLabel(tabAjouter);
-        label_id->setObjectName("label_id");
-
-        grid_ajouter->addWidget(label_id, 0, 0, 1, 1);
-
-        lineEdit_id = new QLineEdit(tabAjouter);
-        lineEdit_id->setObjectName("lineEdit_id");
-        lineEdit_id->setReadOnly(true);
-
-        grid_ajouter->addWidget(lineEdit_id, 0, 1, 1, 1);
-
         label_nom = new QLabel(tabAjouter);
         label_nom->setObjectName("label_nom");
 
-        grid_ajouter->addWidget(label_nom, 1, 0, 1, 1);
+        grid_ajouter->addWidget(label_nom, 0, 0, 1, 1);
 
         lineEdit_nom = new QLineEdit(tabAjouter);
         lineEdit_nom->setObjectName("lineEdit_nom");
 
-        grid_ajouter->addWidget(lineEdit_nom, 1, 1, 1, 1);
+        grid_ajouter->addWidget(lineEdit_nom, 0, 1, 1, 1);
 
         label_prenom = new QLabel(tabAjouter);
         label_prenom->setObjectName("label_prenom");
 
-        grid_ajouter->addWidget(label_prenom, 2, 0, 1, 1);
+        grid_ajouter->addWidget(label_prenom, 1, 0, 1, 1);
 
         lineEdit_prenom = new QLineEdit(tabAjouter);
         lineEdit_prenom->setObjectName("lineEdit_prenom");
 
-        grid_ajouter->addWidget(lineEdit_prenom, 2, 1, 1, 1);
+        grid_ajouter->addWidget(lineEdit_prenom, 1, 1, 1, 1);
 
         label_age = new QLabel(tabAjouter);
         label_age->setObjectName("label_age");
 
-        grid_ajouter->addWidget(label_age, 3, 0, 1, 1);
+        grid_ajouter->addWidget(label_age, 2, 0, 1, 1);
 
         spinBox_age = new QSpinBox(tabAjouter);
         spinBox_age->setObjectName("spinBox_age");
         spinBox_age->setMinimum(16);
         spinBox_age->setMaximum(120);
 
-        grid_ajouter->addWidget(spinBox_age, 3, 1, 1, 1);
-
-        label_tel = new QLabel(tabAjouter);
-        label_tel->setObjectName("label_tel");
-
-        grid_ajouter->addWidget(label_tel, 4, 0, 1, 1);
-
-        lineEdit_tel = new QLineEdit(tabAjouter);
-        lineEdit_tel->setObjectName("lineEdit_tel");
-
-        grid_ajouter->addWidget(lineEdit_tel, 4, 1, 1, 1);
+        grid_ajouter->addWidget(spinBox_age, 2, 1, 1, 1);
 
         label_spec = new QLabel(tabAjouter);
         label_spec->setObjectName("label_spec");
 
-        grid_ajouter->addWidget(label_spec, 5, 0, 1, 1);
+        grid_ajouter->addWidget(label_spec, 3, 0, 1, 1);
 
         combo_spec = new QComboBox(tabAjouter);
         combo_spec->addItem(QString());
@@ -289,7 +266,7 @@ public:
         combo_spec->addItem(QString());
         combo_spec->setObjectName("combo_spec");
 
-        grid_ajouter->addWidget(combo_spec, 5, 1, 1, 1);
+        grid_ajouter->addWidget(combo_spec, 3, 1, 1, 1);
 
         label_salaire = new QLabel(tabAjouter);
         label_salaire->setObjectName("label_salaire");
@@ -299,6 +276,7 @@ public:
         doubleSpin_salaire = new QDoubleSpinBox(tabAjouter);
         doubleSpin_salaire->setObjectName("doubleSpin_salaire");
         doubleSpin_salaire->setDecimals(2);
+        doubleSpin_salaire->setMaximum(1000000.000000000000000);
 
         grid_ajouter->addWidget(doubleSpin_salaire, 6, 1, 1, 1);
 
@@ -344,6 +322,16 @@ public:
         spin_fourn->setObjectName("spin_fourn");
 
         grid_ajouter->addWidget(spin_fourn, 10, 1, 1, 1);
+
+        label_id_equipe = new QLabel(tabAjouter);
+        label_id_equipe->setObjectName("label_id_equipe");
+
+        grid_ajouter->addWidget(label_id_equipe, 11, 0, 1, 1);
+
+        lineEdit_id_equipe = new QLineEdit(tabAjouter);
+        lineEdit_id_equipe->setObjectName("lineEdit_id_equipe");
+
+        grid_ajouter->addWidget(lineEdit_id_equipe, 11, 1, 1, 1);
 
 
         verticalLayout_ajouter->addLayout(grid_ajouter);
@@ -399,15 +387,15 @@ public:
 
         vSearch->addWidget(search_nom);
 
-        label_search_tel = new QLabel(groupSearch);
-        label_search_tel->setObjectName("label_search_tel");
+        label_search_id_equipe = new QLabel(groupSearch);
+        label_search_id_equipe->setObjectName("label_search_id_equipe");
 
-        vSearch->addWidget(label_search_tel);
+        vSearch->addWidget(label_search_id_equipe);
 
-        search_tel = new QLineEdit(groupSearch);
-        search_tel->setObjectName("search_tel");
+        search_id_equipe = new QLineEdit(groupSearch);
+        search_id_equipe->setObjectName("search_id_equipe");
 
-        vSearch->addWidget(search_tel);
+        vSearch->addWidget(search_id_equipe);
 
         label_search_spec = new QLabel(groupSearch);
         label_search_spec->setObjectName("label_search_spec");
@@ -578,7 +566,6 @@ public:
 
         lineEdit_id_mod = new QLineEdit(tabModifier);
         lineEdit_id_mod->setObjectName("lineEdit_id_mod");
-        lineEdit_id_mod->setReadOnly(true);
 
         formModifier->setWidget(0, QFormLayout::FieldRole, lineEdit_id_mod);
 
@@ -621,16 +608,6 @@ public:
 
         grid_prefill->addWidget(spinBox_age_mod, 2, 1, 1, 1);
 
-        label_tel_mod = new QLabel(groupBox_prefill);
-        label_tel_mod->setObjectName("label_tel_mod");
-
-        grid_prefill->addWidget(label_tel_mod, 3, 0, 1, 1);
-
-        lineEdit_tel_mod = new QLineEdit(groupBox_prefill);
-        lineEdit_tel_mod->setObjectName("lineEdit_tel_mod");
-
-        grid_prefill->addWidget(lineEdit_tel_mod, 3, 1, 1, 1);
-
         label_spec_mod = new QLabel(groupBox_prefill);
         label_spec_mod->setObjectName("label_spec_mod");
 
@@ -653,6 +630,7 @@ public:
         doubleSpin_salaire_mod = new QDoubleSpinBox(groupBox_prefill);
         doubleSpin_salaire_mod->setObjectName("doubleSpin_salaire_mod");
         doubleSpin_salaire_mod->setDecimals(2);
+        doubleSpin_salaire_mod->setMaximum(1000000.000000000000000);
 
         grid_prefill->addWidget(doubleSpin_salaire_mod, 5, 1, 1, 1);
 
@@ -698,6 +676,16 @@ public:
         spin_fourn_mod->setObjectName("spin_fourn_mod");
 
         grid_prefill->addWidget(spin_fourn_mod, 9, 1, 1, 1);
+
+        label_id_equipe_mod = new QLabel(groupBox_prefill);
+        label_id_equipe_mod->setObjectName("label_id_equipe_mod");
+
+        grid_prefill->addWidget(label_id_equipe_mod, 10, 0, 1, 1);
+
+        lineEdit_id_equipe_mod = new QLineEdit(groupBox_prefill);
+        lineEdit_id_equipe_mod->setObjectName("lineEdit_id_equipe_mod");
+
+        grid_prefill->addWidget(lineEdit_id_equipe_mod, 10, 1, 1, 1);
 
 
         vertical_modifier->addWidget(groupBox_prefill);
@@ -1102,11 +1090,9 @@ public:
 
     void retranslateUi(QWidget *EmployeWidget)
     {
-        label_id->setText(QCoreApplication::translate("EmployeWidget", "ID", nullptr));
         label_nom->setText(QCoreApplication::translate("EmployeWidget", "Nom", nullptr));
         label_prenom->setText(QCoreApplication::translate("EmployeWidget", "Pr\303\251nom", nullptr));
         label_age->setText(QCoreApplication::translate("EmployeWidget", "\303\202ge", nullptr));
-        label_tel->setText(QCoreApplication::translate("EmployeWidget", "T\303\251l\303\251phone", nullptr));
         label_spec->setText(QCoreApplication::translate("EmployeWidget", "Sp\303\251cialit\303\251", nullptr));
         combo_spec->setItemText(0, QCoreApplication::translate("EmployeWidget", "Admin", nullptr));
         combo_spec->setItemText(1, QCoreApplication::translate("EmployeWidget", "Manager", nullptr));
@@ -1117,11 +1103,12 @@ public:
         doubleSpin_salaire->setPrefix(QCoreApplication::translate("EmployeWidget", "\342\202\254 ", nullptr));
         label_anciennete->setText(QCoreApplication::translate("EmployeWidget", "Anciennet\303\251", nullptr));
         label_disp->setText(QCoreApplication::translate("EmployeWidget", "Disponibilit\303\251", nullptr));
-        combo_disp->setItemText(0, QCoreApplication::translate("EmployeWidget", "Actif", nullptr));
-        combo_disp->setItemText(1, QCoreApplication::translate("EmployeWidget", "Suspendu", nullptr));
+        combo_disp->setItemText(0, QCoreApplication::translate("EmployeWidget", "actif", nullptr));
+        combo_disp->setItemText(1, QCoreApplication::translate("EmployeWidget", "suspendu", nullptr));
 
         label_heures->setText(QCoreApplication::translate("EmployeWidget", "Heures / semaine", nullptr));
         label_fourn->setText(QCoreApplication::translate("EmployeWidget", "Fournisseurs trait\303\251s", nullptr));
+        label_id_equipe->setText(QCoreApplication::translate("EmployeWidget", "ID Equipe", nullptr));
         btnAjouter->setText(QCoreApplication::translate("EmployeWidget", "Ajouter", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tabAjouter), QCoreApplication::translate("EmployeWidget", "Ajouter un employ\303\251", nullptr));
         groupSearch->setTitle(QCoreApplication::translate("EmployeWidget", "Recherche", nullptr));
@@ -1129,8 +1116,8 @@ public:
         search_id->setPlaceholderText(QCoreApplication::translate("EmployeWidget", "Entrez ID...", nullptr));
         label_search_nom->setText(QCoreApplication::translate("EmployeWidget", "Nom", nullptr));
         search_nom->setPlaceholderText(QCoreApplication::translate("EmployeWidget", "Entrez nom...", nullptr));
-        label_search_tel->setText(QCoreApplication::translate("EmployeWidget", "T\303\251l\303\251phone", nullptr));
-        search_tel->setPlaceholderText(QCoreApplication::translate("EmployeWidget", "Entrez tel...", nullptr));
+        label_search_id_equipe->setText(QCoreApplication::translate("EmployeWidget", "ID Equipe", nullptr));
+        search_id_equipe->setPlaceholderText(QCoreApplication::translate("EmployeWidget", "Entrez ID equipe...", nullptr));
         label_search_spec->setText(QCoreApplication::translate("EmployeWidget", "Sp\303\251cialit\303\251", nullptr));
         search_spec->setItemText(0, QCoreApplication::translate("EmployeWidget", "-- Tous --", nullptr));
         search_spec->setItemText(1, QCoreApplication::translate("EmployeWidget", "Admin", nullptr));
@@ -1162,19 +1149,19 @@ public:
         QTableWidgetItem *___qtablewidgetitem3 = table_employes->horizontalHeaderItem(3);
         ___qtablewidgetitem3->setText(QCoreApplication::translate("EmployeWidget", "\303\202ge", nullptr));
         QTableWidgetItem *___qtablewidgetitem4 = table_employes->horizontalHeaderItem(4);
-        ___qtablewidgetitem4->setText(QCoreApplication::translate("EmployeWidget", "T\303\251l\303\251phone", nullptr));
+        ___qtablewidgetitem4->setText(QCoreApplication::translate("EmployeWidget", "Sp\303\251cialit\303\251", nullptr));
         QTableWidgetItem *___qtablewidgetitem5 = table_employes->horizontalHeaderItem(5);
-        ___qtablewidgetitem5->setText(QCoreApplication::translate("EmployeWidget", "Sp\303\251cialit\303\251", nullptr));
+        ___qtablewidgetitem5->setText(QCoreApplication::translate("EmployeWidget", "Salaire", nullptr));
         QTableWidgetItem *___qtablewidgetitem6 = table_employes->horizontalHeaderItem(6);
-        ___qtablewidgetitem6->setText(QCoreApplication::translate("EmployeWidget", "Salaire", nullptr));
+        ___qtablewidgetitem6->setText(QCoreApplication::translate("EmployeWidget", "Anciennet\303\251", nullptr));
         QTableWidgetItem *___qtablewidgetitem7 = table_employes->horizontalHeaderItem(7);
-        ___qtablewidgetitem7->setText(QCoreApplication::translate("EmployeWidget", "Anciennet\303\251", nullptr));
+        ___qtablewidgetitem7->setText(QCoreApplication::translate("EmployeWidget", "Disponibilit\303\251", nullptr));
         QTableWidgetItem *___qtablewidgetitem8 = table_employes->horizontalHeaderItem(8);
-        ___qtablewidgetitem8->setText(QCoreApplication::translate("EmployeWidget", "Disponibilit\303\251", nullptr));
+        ___qtablewidgetitem8->setText(QCoreApplication::translate("EmployeWidget", "Heures", nullptr));
         QTableWidgetItem *___qtablewidgetitem9 = table_employes->horizontalHeaderItem(9);
-        ___qtablewidgetitem9->setText(QCoreApplication::translate("EmployeWidget", "Heures", nullptr));
+        ___qtablewidgetitem9->setText(QCoreApplication::translate("EmployeWidget", "Fournisseurs", nullptr));
         QTableWidgetItem *___qtablewidgetitem10 = table_employes->horizontalHeaderItem(10);
-        ___qtablewidgetitem10->setText(QCoreApplication::translate("EmployeWidget", "Fournisseurs", nullptr));
+        ___qtablewidgetitem10->setText(QCoreApplication::translate("EmployeWidget", "ID Equipe", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tabListe), QCoreApplication::translate("EmployeWidget", "Liste des employ\303\251s", nullptr));
         label_id_suppr->setText(QCoreApplication::translate("EmployeWidget", "ID Employ\303\251", nullptr));
         btnSupprimerConfirm->setText(QCoreApplication::translate("EmployeWidget", "Supprimer", nullptr));
@@ -1184,7 +1171,6 @@ public:
         label_nom_mod->setText(QCoreApplication::translate("EmployeWidget", "Nom", nullptr));
         label_prenom_mod->setText(QCoreApplication::translate("EmployeWidget", "Pr\303\251nom", nullptr));
         label_age_mod->setText(QCoreApplication::translate("EmployeWidget", "\303\202ge", nullptr));
-        label_tel_mod->setText(QCoreApplication::translate("EmployeWidget", "T\303\251l\303\251phone", nullptr));
         label_spec_mod->setText(QCoreApplication::translate("EmployeWidget", "Sp\303\251cialit\303\251", nullptr));
         combo_spec_mod->setItemText(0, QCoreApplication::translate("EmployeWidget", "Admin", nullptr));
         combo_spec_mod->setItemText(1, QCoreApplication::translate("EmployeWidget", "Manager", nullptr));
@@ -1195,11 +1181,12 @@ public:
         doubleSpin_salaire_mod->setPrefix(QCoreApplication::translate("EmployeWidget", "\342\202\254 ", nullptr));
         label_anciennete_mod->setText(QCoreApplication::translate("EmployeWidget", "Anciennet\303\251", nullptr));
         label_disp_mod->setText(QCoreApplication::translate("EmployeWidget", "Disponibilit\303\251", nullptr));
-        combo_disp_mod->setItemText(0, QCoreApplication::translate("EmployeWidget", "Actif", nullptr));
-        combo_disp_mod->setItemText(1, QCoreApplication::translate("EmployeWidget", "Suspendu", nullptr));
+        combo_disp_mod->setItemText(0, QCoreApplication::translate("EmployeWidget", "actif", nullptr));
+        combo_disp_mod->setItemText(1, QCoreApplication::translate("EmployeWidget", "suspendu", nullptr));
 
         label_heures_mod->setText(QCoreApplication::translate("EmployeWidget", "Heures / semaine", nullptr));
         label_fourn_mod->setText(QCoreApplication::translate("EmployeWidget", "Fournisseurs trait\303\251s", nullptr));
+        label_id_equipe_mod->setText(QCoreApplication::translate("EmployeWidget", "ID Equipe", nullptr));
         btnModifierConfirm->setText(QCoreApplication::translate("EmployeWidget", "Mettre \303\240 jour", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tabModifier), QCoreApplication::translate("EmployeWidget", "Modifier un employ\303\251", nullptr));
         groupEffectifs->setTitle(QCoreApplication::translate("EmployeWidget", "Effectifs", nullptr));
