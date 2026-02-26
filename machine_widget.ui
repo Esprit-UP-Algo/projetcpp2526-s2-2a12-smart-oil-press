@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MachineWidget</class>
+ <widget class="QWidget" name="MachineWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Gestion Machines</string>
+  </property>
+  <layout class="QVBoxLayout" name="machineLayout">
+   <item>
+    <widget class="QSplitter" name="splitter">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     
+     <!-- PANNEAU GAUCHE: Recherche/Filtres/Tri -->
+     <widget class="QWidget" name="leftPanel" native="true">
+      <property name="minimumSize">
+       <size>
+        <width>220</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>280</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <layout class="QVBoxLayout" name="leftLayout">
+       <property name="leftMargin"><number>5</number></property>
+       <property name="topMargin"><number>5</number></property>
+       <property name="rightMargin"><number>5</number></property>
+       <property name="bottomMargin"><number>5</number></property>
+       
+       <!-- Recherche et Filtres -->
+       <item>
+        <widget class="QGroupBox" name="groupBoxSearch">
+         <property name="title">
+          <string>🔍 Recherche et Filtres</string>
+         </property>
+         <layout class="QVBoxLayout">
+          <item>
+           <layout class="QHBoxLayout">
+            <item>
+             <widget class="QLabel"><property name="text"><string>Rechercher :</string></property></widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEditSearch">
+              <property name="placeholderText"><string>Nom, référence…</string></property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout">
+            <item>
+             <widget class="QLabel"><property name="text"><string>Catégorie :</string></property></widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboCategory">
+              <item><property name="text"><string>Toutes</string></property></item>
+              <item><property name="text"><string>Presse</string></property></item>
+              <item><property name="text"><string>Moteur</string></property></item>
+              <item><property name="text"><string>Filtre</string></property></item>
+              <item><property name="text"><string>Capteur</string></property></item>
+              <item><property name="text"><string>Autre</string></property></item>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout">
+            <item>
+             <widget class="QLabel"><property name="text"><string>État :</string></property></widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboState">
+              <item><property name="text"><string>Tous</string></property></item>
+              <item><property name="text"><string>En service</string></property></item>
+              <item><property name="text"><string>Panne</string></property></item>
+              <item><property name="text"><string>Maintenance</string></property></item>
+              <item><property name="text"><string>Hors service</string></property></item>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout">
+            <item>
+             <widget class="QLabel"><property name="text"><string>Localisation :</string></property></widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEditLocation">
+              <property name="placeholderText"><string>Atelier, Ligne…</string></property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnApplyFilter">
+            <property name="text"><string>✅ Appliquer</string></property>
+            <property name="minimumHeight"><number>35</number></property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       
+       <!-- Tri -->
+       <item>
+        <widget class="QGroupBox" name="groupBoxSort">
+         <property name="title"><string>📊 Tri</string></property>
+         <layout class="QVBoxLayout">
+          <item>
+           <layout class="QHBoxLayout">
+            <item>
+             <widget class="QLabel"><property name="text"><string>Trier par :</string></property></widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboSortBy">
+              <item><property name="text"><string>Nom</string></property></item>
+              <item><property name="text"><string>Date d'achat</string></property></item>
+              <item><property name="text"><string>État</string></property></item>
+              <item><property name="text"><string>Catégorie</string></property></item>
+              <item><property name="text"><string>Localisation</string></property></item>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout">
+            <item>
+             <widget class="QRadioButton" name="radioCroissant">
+              <property name="text"><string>⬆️ Croissant</string></property>
+              <property name="checked"><bool>true</bool></property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioDecroissant">
+              <property name="text"><string>⬇️ Décroissant</string></property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       
+       <!-- Scanner QR -->
+       <item>
+        <widget class="QPushButton" name="btnScanQR">
+         <property name="text"><string>📷 Scanner QR Code</string></property>
+         <property name="minimumHeight"><number>45</number></property>
+        </widget>
+       </item>
+       
+       <item>
+        <spacer name="verticalSpacerLeft">
+         <property name="orientation"><enum>Qt::Vertical</enum></property>
+         <property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     
+     <!-- PANNEAU CENTRAL: Onglets -->
+     <widget class="QWidget" name="centerPanel" native="true">
+      <layout class="QVBoxLayout" name="centerLayout">
+       <property name="leftMargin"><number>10</number></property>
+       <property name="topMargin"><number>10</number></property>
+       <property name="rightMargin"><number>10</number></property>
+       <property name="bottomMargin"><number>10</number></property>
+       <item>
+        <widget class="QTabWidget" name="tabWidget">
+         <property name="currentIndex"><number>0</number></property>
+         
+         <!-- TAB 1: Ajouter Machine -->
+         <widget class="QWidget" name="tabAjouter">
+          <attribute name="title"><string>Ajouter Machine</string></attribute>
+          <layout class="QVBoxLayout">
+           <item>
+            <widget class="QLabel" name="labelAdd">
+             <property name="text"><string>&lt;h2&gt;Ajouter une nouvelle machine&lt;/h2&gt;</string></property>
+             <property name="alignment"><set>Qt::AlignCenter</set></property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QFrame" name="frameAdd">
+             <property name="frameShape"><enum>QFrame::StyledPanel</enum></property>
+             <property name="frameShadow"><enum>QFrame::Raised</enum></property>
+             <layout class="QFormLayout" name="formLayoutAdd">
+              <property name="horizontalSpacing"><number>20</number></property>
+              <property name="verticalSpacing"><number>12</number></property>
+              <item row="0" column="0"><widget class="QLabel"><property name="text"><string>ID Machine *</string></property></widget></item>
+              <item row="0" column="1"><widget class="QLineEdit" name="editAddId"><property name="placeholderText"><string>MCH-XXX</string></property></widget></item>
+              <item row="1" column="0"><widget class="QLabel"><property name="text"><string>Nom *</string></property></widget></item>
+              <item row="1" column="1"><widget class="QLineEdit" name="editAddNom"><property name="placeholderText"><string>Nom de la machine</string></property></widget></item>
+              <item row="2" column="0"><widget class="QLabel"><property name="text"><string>Catégorie *</string></property></widget></item>
+              <item row="2" column="1">
+               <widget class="QComboBox" name="comboAddCategorie">
+                <item><property name="text"><string>Presse</string></property></item>
+                <item><property name="text"><string>Moteur</string></property></item>
+                <item><property name="text"><string>Filtre</string></property></item>
+                <item><property name="text"><string>Capteur</string></property></item>
+                <item><property name="text"><string>Autre</string></property></item>
+               </widget>
+              </item>
+              <item row="3" column="0"><widget class="QLabel"><property name="text"><string>Référence</string></property></widget></item>
+              <item row="3" column="1"><widget class="QLineEdit" name="editAddReference"><property name="placeholderText"><string>Référence</string></property></widget></item>
+              <item row="4" column="0"><widget class="QLabel"><property name="text"><string>Date d'achat</string></property></widget></item>
+              <item row="4" column="1"><widget class="QDateEdit" name="dateAddAchat"><property name="calendarPopup"><bool>true</bool></property></widget></item>
+              <item row="5" column="0"><widget class="QLabel"><property name="text"><string>État *</string></property></widget></item>
+              <item row="5" column="1">
+               <widget class="QComboBox" name="comboAddEtat">
+                <item><property name="text"><string>En service</string></property></item>
+                <item><property name="text"><string>Maintenance</string></property></item>
+                <item><property name="text"><string>Panne</string></property></item>
+                <item><property name="text"><string>Hors service</string></property></item>
+               </widget>
+              </item>
+              <item row="6" column="0"><widget class="QLabel"><property name="text"><string>Localisation</string></property></widget></item>
+              <item row="6" column="1"><widget class="QLineEdit" name="editAddLocalisation"><property name="placeholderText"><string>Atelier, Ligne...</string></property></widget></item>
+             </layout>
+            </widget>
+           </item>
+           <item><spacer><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property></spacer></item>
+           <item>
+            <layout class="QHBoxLayout">
+             <item><spacer><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+             <item>
+              <widget class="QPushButton" name="btnConfirmerAjouter">
+               <property name="text"><string>✓ Confirmer l'ajout</string></property>
+               <property name="minimumHeight"><number>45</number></property>
+               <property name="minimumWidth"><number>200</number></property>
+               <property name="styleSheet"><string>QPushButton { background-color: #6FA66F; color: white; border-radius: 5px; font-weight: bold; }</string></property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btnAnnulerAjouter">
+               <property name="text"><string>✗ Annuler</string></property>
+               <property name="minimumHeight"><number>45</number></property>
+               <property name="minimumWidth"><number>150</number></property>
+               <property name="styleSheet"><string>QPushButton { background-color: #A0A0A0; color: white; border-radius: 5px; font-weight: bold; }</string></property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+         
+         <!-- TAB 2: Liste des Machines -->
+         <widget class="QWidget" name="tabListe">
+          <attribute name="title"><string>Liste des Machines</string></attribute>
+          <layout class="QVBoxLayout">
+           <item>
+            <widget class="QTableWidget" name="tableMachines">
+             <property name="alternatingRowColors"><bool>true</bool></property>
+             <property name="selectionBehavior"><enum>QAbstractItemView::SelectRows</enum></property>
+             <column><property name="text"><string>ID</string></property></column>
+             <column><property name="text"><string>Nom</string></property></column>
+             <column><property name="text"><string>Catégorie</string></property></column>
+             <column><property name="text"><string>Référence</string></property></column>
+             <column><property name="text"><string>Date Achat</string></property></column>
+             <column><property name="text"><string>État</string></property></column>
+             <column><property name="text"><string>Localisation</string></property></column>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout">
+             <item>
+              <widget class="QPushButton" name="btnExportPDF">
+               <property name="text"><string>📄 Exporter PDF</string></property>
+               <property name="minimumHeight"><number>35</number></property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btnRefresh">
+               <property name="text"><string>🔄 Actualiser</string></property>
+               <property name="minimumHeight"><number>35</number></property>
+              </widget>
+             </item>
+             <item><spacer><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+         
+         <!-- TAB 3: Supprimer Machine -->
+         <widget class="QWidget" name="tabSupprimer">
+          <attribute name="title"><string>Supprimer Machine</string></attribute>
+          <layout class="QVBoxLayout">
+           <property name="leftMargin"><number>20</number></property>
+           <property name="topMargin"><number>20</number></property>
+           <property name="rightMargin"><number>20</number></property>
+           <property name="bottomMargin"><number>20</number></property>
+           <item>
+            <widget class="QLabel">
+             <property name="text"><string>⚠️ Sélectionnez une machine dans "Liste des Machines", puis confirmez la suppression. Cette action est irréversible.</string></property>
+             <property name="wordWrap"><bool>true</bool></property>
+             <property name="styleSheet"><string>QLabel { background-color: #FDECEA; color: #C62828; border-radius: 4px; padding: 10px; }</string></property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="grpMachineASupprimer">
+             <property name="title"><string>Machine Sélectionnée</string></property>
+             <layout class="QVBoxLayout">
+              <item>
+               <widget class="QLabel" name="lblSupprimerNom">
+                <property name="text"><string>Aucune machine sélectionnée</string></property>
+                <property name="font"><font><pointsize>12</pointsize><bold>true</bold></font></property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="lblSupprimerDetails">
+                <property name="text"><string>-</string></property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item><spacer><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property></spacer></item>
+           <item>
+            <layout class="QHBoxLayout">
+             <item><spacer><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+             <item>
+              <widget class="QPushButton" name="btnConfirmerSupprimer">
+               <property name="text"><string>🗑 Confirmer la suppression</string></property>
+               <property name="minimumHeight"><number>45</number></property>
+               <property name="minimumWidth"><number>250</number></property>
+               <property name="styleSheet"><string>QPushButton { background-color: #C97A7A; color: white; border-radius: 5px; font-weight: bold; }</string></property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btnAnnulerSupprimer">
+               <property name="text"><string>✗ Annuler</string></property>
+               <property name="minimumHeight"><number>45</number></property>
+               <property name="minimumWidth"><number>150</number></property>
+               <property name="styleSheet"><string>QPushButton { background-color: #A0A0A0; color: white; border-radius: 5px; font-weight: bold; }</string></property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+         
+         <!-- TAB 4: Modifier Machine -->
+         <widget class="QWidget" name="tabModifier">
+          <attribute name="title"><string>Modifier Machine</string></attribute>
+          <layout class="QVBoxLayout">
+           <property name="leftMargin"><number>20</number></property>
+           <property name="topMargin"><number>20</number></property>
+           <property name="rightMargin"><number>20</number></property>
+           <property name="bottomMargin"><number>20</number></property>
+           <item>
+            <widget class="QLabel">
+             <property name="text"><string>ℹ️ Sélectionnez une machine dans "Liste des Machines" puis modifiez ses informations ci-dessous.</string></property>
+             <property name="styleSheet"><string>QLabel { background-color: #EAF0EA; color: #3D4F3C; border-radius: 4px; padding: 8px; }</string></property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="grpFormModifier">
+             <property name="title"><string>Modifier la Machine Sélectionnée</string></property>
+             <layout class="QFormLayout">
+              <property name="horizontalSpacing"><number>20</number></property>
+              <property name="verticalSpacing"><number>12</number></property>
+              <item row="0" column="0"><widget class="QLabel"><property name="text"><string>ID Machine</string></property></widget></item>
+              <item row="0" column="1"><widget class="QLineEdit" name="editModifierId"><property name="readOnly"><bool>true</bool></property></widget></item>
+              <item row="1" column="0"><widget class="QLabel"><property name="text"><string>Nom *</string></property></widget></item>
+              <item row="1" column="1"><widget class="QLineEdit" name="editModifierNom"/></item>
+              <item row="2" column="0"><widget class="QLabel"><property name="text"><string>Catégorie *</string></property></widget></item>
+              <item row="2" column="1">
+               <widget class="QComboBox" name="comboModifierCategorie">
+                <item><property name="text"><string>Presse</string></property></item>
+                <item><property name="text"><string>Moteur</string></property></item>
+                <item><property name="text"><string>Filtre</string></property></item>
+                <item><property name="text"><string>Capteur</string></property></item>
+                <item><property name="text"><string>Autre</string></property></item>
+               </widget>
+              </item>
+              <item row="3" column="0"><widget class="QLabel"><property name="text"><string>Référence</string></property></widget></item>
+              <item row="3" column="1"><widget class="QLineEdit" name="editModifierReference"/></item>
+              <item row="4" column="0"><widget class="QLabel"><property name="text"><string>Date d'achat</string></property></widget></item>
+              <item row="4" column="1"><widget class="QDateEdit" name="dateModifierAchat"><property name="calendarPopup"><bool>true</bool></property></widget></item>
+              <item row="5" column="0"><widget class="QLabel"><property name="text"><string>État *</string></property></widget></item>
+              <item row="5" column="1">
+               <widget class="QComboBox" name="comboModifierEtat">
+                <item><property name="text"><string>En service</string></property></item>
+                <item><property name="text"><string>Maintenance</string></property></item>
+                <item><property name="text"><string>Panne</string></property></item>
+                <item><property name="text"><string>Hors service</string></property></item>
+               </widget>
+              </item>
+              <item row="6" column="0"><widget class="QLabel"><property name="text"><string>Localisation</string></property></widget></item>
+              <item row="6" column="1"><widget class="QLineEdit" name="editModifierLocalisation"/></item>
+             </layout>
+            </widget>
+           </item>
+           <item><spacer><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property></spacer></item>
+           <item>
+            <layout class="QHBoxLayout">
+             <item><spacer><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+             <item>
+              <widget class="QPushButton" name="btnConfirmerModifier">
+               <property name="text"><string>✓ Confirmer la modification</string></property>
+               <property name="minimumHeight"><number>45</number></property>
+               <property name="minimumWidth"><number>250</number></property>
+               <property name="styleSheet"><string>QPushButton { background-color: #D4A520; color: white; border-radius: 5px; font-weight: bold; }</string></property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btnAnnulerModifier">
+               <property name="text"><string>✗ Annuler</string></property>
+               <property name="minimumHeight"><number>45</number></property>
+               <property name="minimumWidth"><number>150</number></property>
+               <property name="styleSheet"><string>QPushButton { background-color: #A0A0A0; color: white; border-radius: 5px; font-weight: bold; }</string></property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+         
+         <!-- TAB 5: Signaler Panne -->
+         <widget class="QWidget" name="tabPanne">
+          <attribute name="title"><string>Signaler Panne</string></attribute>
+          <layout class="QVBoxLayout">
+           <property name="leftMargin"><number>20</number></property>
+           <property name="topMargin"><number>20</number></property>
+           <property name="rightMargin"><number>20</number></property>
+           <property name="bottomMargin"><number>20</number></property>
+           <item>
+            <widget class="QLabel">
+             <property name="text"><string>🔧 Sélectionnez une machine et décrivez la panne constatée.</string></property>
+             <property name="styleSheet"><string>QLabel { background-color: #FFF3E0; color: #E65100; border-radius: 4px; padding: 8px; }</string></property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="grpPanne">
+             <property name="title"><string>Détails de la Panne</string></property>
+             <layout class="QFormLayout">
+              <property name="horizontalSpacing"><number>20</number></property>
+              <property name="verticalSpacing"><number>12</number></property>
+              <item row="0" column="0"><widget class="QLabel"><property name="text"><string>Machine *</string></property></widget></item>
+              <item row="0" column="1"><widget class="QComboBox" name="comboPanneMachine"/></item>
+              <item row="1" column="0"><widget class="QLabel"><property name="text"><string>Date de panne</string></property></widget></item>
+              <item row="1" column="1"><widget class="QDateEdit" name="datePanne"><property name="calendarPopup"><bool>true</bool></property></widget></item>
+              <item row="2" column="0"><widget class="QLabel"><property name="text"><string>Type de panne *</string></property></widget></item>
+              <item row="2" column="1">
+               <widget class="QComboBox" name="comboTypePanne">
+                <item><property name="text"><string>Mécanique</string></property></item>
+                <item><property name="text"><string>Électrique</string></property></item>
+                <item><property name="text"><string>Hydraulique</string></property></item>
+                <item><property name="text"><string>Logicielle</string></property></item>
+                <item><property name="text"><string>Autre</string></property></item>
+               </widget>
+              </item>
+              <item row="3" column="0"><widget class="QLabel"><property name="text"><string>Gravité *</string></property></widget></item>
+              <item row="3" column="1">
+               <widget class="QComboBox" name="comboGravite">
+                <item><property name="text"><string>Mineure</string></property></item>
+                <item><property name="text"><string>Moyenne</string></property></item>
+                <item><property name="text"><string>Majeure</string></property></item>
+                <item><property name="text"><string>Critique</string></property></item>
+               </widget>
+              </item>
+              <item row="4" column="0"><widget class="QLabel"><property name="text"><string>Description</string></property></widget></item>
+              <item row="4" column="1">
+               <widget class="QTextEdit" name="txtDescriptionPanne">
+                <property name="maximumHeight"><number>100</number></property>
+                <property name="placeholderText"><string>Décrivez la panne...</string></property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item><spacer><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property></spacer></item>
+           <item>
+            <layout class="QHBoxLayout">
+             <item><spacer><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+             <item>
+              <widget class="QPushButton" name="btnSignalerPanne">
+               <property name="text"><string>⚠️ Signaler la panne</string></property>
+               <property name="minimumHeight"><number>45</number></property>
+               <property name="minimumWidth"><number>220</number></property>
+               <property name="styleSheet"><string>QPushButton { background-color: #FF8F00; color: white; border-radius: 5px; font-weight: bold; }</string></property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btnAnnulerPanne">
+               <property name="text"><string>✗ Annuler</string></property>
+               <property name="minimumHeight"><number>45</number></property>
+               <property name="minimumWidth"><number>150</number></property>
+               <property name="styleSheet"><string>QPushButton { background-color: #A0A0A0; color: white; border-radius: 5px; font-weight: bold; }</string></property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+         
+         <!-- TAB 6: Historique Interventions -->
+         <widget class="QWidget" name="tabHistorique">
+          <attribute name="title"><string>Historique Interventions</string></attribute>
+          <layout class="QVBoxLayout">
+           <item>
+            <widget class="QTableWidget" name="tableHistorique">
+             <property name="alternatingRowColors"><bool>true</bool></property>
+             <property name="selectionBehavior"><enum>QAbstractItemView::SelectRows</enum></property>
+             <column><property name="text"><string>ID</string></property></column>
+             <column><property name="text"><string>Machine</string></property></column>
+             <column><property name="text"><string>Type</string></property></column>
+             <column><property name="text"><string>Date</string></property></column>
+             <column><property name="text"><string>Description</string></property></column>
+             <column><property name="text"><string>Technicien</string></property></column>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout">
+             <item>
+              <widget class="QPushButton" name="btnExportHistorique">
+               <property name="text"><string>📄 Exporter Historique</string></property>
+               <property name="minimumHeight"><number>35</number></property>
+              </widget>
+             </item>
+             <item><spacer><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+         
+         <!-- TAB 7: Statistiques -->
+         <widget class="QWidget" name="tabStatistiques">
+          <attribute name="title"><string>📊 Statistiques</string></attribute>
+          <layout class="QVBoxLayout">
+           <item>
+            <widget class="QGroupBox" name="grpStatsResume">
+             <property name="title"><string>Résumé</string></property>
+             <layout class="QHBoxLayout">
+              <item>
+               <widget class="QGroupBox">
+                <property name="title"><string>Total Machines</string></property>
+                <layout class="QVBoxLayout">
+                 <item>
+                  <widget class="QLabel" name="lblStatsTotalMachines">
+                   <property name="text"><string>0</string></property>
+                   <property name="alignment"><set>Qt::AlignCenter</set></property>
+                   <property name="font"><font><pointsize>24</pointsize><bold>true</bold></font></property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QGroupBox">
+                <property name="title"><string>En Service</string></property>
+                <layout class="QVBoxLayout">
+                 <item>
+                  <widget class="QLabel" name="lblStatsEnService">
+                   <property name="text"><string>0</string></property>
+                   <property name="alignment"><set>Qt::AlignCenter</set></property>
+                   <property name="font"><font><pointsize>24</pointsize><bold>true</bold></font></property>
+                   <property name="styleSheet"><string>color: #4CAF50;</string></property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QGroupBox">
+                <property name="title"><string>En Panne</string></property>
+                <layout class="QVBoxLayout">
+                 <item>
+                  <widget class="QLabel" name="lblStatsEnPanne">
+                   <property name="text"><string>0</string></property>
+                   <property name="alignment"><set>Qt::AlignCenter</set></property>
+                   <property name="font"><font><pointsize>24</pointsize><bold>true</bold></font></property>
+                   <property name="styleSheet"><string>color: #F44336;</string></property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QGroupBox">
+                <property name="title"><string>En Maintenance</string></property>
+                <layout class="QVBoxLayout">
+                 <item>
+                  <widget class="QLabel" name="lblStatsMaintenance">
+                   <property name="text"><string>0</string></property>
+                   <property name="alignment"><set>Qt::AlignCenter</set></property>
+                   <property name="font"><font><pointsize>24</pointsize><bold>true</bold></font></property>
+                   <property name="styleSheet"><string>color: #FF9800;</string></property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTextEdit" name="txtStatistiques">
+             <property name="readOnly"><bool>true</bool></property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout">
+             <item>
+              <widget class="QPushButton" name="btnExportStats">
+               <property name="text"><string>📊 Exporter Statistiques</string></property>
+               <property name="minimumHeight"><number>35</number></property>
+              </widget>
+             </item>
+             <item><spacer><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+         
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
