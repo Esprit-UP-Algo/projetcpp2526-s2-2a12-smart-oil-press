@@ -46,18 +46,38 @@
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="lineClient"/>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="labelProduit">
-           <property name="text">
-            <string>Produit :</string>
+          <widget class="QComboBox" name="comboClient">
+           <property name="placeholderText">
+            <string>Chargement des clients...</string>
            </property>
           </widget>
          </item>
-         <item row="2" column="1">
-          <widget class="QComboBox" name="comboProduit"/>
-         </item>
+        <item row="2" column="0">
+ <widget class="QLabel" name="labelProduit">
+  <property name="text">
+   <string>Produit :</string>
+  </property>
+ </widget>
+</item>
+<item row="2" column="1">
+ <widget class="QComboBox" name="comboLibelle">
+  <item>
+   <property name="text"><string>Achat</string></property>
+  </item>
+  <item>
+   <property name="text"><string>Service</string></property>
+  </item>
+  <item>
+   <property name="text"><string>Maintenance</string></property>
+  </item>
+  <item>
+   <property name="text"><string>Urgente</string></property>
+  </item>
+  <item>
+   <property name="text"><string>Autre</string></property>
+  </item>
+ </widget>
+</item>
          <item row="3" column="0">
           <widget class="QLabel" name="labelQuantite">
            <property name="text">
@@ -86,25 +106,25 @@
           </widget>
          </item>
          <item row="5" column="1">
-          <widget class="QComboBox" name="comboStatut">
+         <widget class="QComboBox" name="comboStatut">
            <item>
             <property name="text">
-             <string>En attente</string>
+             <string>en cours</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>Confirmée</string>
+             <string>validee</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>Expédiée</string>
+             <string>prete</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>Livrée</string>
+             <string>annulee</string>
             </property>
            </item>
           </widget>
@@ -324,27 +344,19 @@
           </item>
           <item row="0" column="1">
            <widget class="QComboBox" name="comboStatutModif">
-            <item>
-             <property name="text">
-              <string>En attente</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Confirmée</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Expédiée</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Livrée</string>
-             </property>
-            </item>
-           </widget>
+             <item>
+              <property name="text"><string>en cours</string></property>
+             </item>
+             <item>
+              <property name="text"><string>validee</string></property>
+             </item>
+             <item>
+              <property name="text"><string>prete</string></property>
+             </item>
+             <item>
+              <property name="text"><string>annulee</string></property>
+             </item>
+            </widget>
           </item>
           <item row="1" column="0">
            <widget class="QLabel" name="labelQuantiteModif">
@@ -407,20 +419,8 @@
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="labelSearchFournisseur">
-            <property name="text">
-             <string>Rechercher par fournisseur :</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1" colspan="3">
-           <widget class="QLineEdit" name="lineSearchFournisseur">
-            <property name="placeholderText">
-             <string>Entrez le nom du fournisseur</string>
-            </property>
-           </widget>
-          </item>
+          
+         
           <item row="2" column="0">
            <widget class="QLabel" name="labelSearchClient">
             <property name="text">
@@ -532,12 +532,12 @@
          </column>
          <column>
           <property name="text">
-           <string>Client</string>
+           <string>Client (ID)</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string>Fournisseur</string>
+           <string>Libellé</string>
           </property>
          </column>
          <column>

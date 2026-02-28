@@ -48,9 +48,9 @@ public:
     QLabel *labelNumCommande;
     QLineEdit *lineNumCommande;
     QLabel *labelClient;
-    QLineEdit *lineClient;
+    QComboBox *comboClient;
     QLabel *labelProduit;
-    QComboBox *comboProduit;
+    QComboBox *comboLibelle;
     QLabel *labelQuantite;
     QSpinBox *spinQuantite;
     QLabel *labelPrix;
@@ -103,8 +103,6 @@ public:
     QDateEdit *dateSearchDebut;
     QLabel *labelSearchDateTo;
     QDateEdit *dateSearchFin;
-    QLabel *labelSearchFournisseur;
-    QLineEdit *lineSearchFournisseur;
     QLabel *labelSearchClient;
     QLineEdit *lineSearchClient;
     QGroupBox *groupTri;
@@ -228,20 +226,25 @@ public:
 
         grid_ajouter->addWidget(labelClient, 1, 0, 1, 1);
 
-        lineClient = new QLineEdit(tabAjouter);
-        lineClient->setObjectName("lineClient");
+        comboClient = new QComboBox(tabAjouter);
+        comboClient->setObjectName("comboClient");
 
-        grid_ajouter->addWidget(lineClient, 1, 1, 1, 1);
+        grid_ajouter->addWidget(comboClient, 1, 1, 1, 1);
 
         labelProduit = new QLabel(tabAjouter);
         labelProduit->setObjectName("labelProduit");
 
         grid_ajouter->addWidget(labelProduit, 2, 0, 1, 1);
 
-        comboProduit = new QComboBox(tabAjouter);
-        comboProduit->setObjectName("comboProduit");
+        comboLibelle = new QComboBox(tabAjouter);
+        comboLibelle->addItem(QString());
+        comboLibelle->addItem(QString());
+        comboLibelle->addItem(QString());
+        comboLibelle->addItem(QString());
+        comboLibelle->addItem(QString());
+        comboLibelle->setObjectName("comboLibelle");
 
-        grid_ajouter->addWidget(comboProduit, 2, 1, 1, 1);
+        grid_ajouter->addWidget(comboLibelle, 2, 1, 1, 1);
 
         labelQuantite = new QLabel(tabAjouter);
         labelQuantite->setObjectName("labelQuantite");
@@ -495,16 +498,6 @@ public:
         dateSearchFin->setCalendarPopup(true);
 
         gridRecherche->addWidget(dateSearchFin, 0, 3, 1, 1);
-
-        labelSearchFournisseur = new QLabel(groupRecherche);
-        labelSearchFournisseur->setObjectName("labelSearchFournisseur");
-
-        gridRecherche->addWidget(labelSearchFournisseur, 1, 0, 1, 1);
-
-        lineSearchFournisseur = new QLineEdit(groupRecherche);
-        lineSearchFournisseur->setObjectName("lineSearchFournisseur");
-
-        gridRecherche->addWidget(lineSearchFournisseur, 1, 1, 1, 3);
 
         labelSearchClient = new QLabel(groupRecherche);
         labelSearchClient->setObjectName("labelSearchClient");
@@ -968,14 +961,21 @@ public:
         label->setText(QCoreApplication::translate("CommandeWidget", "GESTION DES COMMANDES", nullptr));
         labelNumCommande->setText(QCoreApplication::translate("CommandeWidget", "Num\303\251ro de commande :", nullptr));
         labelClient->setText(QCoreApplication::translate("CommandeWidget", "Client :", nullptr));
+        comboClient->setPlaceholderText(QCoreApplication::translate("CommandeWidget", "Chargement des clients...", nullptr));
         labelProduit->setText(QCoreApplication::translate("CommandeWidget", "Produit :", nullptr));
+        comboLibelle->setItemText(0, QCoreApplication::translate("CommandeWidget", "Achat", nullptr));
+        comboLibelle->setItemText(1, QCoreApplication::translate("CommandeWidget", "Service", nullptr));
+        comboLibelle->setItemText(2, QCoreApplication::translate("CommandeWidget", "Maintenance", nullptr));
+        comboLibelle->setItemText(3, QCoreApplication::translate("CommandeWidget", "Urgente", nullptr));
+        comboLibelle->setItemText(4, QCoreApplication::translate("CommandeWidget", "Autre", nullptr));
+
         labelQuantite->setText(QCoreApplication::translate("CommandeWidget", "Quantit\303\251 :", nullptr));
         labelPrix->setText(QCoreApplication::translate("CommandeWidget", "Prix unitaire :", nullptr));
         labelStatut->setText(QCoreApplication::translate("CommandeWidget", "Statut :", nullptr));
-        comboStatut->setItemText(0, QCoreApplication::translate("CommandeWidget", "En attente", nullptr));
-        comboStatut->setItemText(1, QCoreApplication::translate("CommandeWidget", "Confirm\303\251e", nullptr));
-        comboStatut->setItemText(2, QCoreApplication::translate("CommandeWidget", "Exp\303\251di\303\251e", nullptr));
-        comboStatut->setItemText(3, QCoreApplication::translate("CommandeWidget", "Livr\303\251e", nullptr));
+        comboStatut->setItemText(0, QCoreApplication::translate("CommandeWidget", "en cours", nullptr));
+        comboStatut->setItemText(1, QCoreApplication::translate("CommandeWidget", "validee", nullptr));
+        comboStatut->setItemText(2, QCoreApplication::translate("CommandeWidget", "prete", nullptr));
+        comboStatut->setItemText(3, QCoreApplication::translate("CommandeWidget", "annulee", nullptr));
 
         labelDate->setText(QCoreApplication::translate("CommandeWidget", "Date de commande :", nullptr));
         btnAjouter->setText(QCoreApplication::translate("CommandeWidget", "Ajouter", nullptr));
@@ -1007,10 +1007,10 @@ public:
         labelIdMod->setText(QCoreApplication::translate("CommandeWidget", "Num\303\251ro de commande :", nullptr));
         groupBox_prefill->setTitle(QCoreApplication::translate("CommandeWidget", "Modifier les donn\303\251es", nullptr));
         labelStatutModif->setText(QCoreApplication::translate("CommandeWidget", "Nouveau statut :", nullptr));
-        comboStatutModif->setItemText(0, QCoreApplication::translate("CommandeWidget", "En attente", nullptr));
-        comboStatutModif->setItemText(1, QCoreApplication::translate("CommandeWidget", "Confirm\303\251e", nullptr));
-        comboStatutModif->setItemText(2, QCoreApplication::translate("CommandeWidget", "Exp\303\251di\303\251e", nullptr));
-        comboStatutModif->setItemText(3, QCoreApplication::translate("CommandeWidget", "Livr\303\251e", nullptr));
+        comboStatutModif->setItemText(0, QCoreApplication::translate("CommandeWidget", "en cours", nullptr));
+        comboStatutModif->setItemText(1, QCoreApplication::translate("CommandeWidget", "validee", nullptr));
+        comboStatutModif->setItemText(2, QCoreApplication::translate("CommandeWidget", "prete", nullptr));
+        comboStatutModif->setItemText(3, QCoreApplication::translate("CommandeWidget", "annulee", nullptr));
 
         labelQuantiteModif->setText(QCoreApplication::translate("CommandeWidget", "Quantit\303\251 :", nullptr));
         btnModifierConfirm->setText(QCoreApplication::translate("CommandeWidget", "Mettre \303\240 jour", nullptr));
@@ -1018,8 +1018,6 @@ public:
         groupRecherche->setTitle(QCoreApplication::translate("CommandeWidget", "Recherche", nullptr));
         labelSearchDate->setText(QCoreApplication::translate("CommandeWidget", "Rechercher par date :", nullptr));
         labelSearchDateTo->setText(QCoreApplication::translate("CommandeWidget", "\303\240", nullptr));
-        labelSearchFournisseur->setText(QCoreApplication::translate("CommandeWidget", "Rechercher par fournisseur :", nullptr));
-        lineSearchFournisseur->setPlaceholderText(QCoreApplication::translate("CommandeWidget", "Entrez le nom du fournisseur", nullptr));
         labelSearchClient->setText(QCoreApplication::translate("CommandeWidget", "Rechercher par client :", nullptr));
         lineSearchClient->setPlaceholderText(QCoreApplication::translate("CommandeWidget", "Entrez le nom du client", nullptr));
         groupTri->setTitle(QCoreApplication::translate("CommandeWidget", "Tri", nullptr));
@@ -1036,9 +1034,9 @@ public:
         QTableWidgetItem *___qtablewidgetitem6 = tableResultatsRecherche->horizontalHeaderItem(0);
         ___qtablewidgetitem6->setText(QCoreApplication::translate("CommandeWidget", "Num\303\251ro", nullptr));
         QTableWidgetItem *___qtablewidgetitem7 = tableResultatsRecherche->horizontalHeaderItem(1);
-        ___qtablewidgetitem7->setText(QCoreApplication::translate("CommandeWidget", "Client", nullptr));
+        ___qtablewidgetitem7->setText(QCoreApplication::translate("CommandeWidget", "Client (ID)", nullptr));
         QTableWidgetItem *___qtablewidgetitem8 = tableResultatsRecherche->horizontalHeaderItem(2);
-        ___qtablewidgetitem8->setText(QCoreApplication::translate("CommandeWidget", "Fournisseur", nullptr));
+        ___qtablewidgetitem8->setText(QCoreApplication::translate("CommandeWidget", "Libell\303\251", nullptr));
         QTableWidgetItem *___qtablewidgetitem9 = tableResultatsRecherche->horizontalHeaderItem(3);
         ___qtablewidgetitem9->setText(QCoreApplication::translate("CommandeWidget", "Montant", nullptr));
         QTableWidgetItem *___qtablewidgetitem10 = tableResultatsRecherche->horizontalHeaderItem(4);
