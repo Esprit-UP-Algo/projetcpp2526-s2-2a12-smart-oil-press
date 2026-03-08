@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-07bd3f3118927f2a52eb.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "smart_oil_client",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "smart_oil_client::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-smart_oil_client-Debug-16036daf9c1db63129cf.json",
+					"name" : "smart_oil_client",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "smart_oil_client_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-smart_oil_client_autogen-Debug-cb702d12709e41ad8f8a.json",
+					"name" : "smart_oil_client_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "smart_oil_client_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-smart_oil_client_autogen_timestamp_deps-Debug-9af3c040601f9866a4b6.json",
+					"name" : "smart_oil_client_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "E:/just client/client_project/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug",
+		"source" : "E:/just client/client_project"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

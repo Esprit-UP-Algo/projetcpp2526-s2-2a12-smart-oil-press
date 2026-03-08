@@ -1,0 +1,45 @@
+# ninja log v6
+5	707	7946208084342023	smart_oil_client_autogen/timestamp	e6eac8f447e930ad
+5	707	7946208084342023	smart_oil_client_autogen/mocs_compilation.cpp	e6eac8f447e930ad
+5	707	7946208084342023	E:/just client/client_project/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/smart_oil_client_autogen/timestamp	e6eac8f447e930ad
+5	707	7946208084342023	E:/just client/client_project/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/smart_oil_client_autogen/mocs_compilation.cpp	e6eac8f447e930ad
+716	807	7946208085942158	smart_oil_client_autogen/EWIEGA46WW/qrc_resources.cpp	4060c255ac4616
+716	807	7946208085942158	E:/just client/client_project/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/smart_oil_client_autogen/EWIEGA46WW/qrc_resources.cpp	4060c255ac4616
+833	1004	7946208086346326	CMakeFiles/smart_oil_client.dir/smart_oil_client_autogen/EWIEGA46WW/qrc_resources.cpp.obj	117b86bbdf524b5e
+828	3883	7946208086304497	CMakeFiles/smart_oil_client.dir/client.cpp.obj	805c5458a02e37c5
+814	5001	7946208086144571	CMakeFiles/smart_oil_client.dir/main.cpp.obj	3770e7bd4aac2750
+808	5049	7946208086042400	CMakeFiles/smart_oil_client.dir/smart_oil_client_autogen/mocs_compilation.cpp.obj	4403c40a8e5d7408
+818	6748	7946208086144571	CMakeFiles/smart_oil_client.dir/mainwindow.cpp.obj	7e069b1457c79ac4
+48	1001	7946671721155043	smart_oil_client_autogen/timestamp	e6eac8f447e930ad
+48	1001	7946671721155043	smart_oil_client_autogen/mocs_compilation.cpp	e6eac8f447e930ad
+48	1001	7946671721155043	E:/just client/client_project/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/smart_oil_client_autogen/timestamp	e6eac8f447e930ad
+48	1001	7946671721155043	E:/just client/client_project/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/smart_oil_client_autogen/mocs_compilation.cpp	e6eac8f447e930ad
+1002	3855	7946671721916457	CMakeFiles/smart_oil_client.dir/smart_oil_client_autogen/mocs_compilation.cpp.obj	4403c40a8e5d7408
+1009	3975	7946671721998997	CMakeFiles/smart_oil_client.dir/main.cpp.obj	3770e7bd4aac2750
+1015	5429	7946671722081481	CMakeFiles/smart_oil_client.dir/mainwindow.cpp.obj	7e069b1457c79ac4
+1021	10962	7946671722140553	CMakeFiles/smart_oil_client.dir/widget_client.cpp.obj	a286474eb215526e
+10966	12199	7946671821591032	smart_oil_client.exe	490dd47f0cb9742b
+14	186	7946675490428026	smart_oil_client_autogen/timestamp	e6eac8f447e930ad
+14	186	7946675490428026	smart_oil_client_autogen/mocs_compilation.cpp	e6eac8f447e930ad
+14	186	7946675490428026	E:/just client/client_project/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/smart_oil_client_autogen/timestamp	e6eac8f447e930ad
+14	186	7946675490428026	E:/just client/client_project/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/smart_oil_client_autogen/mocs_compilation.cpp	e6eac8f447e930ad
+187	2339	7946675492287682	CMakeFiles/smart_oil_client.dir/main.cpp.obj	3770e7bd4aac2750
+191	2821	7946675492328792	CMakeFiles/smart_oil_client.dir/mainwindow.cpp.obj	7e069b1457c79ac4
+196	4690	7946675492375568	CMakeFiles/smart_oil_client.dir/widget_client.cpp.obj	a286474eb215526e
+4690	5812	7946675537297485	smart_oil_client.exe	490dd47f0cb9742b
+59	650	7946686693509798	smart_oil_client_autogen/timestamp	e6eac8f447e930ad
+59	650	7946686693509798	smart_oil_client_autogen/mocs_compilation.cpp	e6eac8f447e930ad
+59	650	7946686693509798	E:/just client/client_project/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/smart_oil_client_autogen/timestamp	e6eac8f447e930ad
+59	650	7946686693509798	E:/just client/client_project/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/smart_oil_client_autogen/mocs_compilation.cpp	e6eac8f447e930ad
+654	3121	7946686699452843	CMakeFiles/smart_oil_client.dir/main.cpp.obj	3770e7bd4aac2750
+678	3658	7946686699705847	CMakeFiles/smart_oil_client.dir/mainwindow.cpp.obj	7e069b1457c79ac4
+721	7856	7946686700127456	CMakeFiles/smart_oil_client.dir/widget_client.cpp.obj	a286474eb215526e
+7857	8943	7946686771475348	smart_oil_client.exe	490dd47f0cb9742b
+18	163	7946687914145518	smart_oil_client_autogen/timestamp	e6eac8f447e930ad
+18	163	7946687914145518	smart_oil_client_autogen/mocs_compilation.cpp	e6eac8f447e930ad
+18	163	7946687914145518	E:/just client/client_project/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/smart_oil_client_autogen/timestamp	e6eac8f447e930ad
+18	163	7946687914145518	E:/just client/client_project/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/smart_oil_client_autogen/mocs_compilation.cpp	e6eac8f447e930ad
+164	2610	7946687915604156	CMakeFiles/smart_oil_client.dir/main.cpp.obj	3770e7bd4aac2750
+168	3378	7946687915644778	CMakeFiles/smart_oil_client.dir/mainwindow.cpp.obj	7e069b1457c79ac4
+173	9192	7946687915697191	CMakeFiles/smart_oil_client.dir/widget_client.cpp.obj	a286474eb215526e
+9193	10697	7946688005893413	smart_oil_client.exe	490dd47f0cb9742b

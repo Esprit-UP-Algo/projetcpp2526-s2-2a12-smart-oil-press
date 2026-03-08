@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Smart Oil Press Management</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayoutMain">
+    <item>
+     <widget class="QFrame" name="navFrame">
+      <property name="minimumWidth">
+       <number>200</number>
+      </property>
+      <layout class="QVBoxLayout" name="navLayout">
+       <item>
+        <widget class="QLabel" name="logoLabel">
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="resources.qrc">:/images/logo.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+         <property name="maximumHeight">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnEmploye">
+         <property name="text">
+          <string>EMPLOYÉ</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnEquipe">
+         <property name="text">
+          <string>ÉQUIPE</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnClient">
+         <property name="text">
+          <string>CLIENT</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnLaboratoire">
+         <property name="text">
+          <string>LABORATOIRE</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnCommande">
+         <property name="text">
+          <string>COMMANDE</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnMachine">
+         <property name="text">
+          <string>MACHINE</string>
+         </property>
+        </widget>
+       </item>
+    <item>
+     <widget class="QPushButton" name="btnQuit">
+      <property name="text">
+       <string>QUITTER</string>
+      </property>
+     </widget>
+    </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QStackedWidget" name="stackedMain">
+      <widget class="QWidget" name="pagePlaceholder">
+       <attribute name="title">
+        <string>Accueil</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_placeholder">
+        <item>
+         <widget class="QLabel" name="welcomeLabel">
+          <property name="text">
+           <string>Bienvenue dans l'application de gestion</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pageAccueil">
+       <layout class="QVBoxLayout" name="accueilLayout">
+        <property name="leftMargin">
+         <number>60</number>
+        </property>
+        <property name="rightMargin">
+         <number>60</number>
+        </property>
+        <item>
+         <spacer name="accueilTopSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="accueilTitre">
+          <property name="text">
+           <string>🌿 Bienvenue sur Smart Oil Management</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="styleSheet">
+           <string>font-size: 28px; font-weight: bold; color: #2E7D32; margin-bottom: 20px;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="accueilMessage">
+          <property name="text">
+           <string>Votre solution complète pour la gestion intelligente de votre huilerie.
+
+Gérez efficacement vos employés, équipes, commandes, laboratoires et machines
+depuis une interface moderne et intuitive.
+
+Optimisez votre production, suivez vos analyses qualité et prenez des décisions
+éclairées grâce à nos outils de statistiques et de géolocalisation.</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+          <property name="styleSheet">
+           <string>font-size: 16px; color: #555; line-height: 1.6; margin: 30px 0;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="accueilBtnLayout">
+          <item>
+           <spacer name="accueilBtnLeftSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnContinuer">
+            <property name="text">
+             <string>Commencer →</string>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>200</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string>QPushButton { background-color: #2E7D32; color: white; font-size: 18px; font-weight: bold; border-radius: 8px; } QPushButton:hover { background-color: #1B5E20; }</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="accueilBtnRightSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="accueilBottomSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar"/>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
