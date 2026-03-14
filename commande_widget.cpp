@@ -110,6 +110,17 @@ void CommandeWidget::onAjouterCommande()
     QString libelle = ui->comboLibelle->currentText();
     int quantite = ui->spinQuantite->value();
     double prixUnitaire = ui->spinPrix->value();
+
+    // --- Nouvelle vérification ---
+    if (quantite <= 0) {
+        QMessageBox::warning(this, "Erreur", "La quantité doit être supérieure à zéro !");
+        return;
+    }
+    if (prixUnitaire <= 0.0) {
+        QMessageBox::warning(this, "Erreur", "Le prix unitaire doit être supérieur à zéro !");
+        return;
+    }
+
     double montantTotal = prixUnitaire * quantite;
 
     QString etat = ui->comboStatut->currentText().trimmed();
