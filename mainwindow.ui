@@ -273,7 +273,11 @@
                </widget>
               </item>
               <item row="10" column="1">
-               <widget class="QSpinBox" name="spin_fourn" />
+               <widget class="QSpinBox" name="spin_fourn">
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
               </item>
               <item row="11" column="0">
                <widget class="QLabel" name="label_id_equipe">
@@ -411,32 +415,6 @@
                     </item>
                    </widget>
                   </item>
-                  <item>
-                   <widget class="QLabel" name="label_search_disp">
-                    <property name="text">
-                     <string>Disponibilité</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QComboBox" name="search_disp">
-                    <item>
-                     <property name="text">
-                      <string>-- Tous --</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Actif</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>Suspendu</string>
-                     </property>
-                    </item>
-                   </widget>
-                  </item>
                  </layout>
                 </widget>
                </item>
@@ -446,13 +424,6 @@
                   <string>Tri</string>
                  </property>
                  <layout class="QVBoxLayout" name="vSort">
-                  <item>
-                   <widget class="QRadioButton" name="sort_nom">
-                    <property name="text">
-                     <string>Nom</string>
-                    </property>
-                   </widget>
-                  </item>
                   <item>
                    <widget class="QRadioButton" name="sort_salaire">
                     <property name="text">
@@ -464,13 +435,6 @@
                    <widget class="QRadioButton" name="sort_anciennete">
                     <property name="text">
                      <string>Ancienneté</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QRadioButton" name="sort_age">
-                    <property name="text">
-                     <string>Âge</string>
                     </property>
                    </widget>
                   </item>
@@ -515,6 +479,20 @@
                    </widget>
                   </item>
                  </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btnAppliquerFiltre">
+                 <property name="text">
+                  <string>Appliquer</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btnResetFiltre">
+                 <property name="text">
+                  <string>Réinitialiser</string>
+                 </property>
                 </widget>
                </item>
                <item>
@@ -791,7 +769,11 @@
                 </widget>
                </item>
                <item row="9" column="1">
-                <widget class="QSpinBox" name="spin_fourn_mod" />
+                <widget class="QSpinBox" name="spin_fourn_mod">
+                 <property name="maximum">
+                  <number>1000000</number>
+                 </property>
+                </widget>
                </item>
                <item row="10" column="0">
                 <widget class="QLabel" name="label_id_equipe_mod">
@@ -821,168 +803,99 @@
            </attribute>
            <layout class="QVBoxLayout" name="vertical_statistiques">
             <item>
-             <widget class="QGroupBox" name="groupEffectifs">
+                         <layout class="QHBoxLayout" name="hStatsSummary">
+                            <item>
+                             <widget class="QLabel" name="label_total_employes">
+                                <property name="text">
+                                 <string>Nombre total d'employés : 0</string>
+                                </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QLabel" name="label_masse_salariale">
+                                <property name="text">
+                                 <string>Masse salariale totale : 0.00 €</string>
+                                </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QLabel" name="label_salaire_moyen">
+                                <property name="text">
+                                 <string>Salaire moyen : 0.00 €</string>
+                                </property>
+                             </widget>
+                            </item>
+                         </layout>
+            </item>
+            <item>
+                         <widget class="QGroupBox" name="groupTopChart">
               <property name="title">
-               <string>Effectifs</string>
+                             <string>Masse salariale par spécialité</string>
               </property>
-              <layout class="QVBoxLayout" name="vEffectifs">
+                            <layout class="QVBoxLayout" name="vTopChart">
                <item>
-                <widget class="QLabel" name="label_total_employes">
-                 <property name="text">
-                  <string>Nombre total d'employés : 0</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_par_specialite">
-                 <property name="text">
-                  <string>Nombre par spécialité :</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QTableWidget" name="table_effectifs_spec">
-                 <property name="maximumHeight">
-                  <number>150</number>
-                 </property>
-                 <property name="columnCount">
-                  <number>2</number>
-                 </property>
-                 <column>
-                  <property name="text">
-                   <string>Spécialité</string>
-                  </property>
-                 </column>
-                 <column>
-                  <property name="text">
-                   <string>Nombre</string>
-                  </property>
-                 </column>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_par_disponibilite">
-                 <property name="text">
-                  <string>Nombre par disponibilité :</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QTableWidget" name="table_effectifs_disp">
-                 <property name="maximumHeight">
-                  <number>120</number>
-                 </property>
-                 <property name="columnCount">
-                  <number>2</number>
-                 </property>
-                 <column>
-                  <property name="text">
-                   <string>Disponibilité</string>
-                  </property>
-                 </column>
-                 <column>
-                  <property name="text">
-                   <string>Nombre</string>
-                  </property>
-                 </column>
-                </widget>
+                                <widget class="QFrame" name="frameStatsTopChart">
+                                 <property name="minimumHeight">
+                                    <number>280</number>
+                                 </property>
+                                 <property name="frameShape">
+                                    <enum>QFrame::StyledPanel</enum>
+                                 </property>
+                                 <property name="frameShadow">
+                                    <enum>QFrame::Raised</enum>
+                                 </property>
+                                </widget>
                </item>
               </layout>
              </widget>
             </item>
             <item>
-             <widget class="QGroupBox" name="groupFinances">
-              <property name="title">
-               <string>Finances</string>
-              </property>
-              <layout class="QVBoxLayout" name="vFinances">
-               <item>
-                <widget class="QLabel" name="label_masse_salariale">
-                 <property name="text">
-                  <string>Masse salariale totale : 0.00 €</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_salaire_moyen">
-                 <property name="text">
-                  <string>Salaire moyen : 0.00 €</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_par_specialite_sal">
-                 <property name="text">
-                  <string>Masse salariale par spécialité :</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QTableWidget" name="table_finances_spec">
-                 <property name="maximumHeight">
-                  <number>150</number>
-                 </property>
-                 <property name="columnCount">
-                  <number>2</number>
-                 </property>
-                 <column>
-                  <property name="text">
-                   <string>Spécialité</string>
-                  </property>
-                 </column>
-                 <column>
-                  <property name="text">
-                   <string>Masse salariale (€)</string>
-                  </property>
-                 </column>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item>
-             <widget class="QGroupBox" name="groupPerformance">
-              <property name="title">
-               <string>Performance</string>
-              </property>
-              <layout class="QVBoxLayout" name="vPerformance">
-               <item>
-                <widget class="QLabel" name="label_anciennete_moyenne">
-                 <property name="text">
-                  <string>Ancienneté moyenne : 0 ans</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_heures_moyennes">
-                 <property name="text">
-                  <string>Heures de travail moyennes : 0 h/semaine</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_fournisseurs_moyen">
-                 <property name="text">
-                  <string>Nombre moyen de fournisseurs : 0</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="spacerPerf">
-                 <property name="orientation">
-                  <enum>Qt::Vertical</enum>
-                 </property>
-                </spacer>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item>
-             <spacer name="verticalSpacer_stats">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-             </spacer>
+                         <layout class="QHBoxLayout" name="hBottomCharts">
+                            <item>
+                             <widget class="QGroupBox" name="groupLeftChart">
+                                <property name="title">
+                                 <string>Répartition des employés par spécialité</string>
+                                </property>
+                                <layout class="QVBoxLayout" name="vLeftChart">
+                                 <item>
+                                    <widget class="QFrame" name="frameStatsLeftChart">
+                                     <property name="minimumHeight">
+                                        <number>250</number>
+                                     </property>
+                                     <property name="frameShape">
+                                        <enum>QFrame::StyledPanel</enum>
+                                     </property>
+                                     <property name="frameShadow">
+                                        <enum>QFrame::Raised</enum>
+                                     </property>
+                                    </widget>
+                                 </item>
+                                </layout>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QGroupBox" name="groupRightChart">
+                                <property name="title">
+                                 <string>Top employés par fournisseurs traités</string>
+                                </property>
+                                <layout class="QVBoxLayout" name="vRightChart">
+                                 <item>
+                                    <widget class="QFrame" name="frameStatsRightChart">
+                                     <property name="minimumHeight">
+                                        <number>250</number>
+                                     </property>
+                                     <property name="frameShape">
+                                        <enum>QFrame::StyledPanel</enum>
+                                     </property>
+                                     <property name="frameShadow">
+                                        <enum>QFrame::Raised</enum>
+                                     </property>
+                                    </widget>
+                                 </item>
+                                </layout>
+                             </widget>
+                            </item>
+                         </layout>
             </item>
            </layout>
           </widget>
@@ -1001,16 +914,6 @@
                 <widget class="QPushButton" name="btnExportListeComplete">
                  <property name="text">
                   <string>📄 Exporter la liste complète des employés (PDF)</string>
-                 </property>
-                 <property name="minimumHeight">
-                  <number>50</number>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QPushButton" name="btnExportRapportRH">
-                 <property name="text">
-                  <string>📊 Exporter un rapport statistiques RH (PDF)</string>
                  </property>
                  <property name="minimumHeight">
                   <number>50</number>
@@ -1058,7 +961,7 @@
                <item>
                 <widget class="QTextEdit" name="textEdit_export_messages">
                  <property name="readOnly">
-                  <bool>true</bool>
+                  <bool>false</bool>
                  </property>
                  <property name="maximumHeight">
                   <number>100</number>

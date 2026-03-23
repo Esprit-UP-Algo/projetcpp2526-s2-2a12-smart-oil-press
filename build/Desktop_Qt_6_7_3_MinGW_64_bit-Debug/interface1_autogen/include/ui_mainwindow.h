@@ -100,20 +100,18 @@ public:
     QLineEdit *search_id_equipe;
     QLabel *label_search_spec;
     QComboBox *search_spec;
-    QLabel *label_search_disp;
-    QComboBox *search_disp;
     QGroupBox *groupSort;
     QVBoxLayout *vSort;
-    QRadioButton *sort_nom;
     QRadioButton *sort_salaire;
     QRadioButton *sort_anciennete;
-    QRadioButton *sort_age;
     QRadioButton *sort_heures;
     QRadioButton *sort_fournisseurs;
     QGroupBox *groupOrder;
     QVBoxLayout *vOrder;
     QRadioButton *order_asc;
     QRadioButton *order_desc;
+    QPushButton *btnAppliquerFiltre;
+    QPushButton *btnResetFiltre;
     QSpacerItem *verticalSpacer_liste;
     QFrame *mainListe;
     QVBoxLayout *vLayout_tableArea;
@@ -154,32 +152,25 @@ public:
     QPushButton *btnModifierConfirm;
     QWidget *tabStatistiques;
     QVBoxLayout *vertical_statistiques;
-    QGroupBox *groupEffectifs;
-    QVBoxLayout *vEffectifs;
+    QHBoxLayout *hStatsSummary;
     QLabel *label_total_employes;
-    QLabel *label_par_specialite;
-    QTableWidget *table_effectifs_spec;
-    QLabel *label_par_disponibilite;
-    QTableWidget *table_effectifs_disp;
-    QGroupBox *groupFinances;
-    QVBoxLayout *vFinances;
     QLabel *label_masse_salariale;
     QLabel *label_salaire_moyen;
-    QLabel *label_par_specialite_sal;
-    QTableWidget *table_finances_spec;
-    QGroupBox *groupPerformance;
-    QVBoxLayout *vPerformance;
-    QLabel *label_anciennete_moyenne;
-    QLabel *label_heures_moyennes;
-    QLabel *label_fournisseurs_moyen;
-    QSpacerItem *spacerPerf;
-    QSpacerItem *verticalSpacer_stats;
+    QGroupBox *groupTopChart;
+    QVBoxLayout *vTopChart;
+    QFrame *frameStatsTopChart;
+    QHBoxLayout *hBottomCharts;
+    QGroupBox *groupLeftChart;
+    QVBoxLayout *vLeftChart;
+    QFrame *frameStatsLeftChart;
+    QGroupBox *groupRightChart;
+    QVBoxLayout *vRightChart;
+    QFrame *frameStatsRightChart;
     QWidget *tabExportPdf;
     QVBoxLayout *vertical_export_pdf;
     QGroupBox *groupExportOptions;
     QVBoxLayout *vExportOptions;
     QPushButton *btnExportListeComplete;
-    QPushButton *btnExportRapportRH;
     QPushButton *btnExportFicheEmploye;
     QGroupBox *groupIdExport;
     QFormLayout *formIdExport;
@@ -420,6 +411,7 @@ public:
 
         spin_fourn = new QSpinBox(tabAjouter);
         spin_fourn->setObjectName("spin_fourn");
+        spin_fourn->setMaximum(1000000);
 
         grid_ajouter->addWidget(spin_fourn, 10, 1, 1, 1);
 
@@ -512,19 +504,6 @@ public:
 
         vSearch->addWidget(search_spec);
 
-        label_search_disp = new QLabel(groupSearch);
-        label_search_disp->setObjectName("label_search_disp");
-
-        vSearch->addWidget(label_search_disp);
-
-        search_disp = new QComboBox(groupSearch);
-        search_disp->addItem(QString());
-        search_disp->addItem(QString());
-        search_disp->addItem(QString());
-        search_disp->setObjectName("search_disp");
-
-        vSearch->addWidget(search_disp);
-
 
         vLayout_sidebar->addWidget(groupSearch);
 
@@ -532,11 +511,6 @@ public:
         groupSort->setObjectName("groupSort");
         vSort = new QVBoxLayout(groupSort);
         vSort->setObjectName("vSort");
-        sort_nom = new QRadioButton(groupSort);
-        sort_nom->setObjectName("sort_nom");
-
-        vSort->addWidget(sort_nom);
-
         sort_salaire = new QRadioButton(groupSort);
         sort_salaire->setObjectName("sort_salaire");
 
@@ -546,11 +520,6 @@ public:
         sort_anciennete->setObjectName("sort_anciennete");
 
         vSort->addWidget(sort_anciennete);
-
-        sort_age = new QRadioButton(groupSort);
-        sort_age->setObjectName("sort_age");
-
-        vSort->addWidget(sort_age);
 
         sort_heures = new QRadioButton(groupSort);
         sort_heures->setObjectName("sort_heures");
@@ -582,6 +551,16 @@ public:
 
 
         vLayout_sidebar->addWidget(groupOrder);
+
+        btnAppliquerFiltre = new QPushButton(sidebarListe);
+        btnAppliquerFiltre->setObjectName("btnAppliquerFiltre");
+
+        vLayout_sidebar->addWidget(btnAppliquerFiltre);
+
+        btnResetFiltre = new QPushButton(sidebarListe);
+        btnResetFiltre->setObjectName("btnResetFiltre");
+
+        vLayout_sidebar->addWidget(btnResetFiltre);
 
         verticalSpacer_liste = new QSpacerItem(0, 0, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
@@ -774,6 +753,7 @@ public:
 
         spin_fourn_mod = new QSpinBox(groupBox_prefill);
         spin_fourn_mod->setObjectName("spin_fourn_mod");
+        spin_fourn_mod->setMaximum(1000000);
 
         grid_prefill->addWidget(spin_fourn_mod, 9, 1, 1, 1);
 
@@ -800,118 +780,75 @@ public:
         tabStatistiques->setObjectName("tabStatistiques");
         vertical_statistiques = new QVBoxLayout(tabStatistiques);
         vertical_statistiques->setObjectName("vertical_statistiques");
-        groupEffectifs = new QGroupBox(tabStatistiques);
-        groupEffectifs->setObjectName("groupEffectifs");
-        vEffectifs = new QVBoxLayout(groupEffectifs);
-        vEffectifs->setObjectName("vEffectifs");
-        label_total_employes = new QLabel(groupEffectifs);
+        hStatsSummary = new QHBoxLayout();
+        hStatsSummary->setObjectName("hStatsSummary");
+        label_total_employes = new QLabel(tabStatistiques);
         label_total_employes->setObjectName("label_total_employes");
 
-        vEffectifs->addWidget(label_total_employes);
+        hStatsSummary->addWidget(label_total_employes);
 
-        label_par_specialite = new QLabel(groupEffectifs);
-        label_par_specialite->setObjectName("label_par_specialite");
-
-        vEffectifs->addWidget(label_par_specialite);
-
-        table_effectifs_spec = new QTableWidget(groupEffectifs);
-        if (table_effectifs_spec->columnCount() < 2)
-            table_effectifs_spec->setColumnCount(2);
-        QTableWidgetItem *__qtablewidgetitem11 = new QTableWidgetItem();
-        table_effectifs_spec->setHorizontalHeaderItem(0, __qtablewidgetitem11);
-        QTableWidgetItem *__qtablewidgetitem12 = new QTableWidgetItem();
-        table_effectifs_spec->setHorizontalHeaderItem(1, __qtablewidgetitem12);
-        table_effectifs_spec->setObjectName("table_effectifs_spec");
-        table_effectifs_spec->setMaximumHeight(150);
-        table_effectifs_spec->setColumnCount(2);
-
-        vEffectifs->addWidget(table_effectifs_spec);
-
-        label_par_disponibilite = new QLabel(groupEffectifs);
-        label_par_disponibilite->setObjectName("label_par_disponibilite");
-
-        vEffectifs->addWidget(label_par_disponibilite);
-
-        table_effectifs_disp = new QTableWidget(groupEffectifs);
-        if (table_effectifs_disp->columnCount() < 2)
-            table_effectifs_disp->setColumnCount(2);
-        QTableWidgetItem *__qtablewidgetitem13 = new QTableWidgetItem();
-        table_effectifs_disp->setHorizontalHeaderItem(0, __qtablewidgetitem13);
-        QTableWidgetItem *__qtablewidgetitem14 = new QTableWidgetItem();
-        table_effectifs_disp->setHorizontalHeaderItem(1, __qtablewidgetitem14);
-        table_effectifs_disp->setObjectName("table_effectifs_disp");
-        table_effectifs_disp->setMaximumHeight(120);
-        table_effectifs_disp->setColumnCount(2);
-
-        vEffectifs->addWidget(table_effectifs_disp);
-
-
-        vertical_statistiques->addWidget(groupEffectifs);
-
-        groupFinances = new QGroupBox(tabStatistiques);
-        groupFinances->setObjectName("groupFinances");
-        vFinances = new QVBoxLayout(groupFinances);
-        vFinances->setObjectName("vFinances");
-        label_masse_salariale = new QLabel(groupFinances);
+        label_masse_salariale = new QLabel(tabStatistiques);
         label_masse_salariale->setObjectName("label_masse_salariale");
 
-        vFinances->addWidget(label_masse_salariale);
+        hStatsSummary->addWidget(label_masse_salariale);
 
-        label_salaire_moyen = new QLabel(groupFinances);
+        label_salaire_moyen = new QLabel(tabStatistiques);
         label_salaire_moyen->setObjectName("label_salaire_moyen");
 
-        vFinances->addWidget(label_salaire_moyen);
-
-        label_par_specialite_sal = new QLabel(groupFinances);
-        label_par_specialite_sal->setObjectName("label_par_specialite_sal");
-
-        vFinances->addWidget(label_par_specialite_sal);
-
-        table_finances_spec = new QTableWidget(groupFinances);
-        if (table_finances_spec->columnCount() < 2)
-            table_finances_spec->setColumnCount(2);
-        QTableWidgetItem *__qtablewidgetitem15 = new QTableWidgetItem();
-        table_finances_spec->setHorizontalHeaderItem(0, __qtablewidgetitem15);
-        QTableWidgetItem *__qtablewidgetitem16 = new QTableWidgetItem();
-        table_finances_spec->setHorizontalHeaderItem(1, __qtablewidgetitem16);
-        table_finances_spec->setObjectName("table_finances_spec");
-        table_finances_spec->setMaximumHeight(150);
-        table_finances_spec->setColumnCount(2);
-
-        vFinances->addWidget(table_finances_spec);
+        hStatsSummary->addWidget(label_salaire_moyen);
 
 
-        vertical_statistiques->addWidget(groupFinances);
+        vertical_statistiques->addLayout(hStatsSummary);
 
-        groupPerformance = new QGroupBox(tabStatistiques);
-        groupPerformance->setObjectName("groupPerformance");
-        vPerformance = new QVBoxLayout(groupPerformance);
-        vPerformance->setObjectName("vPerformance");
-        label_anciennete_moyenne = new QLabel(groupPerformance);
-        label_anciennete_moyenne->setObjectName("label_anciennete_moyenne");
+        groupTopChart = new QGroupBox(tabStatistiques);
+        groupTopChart->setObjectName("groupTopChart");
+        vTopChart = new QVBoxLayout(groupTopChart);
+        vTopChart->setObjectName("vTopChart");
+        frameStatsTopChart = new QFrame(groupTopChart);
+        frameStatsTopChart->setObjectName("frameStatsTopChart");
+        frameStatsTopChart->setMinimumHeight(280);
+        frameStatsTopChart->setFrameShape(QFrame::StyledPanel);
+        frameStatsTopChart->setFrameShadow(QFrame::Raised);
 
-        vPerformance->addWidget(label_anciennete_moyenne);
-
-        label_heures_moyennes = new QLabel(groupPerformance);
-        label_heures_moyennes->setObjectName("label_heures_moyennes");
-
-        vPerformance->addWidget(label_heures_moyennes);
-
-        label_fournisseurs_moyen = new QLabel(groupPerformance);
-        label_fournisseurs_moyen->setObjectName("label_fournisseurs_moyen");
-
-        vPerformance->addWidget(label_fournisseurs_moyen);
-
-        spacerPerf = new QSpacerItem(0, 0, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
-
-        vPerformance->addItem(spacerPerf);
+        vTopChart->addWidget(frameStatsTopChart);
 
 
-        vertical_statistiques->addWidget(groupPerformance);
+        vertical_statistiques->addWidget(groupTopChart);
 
-        verticalSpacer_stats = new QSpacerItem(0, 0, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+        hBottomCharts = new QHBoxLayout();
+        hBottomCharts->setObjectName("hBottomCharts");
+        groupLeftChart = new QGroupBox(tabStatistiques);
+        groupLeftChart->setObjectName("groupLeftChart");
+        vLeftChart = new QVBoxLayout(groupLeftChart);
+        vLeftChart->setObjectName("vLeftChart");
+        frameStatsLeftChart = new QFrame(groupLeftChart);
+        frameStatsLeftChart->setObjectName("frameStatsLeftChart");
+        frameStatsLeftChart->setMinimumHeight(250);
+        frameStatsLeftChart->setFrameShape(QFrame::StyledPanel);
+        frameStatsLeftChart->setFrameShadow(QFrame::Raised);
 
-        vertical_statistiques->addItem(verticalSpacer_stats);
+        vLeftChart->addWidget(frameStatsLeftChart);
+
+
+        hBottomCharts->addWidget(groupLeftChart);
+
+        groupRightChart = new QGroupBox(tabStatistiques);
+        groupRightChart->setObjectName("groupRightChart");
+        vRightChart = new QVBoxLayout(groupRightChart);
+        vRightChart->setObjectName("vRightChart");
+        frameStatsRightChart = new QFrame(groupRightChart);
+        frameStatsRightChart->setObjectName("frameStatsRightChart");
+        frameStatsRightChart->setMinimumHeight(250);
+        frameStatsRightChart->setFrameShape(QFrame::StyledPanel);
+        frameStatsRightChart->setFrameShadow(QFrame::Raised);
+
+        vRightChart->addWidget(frameStatsRightChart);
+
+
+        hBottomCharts->addWidget(groupRightChart);
+
+
+        vertical_statistiques->addLayout(hBottomCharts);
 
         tabWidget->addTab(tabStatistiques, QString());
         tabExportPdf = new QWidget();
@@ -927,12 +864,6 @@ public:
         btnExportListeComplete->setMinimumHeight(50);
 
         vExportOptions->addWidget(btnExportListeComplete);
-
-        btnExportRapportRH = new QPushButton(groupExportOptions);
-        btnExportRapportRH->setObjectName("btnExportRapportRH");
-        btnExportRapportRH->setMinimumHeight(50);
-
-        vExportOptions->addWidget(btnExportRapportRH);
 
         btnExportFicheEmploye = new QPushButton(groupExportOptions);
         btnExportFicheEmploye->setObjectName("btnExportFicheEmploye");
@@ -966,7 +897,7 @@ public:
         vMessagesExport->setObjectName("vMessagesExport");
         textEdit_export_messages = new QTextEdit(groupMessagesExport);
         textEdit_export_messages->setObjectName("textEdit_export_messages");
-        textEdit_export_messages->setReadOnly(true);
+        textEdit_export_messages->setReadOnly(false);
         textEdit_export_messages->setMaximumHeight(100);
 
         vMessagesExport->addWidget(textEdit_export_messages);
@@ -1245,21 +1176,16 @@ public:
         search_spec->setItemText(3, QCoreApplication::translate("MainWindow", "Technicien", nullptr));
         search_spec->setItemText(4, QCoreApplication::translate("MainWindow", "Magasinier", nullptr));
 
-        label_search_disp->setText(QCoreApplication::translate("MainWindow", "Disponibilit\303\251", nullptr));
-        search_disp->setItemText(0, QCoreApplication::translate("MainWindow", "-- Tous --", nullptr));
-        search_disp->setItemText(1, QCoreApplication::translate("MainWindow", "Actif", nullptr));
-        search_disp->setItemText(2, QCoreApplication::translate("MainWindow", "Suspendu", nullptr));
-
         groupSort->setTitle(QCoreApplication::translate("MainWindow", "Tri", nullptr));
-        sort_nom->setText(QCoreApplication::translate("MainWindow", "Nom", nullptr));
         sort_salaire->setText(QCoreApplication::translate("MainWindow", "Salaire", nullptr));
         sort_anciennete->setText(QCoreApplication::translate("MainWindow", "Anciennet\303\251", nullptr));
-        sort_age->setText(QCoreApplication::translate("MainWindow", "\303\202ge", nullptr));
         sort_heures->setText(QCoreApplication::translate("MainWindow", "Heures", nullptr));
         sort_fournisseurs->setText(QCoreApplication::translate("MainWindow", "Fournisseurs", nullptr));
         groupOrder->setTitle(QCoreApplication::translate("MainWindow", "Ordre", nullptr));
         order_asc->setText(QCoreApplication::translate("MainWindow", "Croissant", nullptr));
         order_desc->setText(QCoreApplication::translate("MainWindow", "D\303\251croissant", nullptr));
+        btnAppliquerFiltre->setText(QCoreApplication::translate("MainWindow", "Appliquer", nullptr));
+        btnResetFiltre->setText(QCoreApplication::translate("MainWindow", "R\303\251initialiser", nullptr));
         QTableWidgetItem *___qtablewidgetitem = table_employes->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QCoreApplication::translate("MainWindow", "ID", nullptr));
         QTableWidgetItem *___qtablewidgetitem1 = table_employes->horizontalHeaderItem(1);
@@ -1309,34 +1235,15 @@ public:
         label_id_equipe_mod->setText(QCoreApplication::translate("MainWindow", "ID Equipe", nullptr));
         btnModifierConfirm->setText(QCoreApplication::translate("MainWindow", "Mettre \303\240 jour", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tabModifier), QCoreApplication::translate("MainWindow", "Modifier un employ\303\251", nullptr));
-        groupEffectifs->setTitle(QCoreApplication::translate("MainWindow", "Effectifs", nullptr));
         label_total_employes->setText(QCoreApplication::translate("MainWindow", "Nombre total d'employ\303\251s : 0", nullptr));
-        label_par_specialite->setText(QCoreApplication::translate("MainWindow", "Nombre par sp\303\251cialit\303\251 :", nullptr));
-        QTableWidgetItem *___qtablewidgetitem11 = table_effectifs_spec->horizontalHeaderItem(0);
-        ___qtablewidgetitem11->setText(QCoreApplication::translate("MainWindow", "Sp\303\251cialit\303\251", nullptr));
-        QTableWidgetItem *___qtablewidgetitem12 = table_effectifs_spec->horizontalHeaderItem(1);
-        ___qtablewidgetitem12->setText(QCoreApplication::translate("MainWindow", "Nombre", nullptr));
-        label_par_disponibilite->setText(QCoreApplication::translate("MainWindow", "Nombre par disponibilit\303\251 :", nullptr));
-        QTableWidgetItem *___qtablewidgetitem13 = table_effectifs_disp->horizontalHeaderItem(0);
-        ___qtablewidgetitem13->setText(QCoreApplication::translate("MainWindow", "Disponibilit\303\251", nullptr));
-        QTableWidgetItem *___qtablewidgetitem14 = table_effectifs_disp->horizontalHeaderItem(1);
-        ___qtablewidgetitem14->setText(QCoreApplication::translate("MainWindow", "Nombre", nullptr));
-        groupFinances->setTitle(QCoreApplication::translate("MainWindow", "Finances", nullptr));
         label_masse_salariale->setText(QCoreApplication::translate("MainWindow", "Masse salariale totale : 0.00 \342\202\254", nullptr));
         label_salaire_moyen->setText(QCoreApplication::translate("MainWindow", "Salaire moyen : 0.00 \342\202\254", nullptr));
-        label_par_specialite_sal->setText(QCoreApplication::translate("MainWindow", "Masse salariale par sp\303\251cialit\303\251 :", nullptr));
-        QTableWidgetItem *___qtablewidgetitem15 = table_finances_spec->horizontalHeaderItem(0);
-        ___qtablewidgetitem15->setText(QCoreApplication::translate("MainWindow", "Sp\303\251cialit\303\251", nullptr));
-        QTableWidgetItem *___qtablewidgetitem16 = table_finances_spec->horizontalHeaderItem(1);
-        ___qtablewidgetitem16->setText(QCoreApplication::translate("MainWindow", "Masse salariale (\342\202\254)", nullptr));
-        groupPerformance->setTitle(QCoreApplication::translate("MainWindow", "Performance", nullptr));
-        label_anciennete_moyenne->setText(QCoreApplication::translate("MainWindow", "Anciennet\303\251 moyenne : 0 ans", nullptr));
-        label_heures_moyennes->setText(QCoreApplication::translate("MainWindow", "Heures de travail moyennes : 0 h/semaine", nullptr));
-        label_fournisseurs_moyen->setText(QCoreApplication::translate("MainWindow", "Nombre moyen de fournisseurs : 0", nullptr));
+        groupTopChart->setTitle(QCoreApplication::translate("MainWindow", "Masse salariale par sp\303\251cialit\303\251", nullptr));
+        groupLeftChart->setTitle(QCoreApplication::translate("MainWindow", "R\303\251partition des employ\303\251s par sp\303\251cialit\303\251", nullptr));
+        groupRightChart->setTitle(QCoreApplication::translate("MainWindow", "Top employ\303\251s par fournisseurs trait\303\251s", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tabStatistiques), QCoreApplication::translate("MainWindow", "Statistiques", nullptr));
         groupExportOptions->setTitle(QCoreApplication::translate("MainWindow", "Options d'export", nullptr));
         btnExportListeComplete->setText(QCoreApplication::translate("MainWindow", "\360\237\223\204 Exporter la liste compl\303\250te des employ\303\251s (PDF)", nullptr));
-        btnExportRapportRH->setText(QCoreApplication::translate("MainWindow", "\360\237\223\212 Exporter un rapport statistiques RH (PDF)", nullptr));
         btnExportFicheEmploye->setText(QCoreApplication::translate("MainWindow", "\360\237\223\213 Exporter la fiche d'un employ\303\251 par ID (PDF)", nullptr));
         groupIdExport->setTitle(QCoreApplication::translate("MainWindow", "Param\303\250tres d'export", nullptr));
         label_id_export->setText(QCoreApplication::translate("MainWindow", "ID Employ\303\251 (pour la fiche)", nullptr));

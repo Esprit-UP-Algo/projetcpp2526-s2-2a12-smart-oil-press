@@ -61,7 +61,11 @@ constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers::string
     "chargerEmployePourModification",
     "onTableRowClicked",
     "row",
-    "column"
+    "column",
+    "appliquerFiltreEtTri",
+    "reinitialiserFiltre",
+    "exporterListeCompletePdf",
+    "exporterFicheEmployePdf"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -74,7 +78,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-      17,   14, // methods
+      21,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -82,25 +86,29 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
       11,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,  116,    2, 0x06,    1 /* Public */,
-       3,    0,  117,    2, 0x06,    2 /* Public */,
-       4,    0,  118,    2, 0x06,    3 /* Public */,
-       5,    0,  119,    2, 0x06,    4 /* Public */,
-       6,    0,  120,    2, 0x06,    5 /* Public */,
-       7,    0,  121,    2, 0x06,    6 /* Public */,
-       8,    2,  122,    2, 0x06,    7 /* Public */,
-      11,    1,  127,    2, 0x06,   10 /* Public */,
-      13,    2,  130,    2, 0x06,   12 /* Public */,
-      16,    0,  135,    2, 0x06,   15 /* Public */,
-      17,    1,  136,    2, 0x06,   16 /* Public */,
+       1,    0,  140,    2, 0x06,    1 /* Public */,
+       3,    0,  141,    2, 0x06,    2 /* Public */,
+       4,    0,  142,    2, 0x06,    3 /* Public */,
+       5,    0,  143,    2, 0x06,    4 /* Public */,
+       6,    0,  144,    2, 0x06,    5 /* Public */,
+       7,    0,  145,    2, 0x06,    6 /* Public */,
+       8,    2,  146,    2, 0x06,    7 /* Public */,
+      11,    1,  151,    2, 0x06,   10 /* Public */,
+      13,    2,  154,    2, 0x06,   12 /* Public */,
+      16,    0,  159,    2, 0x06,   15 /* Public */,
+      17,    1,  160,    2, 0x06,   16 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-      19,    0,  139,    2, 0x08,   18 /* Private */,
-      20,    0,  140,    2, 0x08,   19 /* Private */,
-      21,    0,  141,    2, 0x08,   20 /* Private */,
-      22,    0,  142,    2, 0x08,   21 /* Private */,
-      23,    0,  143,    2, 0x08,   22 /* Private */,
-      24,    2,  144,    2, 0x08,   23 /* Private */,
+      19,    0,  163,    2, 0x08,   18 /* Private */,
+      20,    0,  164,    2, 0x08,   19 /* Private */,
+      21,    0,  165,    2, 0x08,   20 /* Private */,
+      22,    0,  166,    2, 0x08,   21 /* Private */,
+      23,    0,  167,    2, 0x08,   22 /* Private */,
+      24,    2,  168,    2, 0x08,   23 /* Private */,
+      27,    0,  173,    2, 0x08,   26 /* Private */,
+      28,    0,  174,    2, 0x08,   27 /* Private */,
+      29,    0,  175,    2, 0x08,   28 /* Private */,
+      30,    0,  176,    2, 0x08,   29 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
@@ -122,6 +130,10 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int, QMetaType::Int,   25,   26,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -176,7 +188,15 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         // method 'onTableRowClicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
-        QtPrivate::TypeAndForceComplete<int, std::false_type>
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'appliquerFiltreEtTri'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'reinitialiserFiltre'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'exporterListeCompletePdf'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'exporterFicheEmployePdf'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
 } };
@@ -204,6 +224,10 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 14: _t->modifierEmploye(); break;
         case 15: _t->chargerEmployePourModification(); break;
         case 16: _t->onTableRowClicked((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
+        case 17: _t->appliquerFiltreEtTri(); break;
+        case 18: _t->reinitialiserFiltre(); break;
+        case 19: _t->exporterListeCompletePdf(); break;
+        case 20: _t->exporterFicheEmployePdf(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -307,13 +331,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 17)
+        if (_id < 21)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 17;
+        _id -= 21;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 17)
+        if (_id < 21)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 17;
+        _id -= 21;
     }
     return _id;
 }

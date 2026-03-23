@@ -5,6 +5,8 @@
 #include <QWidget>
 #include <QString>
 
+class QChartView;
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -42,11 +44,25 @@ private slots:
     void modifierEmploye();
     void chargerEmployePourModification();
     void onTableRowClicked(int row, int column);
+    
+    // Recherche et Tri
+    void appliquerFiltreEtTri();
+    void reinitialiserFiltre();
+
+    // Export PDF
+    void exporterListeCompletePdf();
+    void exporterFicheEmployePdf();
 
 private:
     Ui::MainWindow *ui;
+    QChartView *statsTopChartView = nullptr;
+    QChartView *statsLeftChartView = nullptr;
+    QChartView *statsRightChartView = nullptr;
+
     void styleSpinboxesAndComboboxes();
     void setupCrudConnections();
+    void setupStatistiquesCharts();
+    void refreshStatistiques();
     void clearAjouterForm();
     void clearModifierForm();
     bool validateAjouterForm();
