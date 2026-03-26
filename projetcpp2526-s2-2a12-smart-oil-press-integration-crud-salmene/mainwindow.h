@@ -53,7 +53,7 @@ private:
     void reinitialiserFiltre();
     void exporterListeCompletePdf();
     void exporterFicheEmployePdf();
-    void exporterFicheLaboPdf();
+    
 
     // === MODULE EQUIPE ===
     // Declarations reservees au module Equipe.
@@ -68,6 +68,7 @@ private:
     void supprimerLabo();
     void modifierLabo();
     void chargerLaboPourModification();
+    void exporterFicheLaboPdf();
 
     // === MODULE COMMANDE ===
     // Declarations reservees au module Commande.
