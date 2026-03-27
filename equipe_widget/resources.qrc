@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>styles/style.qss</file>
+        <file>images/logo.png</file>
+        <file>images/down-arrow.svg</file>
+        <file>images/up-arrow.svg</file>
+    </qresource>
+</RCC>
