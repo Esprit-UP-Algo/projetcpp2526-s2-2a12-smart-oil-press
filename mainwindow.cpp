@@ -181,9 +181,9 @@ MainWindow::MainWindow(QWidget *parent)
         QList<QVariantMap> machines;
         if (Connection::instance()->getMachines(machines) && machines.isEmpty()) {
             // Insérer quelques machines de demo
-            Connection::instance()->ajouterMachine("MCH-001", "Presse Hydraulique", "Presse", "REF-001", "01/01/2023", "En service");
-            Connection::instance()->ajouterMachine("MCH-002", "Tour CNC", "Tour", "REF-002", "15/03/2023", "En maintenance");
-            Connection::instance()->ajouterMachine("MCH-003", "Fraiseuse", "Fraiseuse", "REF-003", "20/05/2023", "En service");
+            Connection::instance()->ajouterMachine("MCH-001", "Presse Hydraulique", "Presse", "REF-001", "01/01/2023", "En service", "atelier");
+            Connection::instance()->ajouterMachine("MCH-002", "Tour CNC", "Tour", "REF-002", "15/03/2023", "En maintenance", "atelier");
+            Connection::instance()->ajouterMachine("MCH-003", "Fraiseuse", "Fraiseuse", "REF-003", "20/05/2023", "En service", "atelier");
             // Recharger la table
             initialiserTableMachines();
             remplirComboboxIds();
@@ -200,9 +200,10 @@ MainWindow::MainWindow(QWidget *parent)
         QString style = QLatin1String(styleFile.readAll());
         qApp->setStyleSheet(style);
         styleFile.close();
+        qDebug() << "Style CSS chargé avec succès depuis les ressources";
+    } else {
+        qDebug() << "Erreur: Impossible de charger le fichier CSS depuis les ressources";
     }
-    
-    // Connecter les boutons du menu
     connect(ui->btnEmployee, &QPushButton::clicked, this, [this]() {
         ui->stackedPages->setCurrentWidget(ui->pageEmployee);
     });
@@ -249,6 +250,9 @@ MainWindow::MainWindow(QWidget *parent)
     
     // Remplir les combobox avec les IDs des machines
     remplirComboboxIds();
+    
+    // Appliquer le style CSS après que tous les widgets soient créés
+    appliquerStyleCSS();
 }
 
 MainWindow::~MainWindow()
@@ -258,8 +262,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::initialiserTableMachines()
 {
-    ui->tableEquipments->setColumnCount(6);
-    QStringList headers = {"ID Machine", "Nom", "Catégorie", "Référence", "Date Achat", "État"};
+    ui->tableEquipments->setColumnCount(7);
+    ui->tableEquipments->setRowCount(0);  // Vider le tableau avant de le remplir
+    QStringList headers = {"ID Machine", "Nom", "Catégorie", "Référence", "Date Achat", "État", "Localisation"};
     ui->tableEquipments->setHorizontalHeaderLabels(headers);
     ui->tableEquipments->horizontalHeader()->setStretchLastSection(true);
     ui->tableEquipments->setAlternatingRowColors(true);
@@ -269,6 +274,9 @@ void MainWindow::initialiserTableMachines()
     // Charger les machines depuis la base de données
     QList<QVariantMap> machines;
     if (Connection::instance()->getMachines(machines)) {
+        if (machines.isEmpty()) {
+            qDebug() << "Aucune machine trouvée en DB (table vide).";
+        }
         for (const QVariantMap& machine : machines) {
             int row = ui->tableEquipments->rowCount();
             ui->tableEquipments->insertRow(row);
@@ -278,7 +286,12 @@ void MainWindow::initialiserTableMachines()
             ui->tableEquipments->setItem(row, 3, new QTableWidgetItem(machine["reference"].toString()));
             ui->tableEquipments->setItem(row, 4, new QTableWidgetItem(machine["date_achat"].toString()));
             ui->tableEquipments->setItem(row, 5, new QTableWidgetItem(machine["etat"].toString()));
+            ui->tableEquipments->setItem(row, 6, new QTableWidgetItem(machine["localisation"].toString()));
         }
+    } else {
+        QString err = Connection::instance()->lastError();
+        qDebug() << "getMachines a échoué :" << err;
+        QMessageBox::warning(this, "Erreur base de données", QString("Impossible de charger les machines : %1").arg(err));
     }
 }
 
@@ -423,36 +436,41 @@ void MainWindow::ouvrirAjoutMachine()
                                  QMessageBox::Yes | QMessageBox::No);
     
     if (reply == QMessageBox::Yes) {
-        // Générer un ID automatique
-        int newNum = ui->tableEquipments->rowCount() + 1;
-        QString id = QString("MCH-00%1").arg(newNum);
-        QString nom = "Nouvelle Machine " + QString::number(newNum);
-        QString reference = QString("REF-00%1").arg(newNum);
-        QString dateAchat = QDate::currentDate().toString("dd/MM/yyyy");
-        
-        int row = ui->tableEquipments->rowCount();
-        ui->tableEquipments->insertRow(row);
-        ui->tableEquipments->setItem(row, 0, new QTableWidgetItem(id));
-        ui->tableEquipments->setItem(row, 1, new QTableWidgetItem(nom));
-        ui->tableEquipments->setItem(row, 2, new QTableWidgetItem("Presse"));
-        ui->tableEquipments->setItem(row, 3, new QTableWidgetItem(reference));
-        ui->tableEquipments->setItem(row, 4, new QTableWidgetItem(dateAchat));
-        ui->tableEquipments->setItem(row, 5, new QTableWidgetItem("En service"));
-        
-        // Mettre à jour les combobox
-        ui->comboModifierId->addItem(id);
-        ui->comboSupprimerId->addItem(id);
-        ui->comboPanneId->addItem(id);
-        
-        QMessageBox::information(this, "Succès", "Machine ajoutée avec succès !");
-        
-        // Ajouter à la base de données
-        if (!Connection::instance()->ajouterMachine(id, nom, "Presse", reference, dateAchat, "En service")) {
-            QString err = Connection::instance()->lastError();
-            QMessageBox::warning(this, "Avertissement",
-                                 QString("Machine ajoutée à l'interface mais pas sauvegardée en base de données.\nError: %1").arg(err));
+        // Lire les champs du formulaire d'ajout
+        QString id = ui->editAddId ? ui->editAddId->text().trimmed() : QString();
+        QString nom = ui->editAddNom ? ui->editAddNom->text().trimmed() : QString();
+        QString categorie = ui->comboAddCategorie ? ui->comboAddCategorie->currentText() : QString("Presse");
+        QString reference = ui->editAddReference ? ui->editAddReference->text().trimmed() : QString();
+        QString dateAchat = ui->dateAddAchat ? ui->dateAddAchat->date().toString("dd/MM/yyyy") : QDate::currentDate().toString("dd/MM/yyyy");
+        QString etat = ui->comboAddEtat ? ui->comboAddEtat->currentText() : QString("En service");
+        QString localisation = ui->editAddLocalisation ? ui->editAddLocalisation->text().trimmed() : QString();
+
+        if (id.isEmpty()) {
+            int newNum = ui->tableEquipments->rowCount() + 1;
+            id = QString("MCH-%1").arg(newNum, 3, 10, QChar('0')); // MCH-001, MCH-002...
         }
-        
+        if (nom.isEmpty()) {
+            int newNum = ui->tableEquipments->rowCount() + 1;
+            nom = "Nouvelle Machine " + QString::number(newNum);
+        }
+        if (reference.isEmpty()) {
+            int newNum = ui->tableEquipments->rowCount() + 1;
+            reference = QString("REF-%1").arg(newNum, 3, 10, QChar('0')); // REF-001, REF-002...
+        }
+
+        // Ajouter à la base de données d'abord
+        if (!Connection::instance()->ajouterMachine(id, nom, categorie, reference, dateAchat, etat, localisation)) {
+            QString err = Connection::instance()->lastError();
+            QMessageBox::warning(this, "Échec sauvegarde", QString("Impossible d'enregistrer la machine en base de données.\nErreur: %1").arg(err));
+            return;
+        }
+
+        // Recharger l'interface depuis la base de données pour être sûr que c'est bien persisté.
+        initialiserTableMachines();
+        remplirComboboxIds();
+
+        QMessageBox::information(this, "Succès", "Machine ajoutée avec succès et rechargée depuis la base !");
+
         // Mettre à jour les statistiques
         mettreAJourStatistiques();
     }
@@ -570,16 +588,29 @@ void MainWindow::ouvrirAjouterIntervention()
     
     if (reply == QMessageBox::Yes) {
         // Ajouter une intervention par défaut
+        QString date = QDate::currentDate().toString("dd/MM/yyyy");
+        QString type = "Maintenance préventive";
+        QString technicien = "Technicien";
+        double cout = 0.00;
+        QString statut = "Planifié";
+        
         int row = ui->tableHistorique->rowCount();
         ui->tableHistorique->insertRow(row);
-        ui->tableHistorique->setItem(row, 0, new QTableWidgetItem(QDate::currentDate().toString("dd/MM/yyyy")));
+        ui->tableHistorique->setItem(row, 0, new QTableWidgetItem(date));
         ui->tableHistorique->setItem(row, 1, new QTableWidgetItem(machineId));
-        ui->tableHistorique->setItem(row, 2, new QTableWidgetItem("Maintenance préventive"));
-        ui->tableHistorique->setItem(row, 3, new QTableWidgetItem("Technicien"));
-        ui->tableHistorique->setItem(row, 4, new QTableWidgetItem("0.00 €"));
-        ui->tableHistorique->setItem(row, 5, new QTableWidgetItem("Planifié"));
+        ui->tableHistorique->setItem(row, 2, new QTableWidgetItem(type));
+        ui->tableHistorique->setItem(row, 3, new QTableWidgetItem(technicien));
+        ui->tableHistorique->setItem(row, 4, new QTableWidgetItem(QString::number(cout) + " €"));
+        ui->tableHistorique->setItem(row, 5, new QTableWidgetItem(statut));
         
-        QMessageBox::information(this, "Succès", "Intervention ajoutée avec succès !");
+        // Ajouter à la base de données
+        if (!Connection::instance()->ajouterIntervention(date, machineId, type, technicien, cout, statut)) {
+            QString err = Connection::instance()->lastError();
+            QMessageBox::warning(this, "Avertissement",
+                                 QString("Intervention ajoutée à l'interface mais pas sauvegardée en base de données.\nError: %1").arg(err));
+        } else {
+            QMessageBox::information(this, "Succès", "Intervention ajoutée avec succès !");
+        }
         
         // Mettre à jour les statistiques
         mettreAJourStatistiques();
@@ -596,12 +627,23 @@ void MainWindow::ouvrirAjoutEmploye()
         QString id = dialog.getIdInput()->text();
         QString nom = dialog.getNomInput()->text();
         QString prenom = dialog.getPrenomInput()->text();
+        int age = dialog.getAgeInput()->value();
+        QString telephone = dialog.getTelephoneInput()->text();
         
-        QMessageBox::information(this, "Succès", 
-            QString("Employé ajouté avec succès !\n\n"
-                   "ID: %1\n"
-                   "Nom: %2 %3")
-            .arg(id).arg(prenom).arg(nom));
+        // Ajouter à la base de données
+        if (!Connection::instance()->ajouterEmploye(id, nom, prenom, age, telephone)) {
+            QString err = Connection::instance()->lastError();
+            QMessageBox::warning(this, "Avertissement",
+                                 QString("Employé ajouté à l'interface mais pas sauvegardé en base de données.\nError: %1").arg(err));
+        } else {
+            QMessageBox::information(this, "Succès", 
+                QString("Employé ajouté avec succès !\n\n"
+                       "ID: %1\n"
+                       "Nom: %2 %3\n"
+                       "Âge: %4\n"
+                       "Téléphone: %5")
+                .arg(id).arg(prenom).arg(nom).arg(age).arg(telephone));
+        }
     }
 }
 
@@ -735,5 +777,21 @@ void MainWindow::mettreAJourStatistiques()
     }
     if (ui->kpiCoutTotalValue) {
         ui->kpiCoutTotalValue->setText(QString("%1 €").arg(coutTotal, 0, 'f', 2));
+    }
+}
+
+// ==================== APPLICATION DU STYLE CSS ====================
+
+void MainWindow::appliquerStyleCSS()
+{
+    // Charger et appliquer le stylesheet
+    QFile styleFile(":/style/stylesheet.qss");
+    if (styleFile.open(QFile::ReadOnly)) {
+        QString style = QLatin1String(styleFile.readAll());
+        qApp->setStyleSheet(style);
+        styleFile.close();
+        qDebug() << "Style CSS appliqué avec succès après l'initialisation complète";
+    } else {
+        qDebug() << "Erreur: Impossible de charger le fichier CSS depuis les ressources";
     }
 }

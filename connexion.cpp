@@ -1,10 +1,8 @@
-
-
-
-
 #include "connexion.h"
 #include <QSqlError>
 #include <QDebug>
+#include <QStandardPaths>
+#include <QSqlDatabase>
 
 // Initialisation du pointeur d'instance
 Connection* Connection::p_instance = nullptr;
@@ -12,7 +10,8 @@ Connection* Connection::p_instance = nullptr;
 // Constructeur privé
 Connection::Connection()
 {
-    // Initialisation de la base de données
+    // Utiliser ODBC pour se connecter à Oracle
+    qDebug() << "Utilisation du driver QODBC pour Oracle";
     db = QSqlDatabase::addDatabase("QODBC");
 }
 
@@ -30,21 +29,18 @@ bool Connection::createConnect()
 {
     bool test = false;
 
-    db.setDatabaseName("Source_Projet_2A12");//inserer le nom de la source de données
-    db.setUserName("Ayoub");//inserer nom de l'utilisateur
-    db.setPassword("1234");//inserer mot de passe de cet utilisateur
+    // Configuration ODBC/Oracle
+    db.setDatabaseName("source_projet_2A12");      // DSN
+    db.setUserName("yomna");                       // Utilisateur Oracle
+    db.setPassword("esprit18");                    // Mot de passe Oracle
+    qDebug() << "Tentative connexion ODBC Oracle (DSN: source_projet_2A12)...";
 
     if (db.open()) {
+        qDebug() << "✓ Connexion à la base de données Oracle réussie!";
         test = true;
-        qDebug() << "Connexion à la base de données réussie";
-        // créer la table machines si elle n'existe pas encore
-        if (!createTableIfNotExists()) {
-            m_lastError = db.lastError().text();
-            qDebug() << "Impossible de créer ou vérifier la table machines:" << m_lastError;
-        }
     } else {
         m_lastError = db.lastError().text();
-        qDebug() << "Erreur de connexion:" << m_lastError;
+        qDebug() << "✗ Erreur de connexion Oracle:" << m_lastError;
     }
 
     return test;
@@ -58,119 +54,166 @@ void Connection::closeConnection()
     }
 }
 
-// Création de la table machines si elle n'existe pas
 bool Connection::createTableIfNotExists()
 {
     if (!db.isOpen()) {
         m_lastError = "Database not open";
-        qDebug() << "Base de données non ouverte lors de la création de la table";
+        qDebug() << "Base de données non ouverte lors de la création des tables";
         return false;
     }
 
     QSqlQuery query(db);
-    QString driver = db.driverName().toLower();
-    bool isOracle = driver.contains("oci") || driver.contains("oracle");
 
-    QString sql;
-    if (isOracle) {
-        // Oracle ne gère pas IF NOT EXISTS, on utilise un bloc PL/SQL
-        sql =
-            "BEGIN "
-            "EXECUTE IMMEDIATE 'CREATE TABLE machines (\"id\" VARCHAR2(50) PRIMARY KEY, "
-            "\"nom\" VARCHAR2(100), "
-            "\"categorie\" VARCHAR2(50), "
-            "\"reference\" VARCHAR2(50), "
-            "\"date_achat\" VARCHAR2(20), "
-            "\"etat\" VARCHAR2(50))'; "
-            "EXCEPTION WHEN OTHERS THEN "
-            "IF SQLCODE != -955 THEN RAISE; END IF; "
-            "END;";
-    } else {
-        sql =
-            "CREATE TABLE IF NOT EXISTS machines ("
-            "\"id\" VARCHAR(50) PRIMARY KEY, "
-            "\"nom\" VARCHAR(100), "
-            "\"categorie\" VARCHAR(50), "
-            "\"reference\" VARCHAR(50), "
-            "\"date_achat\" VARCHAR(20), "
-            "\"etat\" VARCHAR(50))";
-    }
+    // SQLite uniquement
+    QString sqlMachines = "CREATE TABLE IF NOT EXISTS machines (id TEXT PRIMARY KEY, nom TEXT, categorie TEXT, reference TEXT, date_achat TEXT, etat TEXT, localisation TEXT)";
+    QString sqlEmployes = "CREATE TABLE IF NOT EXISTS employes (id TEXT PRIMARY KEY, nom TEXT, prenom TEXT, age INTEGER, telephone TEXT)";
+    QString sqlInterventions = "CREATE TABLE IF NOT EXISTS interventions (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, machine_id TEXT, type TEXT, technicien TEXT, cout REAL, statut TEXT, FOREIGN KEY(machine_id) REFERENCES machines(id))";
 
-    if (!query.exec(sql)) {
-        m_lastError = query.lastError().text();
-        qDebug() << "Erreur création table machines:" << m_lastError;
-        // on ne renvoie pas tout de suite false, on continue pour tenter d'ajouter colonne
-    }
-
-    // vérifier que la colonne etat existe
-    if (!query.exec("SELECT \"etat\" FROM machines WHERE 1=0")) {
-        QString err = query.lastError().text();
-        if (err.contains("ORA-00904") || err.contains("invalid identifier")) {
-            // ajouter la colonne manquante
-            QSqlQuery q2(db);
-            QString alter;
-            if (isOracle)
-                alter = "ALTER TABLE machines ADD (\"etat\" VARCHAR2(50))";
-            else
-                alter = "ALTER TABLE machines ADD (\"etat\" VARCHAR(50))";
-            if (!q2.exec(alter)) {
-                m_lastError = q2.lastError().text();
-                qDebug() << "Impossible d'ajouter colonne etat:" << m_lastError;
-                return false;
+    auto execCreate = [&](const QString& sql, const QString& tableName) {
+        if (sql.isEmpty()) {
+            return true;
+        }
+        if (!query.exec(sql)) {
+            QString err = query.lastError().text();
+            if (err.contains("ORA-00955") || err.contains("already exists")) {
+                qDebug() << "Table" << tableName << "déjà existante (OK)";
+                return true;
             }
-        } else {
             m_lastError = err;
-            qDebug() << "Erreur inattendue lors de la vérification de la colonne etat:" << err;
+            qDebug() << "Erreur création table" << tableName << ":" << err;
             return false;
         }
-    }
+        qDebug() << "Création de la table" << tableName << "réussie ou déjà existante.";
+        return true;
+    };
+
+    if (!execCreate(sqlMachines, "machines")) return false;
+    if (!execCreate(sqlEmployes, "employes")) return false;
+    if (!execCreate(sqlInterventions, "interventions")) return false;
 
     return true;
 }
 
-// Ajouter une machine dans la base
 bool Connection::ajouterMachine(const QString& id, const QString& nom, const QString& categorie,
-                                const QString& reference, const QString& dateAchat, const QString& etat)
+                                const QString& reference, const QString& dateAchat, const QString& etat,
+                                const QString& localisation)
 {
-    if (!db.isOpen()) {
-        // tenter de ré-ouvrir automatiquement
-        qDebug() << "Connexion perdue, tentative de reconnexion";
-        if (!createConnect()) {
-            m_lastError = "Impossible de rouvrir la base de données";
-            return false;
-        }
+    if (!db.isOpen() && !createConnect()) {
+        m_lastError = "DB non ouverte";
+        return false;
     }
 
     QSqlQuery query(db);
-    query.prepare("INSERT INTO machines (\"id\", \"nom\", \"categorie\", \"reference\", \"date_achat\", \"etat\") "
-                  "VALUES (?, ?, ?, ?, ?, ?)");
-    query.addBindValue(id);
+    // Oracle: ID_MACHINE doit être numérique
+    // Convertir id (ex: "MCH-001") en nombre (ex: 1)
+    bool idOk = false;
+    int idMachine = 0;
+    if (id.contains("-")) {
+        // Format "MCH-001" -> extraire le numéro
+        idMachine = id.split("-").at(1).toInt(&idOk);
+    } else {
+        idMachine = id.toInt(&idOk);
+    }
+    
+    if (!idOk) {
+        // Si pas numérique, générer automatiquement
+        QSqlQuery countQuery(db);
+        if (countQuery.exec("SELECT MAX(ID_MACHINE) FROM MACHINES")) {
+            if (countQuery.next()) {
+                idMachine = countQuery.value(0).toInt() + 1;
+            } else {
+                idMachine = 1;
+            }
+        } else {
+            idMachine = 1;
+        }
+    }
+
+    // Insérer avec ID numérique et date convertie
+    query.prepare("INSERT INTO MACHINES (ID_MACHINE, NOM, CATEGORIE, REFERENCE, DATE_ACHAT, ETAT_ACHAT, LOCALISATION) "
+                  "VALUES (?, ?, ?, ?, TO_DATE(?, 'DD/MM/YYYY'), ?, ?)");
+
+    query.addBindValue(idMachine);
     query.addBindValue(nom);
     query.addBindValue(categorie);
     query.addBindValue(reference);
-    query.addBindValue(dateAchat);
+    query.addBindValue(dateAchat);  // Format: DD/MM/YYYY
     query.addBindValue(etat);
+    query.addBindValue(localisation);
 
     if (!query.exec()) {
         m_lastError = query.lastError().text();
         qDebug() << "Erreur ajout machine:" << m_lastError;
         return false;
     }
+    qDebug() << "✓ Machine ajoutée avec succès (ID:" << idMachine << ")";
     return true;
 }
 
-// Récupérer toutes les machines
-bool Connection::getMachines(QList<QVariantMap>& machines)
+bool Connection::ajouterEmploye(const QString& id, const QString& nom, const QString& prenom, int age,
+                                const QString& telephone)
 {
-    machines.clear();
-    if (!db.isOpen()) {
-        m_lastError = "Database not open";
-        qDebug() << "Base de données non ouverte lors de la lecture des machines";
+    if (!db.isOpen() && !createConnect()) {
+        m_lastError = "DB non ouverte";
         return false;
     }
 
     QSqlQuery query(db);
-    if (!query.exec("SELECT \"id\", \"nom\", \"categorie\", \"reference\", \"date_achat\", \"etat\" FROM machines")) {
+    query.prepare("INSERT INTO employes (id, nom, prenom, age, telephone) VALUES (?, ?, ?, ?, ?)");
+    query.addBindValue(id);
+    query.addBindValue(nom);
+    query.addBindValue(prenom);
+    query.addBindValue(age);
+    query.addBindValue(telephone);
+
+    if (!query.exec()) {
+        m_lastError = query.lastError().text();
+        qDebug() << "Erreur ajout employe:" << m_lastError;
+        return false;
+    }
+    return true;
+}
+
+bool Connection::ajouterIntervention(const QString& date, const QString& machineId, const QString& type,
+                                     const QString& technicien, double cout, const QString& statut)
+{
+    if (!db.isOpen() && !createConnect()) {
+        m_lastError = "DB non ouverte";
+        return false;
+    }
+
+    QSqlQuery query(db);
+    query.prepare("INSERT INTO interventions (date, machine_id, type, technicien, cout, statut) VALUES (?, ?, ?, ?, ?, ?)");
+    query.addBindValue(date);
+    query.addBindValue(machineId);
+    query.addBindValue(type);
+    query.addBindValue(technicien);
+    query.addBindValue(cout);
+    query.addBindValue(statut);
+
+    if (!query.exec()) {
+        m_lastError = query.lastError().text();
+        qDebug() << "Erreur ajout intervention:" << m_lastError;
+        return false;
+    }
+    return true;
+}
+
+bool Connection::getMachines(QList<QVariantMap>& machines)
+{
+    machines.clear();
+    if (!db.isOpen() && !createConnect()) {
+        m_lastError = "DB non ouverte";
+        return false;
+    }
+
+    QSqlQuery query(db);
+    // Lire depuis Oracle et formater l'ID en concaténant 'MCH-' + numéro
+    QString sql = "SELECT 'MCH-' || LPAD(ID_MACHINE, 3, '0') AS id, NOM AS nom, CATEGORIE AS categorie, "
+                  "REFERENCE AS reference, TO_CHAR(DATE_ACHAT, 'DD/MM/YYYY') AS date_achat, "
+                  "ETAT_ACHAT AS etat, LOCALISATION AS localisation FROM MACHINES";
+
+    if (!query.exec(sql)) {
         m_lastError = query.lastError().text();
         qDebug() << "Erreur lecture machines:" << m_lastError;
         return false;
@@ -184,24 +227,16 @@ bool Connection::getMachines(QList<QVariantMap>& machines)
         m["reference"] = query.value(3);
         m["date_achat"] = query.value(4);
         m["etat"] = query.value(5);
+        m["localisation"] = query.value(6);
         machines.append(m);
     }
+
+    qDebug() << "✓ Machines lues depuis Oracle:" << machines.size();
     return true;
 }
 
-// Récupérer le dernier message d'erreur
 QString Connection::lastError() const
 {
     return m_lastError;
 }
-
-// Destructeur privé
-Connection::~Connection()
-{
-    closeConnection();
-}
-
-
-
-
 

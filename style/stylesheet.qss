@@ -1,0 +1,144 @@
+/* Smart Oil Press Application Stylesheet */
+
+QMainWindow {
+    background-color: #f5f5f5;
+}
+
+QWidget {
+    background-color: #f5f5f5;
+}
+
+QLabel {
+    color: #333333;
+    font-size: 12px;
+}
+
+QPushButton {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+QPushButton:hover {
+    background-color: #45a049;
+}
+
+QPushButton:pressed {
+    background-color: #3d8b40;
+}
+
+QPushButton#btnAjouter {
+    background-color: #6FA66F;
+}
+
+QPushButton#btnListe {
+    background-color: #A2B29F;
+}
+
+QPushButton#btnSupprimer {
+    background-color: #C97A7A;
+}
+
+QPushButton#btnModifier {
+    background-color: #E6C36A;
+    color: black;
+}
+
+QPushButton#btnMaintenance {
+    background-color: #7DA3A1;
+}
+
+QPushButton#btnExport {
+    background-color: #798777;
+}
+
+QPushButton#btnQuitter {
+    background-color: #C97A7A;
+}
+
+QTableWidget {
+    border: 1px solid #cccccc;
+    background-color: white;
+    gridline-color: #e0e0e0;
+}
+
+QTableWidget::item {
+    padding: 8px;
+    border: none;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+QTableWidget::item:selected {
+    background-color: #e8f5e8;
+}
+
+QLineEdit {
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    padding: 6px;
+    background-color: white;
+    font-size: 12px;
+}
+
+QLineEdit:focus {
+    border: 2px solid #4CAF50;
+    outline: none;
+}
+
+QComboBox {
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    padding: 5px;
+    background-color: white;
+    font-size: 12px;
+}
+
+QComboBox:focus {
+    border: 2px solid #4CAF50;
+}
+
+QSpinBox, QDoubleSpinBox {
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    padding: 5px;
+    background-color: white;
+    font-size: 12px;
+}
+
+QSpinBox:focus, QDoubleSpinBox:focus {
+    border: 2px solid #4CAF50;
+}
+
+QGroupBox {
+    font-weight: bold;
+    border: 2px solid #cccccc;
+    border-radius: 5px;
+    margin-top: 1ex;
+    background-color: white;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 10px 0 10px;
+    color: #333333;
+}
+
+QScrollArea {
+    border: none;
+    background-color: transparent;
+}
+
+QDialog {
+    background-color: white;
+    border-radius: 8px;
+}
+
+QDialogButtonBox QPushButton {
+    min-width: 80px;
+    padding: 8px 16px;
+}

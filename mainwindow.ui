@@ -435,9 +435,6 @@
                    <property name="minimumHeight">
                     <number>35</number>
                    </property>
-                   <property name="styleSheet">
-                    <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 5px;</string>
-                   </property>
                   </widget>
                  </item>
                 </layout>
@@ -529,9 +526,6 @@
               </property>
               <property name="minimumWidth">
                <number>180</number>
-              </property>
-              <property name="styleSheet">
-               <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 8px;</string>
               </property>
               <property name="objectName">
                <string>btnScanQR</string>
@@ -634,9 +628,6 @@
                     </property>
                     <property name="minimumHeight">
                      <number>35</number>
-                    </property>
-                    <property name="styleSheet">
-                     <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 5px;</string>
                     </property>
                     <property name="objectName">
                      <string>btnExportPDF</string>
@@ -855,9 +846,6 @@
                     <property name="minimumHeight">
                      <number>40</number>
                     </property>
-                    <property name="styleSheet">
-                     <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 8px;</string>
-                    </property>
                     <property name="objectName">
                      <string>btnAjouter</string>
                     </property>
@@ -870,9 +858,6 @@
                     </property>
                     <property name="minimumHeight">
                      <number>40</number>
-                    </property>
-                    <property name="styleSheet">
-                     <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 8px;</string>
                     </property>
                     <property name="objectName">
                      <string>btnAnnuler</string>
@@ -1088,9 +1073,6 @@
                     <property name="minimumHeight">
                      <number>40</number>
                     </property>
-                    <property name="styleSheet">
-                     <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 8px;</string>
-                    </property>
                     <property name="objectName">
                      <string>btnValider</string>
                     </property>
@@ -1103,9 +1085,6 @@
                     </property>
                     <property name="minimumHeight">
                      <number>40</number>
-                    </property>
-                    <property name="styleSheet">
-                     <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 8px;</string>
                     </property>
                     <property name="objectName">
                      <string>btnAnnuler</string>
@@ -1210,9 +1189,6 @@
                     <property name="minimumHeight">
                      <number>40</number>
                     </property>
-                    <property name="styleSheet">
-                     <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 8px;</string>
-                    </property>
                     <property name="objectName">
                      <string>btnSupprimer</string>
                     </property>
@@ -1225,9 +1201,6 @@
                     </property>
                     <property name="minimumHeight">
                      <number>40</number>
-                    </property>
-                    <property name="styleSheet">
-                     <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 8px;</string>
                     </property>
                     <property name="objectName">
                      <string>btnAnnuler</string>
@@ -1418,9 +1391,6 @@
                     <property name="minimumHeight">
                      <number>40</number>
                     </property>
-                    <property name="styleSheet">
-                     <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 8px;</string>
-                    </property>
                     <property name="objectName">
                      <string>btnSignaler</string>
                     </property>
@@ -1433,9 +1403,6 @@
                     </property>
                     <property name="minimumHeight">
                      <number>40</number>
-                    </property>
-                    <property name="styleSheet">
-                     <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 8px;</string>
                     </property>
                     <property name="objectName">
                      <string>btnAnnuler</string>
@@ -1594,9 +1561,6 @@
                     <property name="minimumHeight">
                      <number>35</number>
                     </property>
-                    <property name="styleSheet">
-                     <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 5px;</string>
-                    </property>
                     <property name="objectName">
                      <string>btnAjouter</string>
                     </property>
@@ -1609,9 +1573,6 @@
                     </property>
                     <property name="minimumHeight">
                      <number>35</number>
-                    </property>
-                    <property name="styleSheet">
-                     <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 5px;</string>
                     </property>
                     <property name="objectName">
                      <string>btnExportPDF</string>
@@ -2018,9 +1979,6 @@
                     </property>
                     <property name="minimumHeight">
                      <number>35</number>
-                    </property>
-                    <property name="styleSheet">
-                     <string>background-color: #f0f0f0; border: 1px solid #cccccc; border-radius: 4px; padding: 5px;</string>
                     </property>
                     <property name="objectName">
                      <string>btnExportPDF</string>

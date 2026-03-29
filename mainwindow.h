@@ -99,6 +99,9 @@ private:
     void remplirComboboxIds();
     
     void mettreAJourStatistiques();
+    
+    // Application du style CSS
+    void appliquerStyleCSS();
 };
 
 #endif // MAINWINDOW_H
