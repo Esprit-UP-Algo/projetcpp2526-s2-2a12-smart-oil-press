@@ -3427,8 +3427,7 @@ void MainWindow::updateStatistics()
         }
     }
 
-    ui->lineTotalCmd->setText(QString::number(total));
-    ui->lineEnAttenteCmd->setText(QString::number(enAttente));
+
     ui->lineRevenuTotal->setText(QString::number(montantTotal, 'f', 2) + " EUR");
     ui->lineMoyenneCmd->setText(QString::number(moyenne, 'f', 2) + " EUR");
 

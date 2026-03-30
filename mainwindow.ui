@@ -5586,43 +5586,7 @@ QPushButton:pressed { background-color: #6B8C6F; }</string>
                                     <string>Statistiques</string>
                                   </attribute>
                                   <layout class="QVBoxLayout" name="vertical_statistiques_cmd">
-                                    <item>
-                                      <widget class="QGroupBox" name="groupCommandes">
-                                        <property name="title">
-                                          <string>Commandes</string>
-                                        </property>
-                                        <layout class="QGridLayout" name="gridStatCommandes">
-                                          <item row="0" column="0">
-                                            <widget class="QLabel" name="labelTotalCmd">
-                                              <property name="text">
-                                                <string>Total :</string>
-                                              </property>
-                                            </widget>
-                                          </item>
-                                          <item row="0" column="1">
-                                            <widget class="QLineEdit" name="lineTotalCmd">
-                                              <property name="readOnly">
-                                                <bool>true</bool>
-                                              </property>
-                                            </widget>
-                                          </item>
-                                          <item row="1" column="0">
-                                            <widget class="QLabel" name="labelEnAttenteCmd">
-                                              <property name="text">
-                                                <string>En cours :</string>
-                                              </property>
-                                            </widget>
-                                          </item>
-                                          <item row="1" column="1">
-                                            <widget class="QLineEdit" name="lineEnAttenteCmd">
-                                              <property name="readOnly">
-                                                <bool>true</bool>
-                                              </property>
-                                            </widget>
-                                          </item>
-                                        </layout>
-                                      </widget>
-                                    </item>
+                                   
                                     <item>
                                       <widget class="QGroupBox" name="groupRevenue">
                                         <property name="title">
