@@ -11,17 +11,20 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Gestion Machines</string>
+   <string>Smart Oil Press - Gestion des Machines</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">:/assets/logo.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="mainLayout">
     <item>
      <widget class="QWidget" name="sideMenu" native="true">
       <property name="minimumWidth">
-       <number>200</number>
+       <number>220</number>
       </property>
       <property name="maximumWidth">
-       <number>200</number>
+       <number>220</number>
       </property>
       <layout class="QVBoxLayout" name="sideMenuLayout">
        <property name="spacing">
@@ -40,33 +43,50 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="QLabel" name="labelLogo">
+        <widget class="QWidget" name="logoContainer" native="true">
          <property name="minimumHeight">
-          <number>120</number>
+          <number>100</number>
          </property>
          <property name="maximumHeight">
-          <number>120</number>
+          <number>100</number>
          </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="pixmap">
-          <pixmap resource="resources.qrc">:/assets/oil_press.png</pixmap>
-         </property>
-         <property name="scaledContents">
-          <bool>true</bool>
-         </property>
+         <layout class="QVBoxLayout" name="logoLayout">
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <property name="topMargin">
+           <number>10</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <property name="bottomMargin">
+           <number>10</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="logoLabel">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="resources.qrc">:/assets/logo.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="btnEmployee">
          <property name="text">
-          <string>EMPLOYÉ</string>
+          <string> EMPLOYÉ</string>
          </property>
-         <!-- StyleSheet supprimé pour enlever la couleur grise -->
         </widget>
        </item>
        <item>
@@ -74,39 +94,34 @@
          <property name="text">
           <string>ÉQUIPE</string>
          </property>
-         <!-- StyleSheet supprimé pour enlever la couleur grise -->
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="btnClient">
          <property name="text">
-          <string>CLIENT</string>
+          <string>🤝 CLIENT</string>
          </property>
-         <!-- StyleSheet supprimé pour enlever la couleur grise -->
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="btnLaboratory">
          <property name="text">
-          <string>LABORATOIRE</string>
+          <string> LABORATOIRE</string>
          </property>
-         <!-- StyleSheet supprimé pour enlever la couleur grise -->
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="btnOrder">
          <property name="text">
-          <string>COMMANDE</string>
+          <string> COMMANDE</string>
          </property>
-         <!-- StyleSheet supprimé pour enlever la couleur grise -->
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="btnMachine">
          <property name="text">
-          <string>MACHINE</string>
+          <string>  MACHINE</string>
          </property>
-         <!-- StyleSheet supprimé pour enlever la couleur grise -->
         </widget>
        </item>
        <item>
@@ -139,6 +154,16 @@
           </property>
           <property name="objectName">
            <string>pageTitle</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnAddEmployee">
+          <property name="text">
+           <string>➕ Ajouter un employé</string>
+          </property>
+          <property name="minimumHeight">
+           <number>40</number>
           </property>
          </widget>
         </item>
@@ -570,7 +595,7 @@
               <!-- Onglet 1: Liste des Machines -->
               <widget class="QWidget" name="tabList">
                <attribute name="title">
-                <string> Liste des Machines</string>
+                <string>  Liste des Machines</string>
                </attribute>
                <layout class="QVBoxLayout">
                 <item>
@@ -579,7 +604,7 @@
                    <number>0</number>
                   </property>
                   <property name="columnCount">
-                   <number>6</number>
+                   <number>7</number>
                   </property>
                   <property name="selectionBehavior">
                    <enum>QAbstractItemView::SelectRows</enum>
@@ -615,6 +640,11 @@
                   <column>
                    <property name="text">
                     <string>État</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Localisation</string>
                    </property>
                   </column>
                  </widget>
@@ -654,7 +684,7 @@
               <!-- Onglet 2: Ajouter Machine -->
               <widget class="QWidget" name="tabAddMachine">
                <attribute name="title">
-                <string> Ajouter Machine</string>
+                <string>  Ajouter Machine</string>
                </attribute>
                <layout class="QVBoxLayout">
                 <item>
@@ -897,7 +927,7 @@
               <!-- Onglet 3: Modifier Machine -->
               <widget class="QWidget" name="tabModifier">
                <attribute name="title">
-                <string> Modifier Machine</string>
+                <string>  Modifier Machine</string>
                </attribute>
                <layout class="QVBoxLayout">
                 <item>
@@ -1240,7 +1270,7 @@
               <!-- Onglet 5: Signaler Panne -->
               <widget class="QWidget" name="tabPanne">
                <attribute name="title">
-                <string>Signaler Panne</string>
+                <string>  Signaler Panne</string>
                </attribute>
                <layout class="QVBoxLayout">
                 <item>
@@ -1442,13 +1472,13 @@
               <!-- Onglet 6: Historique des Interventions -->
               <widget class="QWidget" name="tabHistorique">
                <attribute name="title">
-                <string> Historique des Interventions</string>
+                <string> 📜 Historique des Interventions</string>
                </attribute>
                <layout class="QVBoxLayout" name="historiqueLayout">
                 <item>
                  <widget class="QTableWidget" name="tableHistorique">
                   <property name="rowCount">
-                   <number>3</number>
+                   <number>0</number>
                   </property>
                   <property name="columnCount">
                    <number>6</number>
@@ -1489,66 +1519,6 @@
                     <string>Statut</string>
                    </property>
                   </column>
-                  <row>
-                   <property name="text">
-                    <string>15/02/2024</string>
-                   </property>
-                   <property name="text">
-                    <string>MCH-001</string>
-                   </property>
-                   <property name="text">
-                    <string>Maintenance préventive</string>
-                   </property>
-                   <property name="text">
-                    <string>Jean Dupont</string>
-                   </property>
-                   <property name="text">
-                    <string>350.00 €</string>
-                   </property>
-                   <property name="text">
-                    <string>Terminé</string>
-                   </property>
-                  </row>
-                  <row>
-                   <property name="text">
-                    <string>10/03/2024</string>
-                   </property>
-                   <property name="text">
-                    <string>MCH-002</string>
-                   </property>
-                   <property name="text">
-                    <string>Réparation</string>
-                   </property>
-                   <property name="text">
-                    <string>Marie Martin</string>
-                   </property>
-                   <property name="text">
-                    <string>520.00 €</string>
-                   </property>
-                   <property name="text">
-                    <string>En cours</string>
-                   </property>
-                  </row>
-                  <row>
-                   <property name="text">
-                    <string>05/04/2024</string>
-                   </property>
-                   <property name="text">
-                    <string>MCH-004</string>
-                   </property>
-                   <property name="text">
-                    <string>Dépannage</string>
-                   </property>
-                   <property name="text">
-                    <string>Pierre Durand</string>
-                   </property>
-                   <property name="text">
-                    <string>120.00 €</string>
-                   </property>
-                   <property name="text">
-                    <string>Terminé</string>
-                   </property>
-                  </row>
                  </widget>
                 </item>
                 <item>
@@ -1556,7 +1526,7 @@
                   <item>
                    <widget class="QPushButton" name="btnAddIntervention">
                     <property name="text">
-                     <string>Ajouter intervention</string>
+                     <string>➕ Ajouter intervention</string>
                     </property>
                     <property name="minimumHeight">
                      <number>35</number>
@@ -1599,7 +1569,7 @@
               <!-- Onglet 7: Statistiques -->
               <widget class="QWidget" name="tabStatistics">
                <attribute name="title">
-                <string>📊 Statistiques</string>
+                <string> 📊 Statistiques</string>
                </attribute>
                <layout class="QVBoxLayout" name="statisticsLayout">
                 <item>
@@ -1645,7 +1615,7 @@
                       <item>
                        <widget class="QLabel" name="statTotal">
                         <property name="text">
-                         <string>4</string>
+                         <string>0</string>
                         </property>
                         <property name="font">
                          <font>
@@ -1702,7 +1672,7 @@
                       <item>
                        <widget class="QLabel" name="statOp">
                         <property name="text">
-                         <string>2</string>
+                         <string>0</string>
                         </property>
                         <property name="font">
                          <font>
@@ -1759,7 +1729,7 @@
                       <item>
                        <widget class="QLabel" name="statMaint">
                         <property name="text">
-                         <string>1</string>
+                         <string>0</string>
                         </property>
                         <property name="font">
                          <font>
@@ -1816,7 +1786,7 @@
                       <item>
                        <widget class="QLabel" name="statDef">
                         <property name="text">
-                         <string>1</string>
+                         <string>0</string>
                         </property>
                         <property name="font">
                          <font>
@@ -1854,17 +1824,6 @@
                       <property name="readOnly">
                        <bool>true</bool>
                       </property>
-                      <property name="html">
-                       <string>&lt;div style='text-align: center; padding: 15px;'&gt;
-                        &lt;h3&gt;Répartition par Catégorie&lt;/h3&gt;
-                        &lt;table style='width: 100%;'&gt;
-                         &lt;tr&gt;&lt;td&gt;Presse&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
-                         &lt;tr&gt;&lt;td&gt;Moteur&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
-                         &lt;tr&gt;&lt;td&gt;Filtre&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
-                         &lt;tr&gt;&lt;td&gt;Capteur&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
-                        &lt;/table&gt;
-                       &lt;/div&gt;</string>
-                      </property>
                      </widget>
                     </item>
                    </layout>
@@ -1878,16 +1837,6 @@
                      <widget class="QTextEdit" name="statsBreakdowns">
                       <property name="readOnly">
                        <bool>true</bool>
-                      </property>
-                      <property name="html">
-                       <string>&lt;div style='text-align: center; padding: 15px;'&gt;
-                        &lt;h3&gt;État des Machines&lt;/h3&gt;
-                        &lt;table style='width: 100%;'&gt;
-                         &lt;tr&gt;&lt;td&gt;En service&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;/tr&gt;
-                         &lt;tr&gt;&lt;td&gt;Maintenance&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
-                         &lt;tr&gt;&lt;td&gt;Panne&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
-                        &lt;/table&gt;
-                       &lt;/div&gt;</string>
                       </property>
                      </widget>
                     </item>
@@ -1917,7 +1866,7 @@
                       <item>
                        <widget class="QLabel" name="kpiInterventionsValue">
                         <property name="text">
-                         <string>3</string>
+                         <string>0</string>
                         </property>
                         <property name="font">
                          <font>
@@ -1950,7 +1899,7 @@
                       <item>
                        <widget class="QLabel" name="kpiCoutTotalValue">
                         <property name="text">
-                         <string>990.00 €</string>
+                         <string>0 €</string>
                         </property>
                         <property name="font">
                          <font>
@@ -2036,6 +1985,8 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

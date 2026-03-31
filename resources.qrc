@@ -2,6 +2,6 @@
 <RCC>
     <qresource prefix="/">
         <file>style/stylesheet.qss</file>
-        <file>assets/oil_press.png</file>
+        <file>assets/logo.png</file>
     </qresource>
 </RCC>

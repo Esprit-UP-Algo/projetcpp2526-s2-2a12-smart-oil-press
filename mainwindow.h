@@ -20,7 +20,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
-// ==================== Dialogue Ajouter Employé (gardé car utilisé) ====================
+// ==================== Dialogue Ajouter Employé ====================
 class AjouterEmployeDialog : public QDialog
 {
     Q_OBJECT
@@ -65,17 +65,23 @@ public:
     ~MainWindow();
 
 private slots:
-    // CRUD Machine - Version simplifiée avec boîtes de confirmation
+    // CRUD Machine
     void ouvrirAjoutMachine();
-    void ouvrirModifierMachine();
+    void validerModificationMachine();
     void ouvrirSupprimerMachine();
     void ouvrirSignalerPanne();
     void ouvrirAjouterIntervention();
     
+    // Filtres et tri
+    void appliquerFiltres();
+    
+    // Changement d'onglet
+    void onTabChanged(int index);
+    
     // CRUD Employé
     void ouvrirAjoutEmploye();
     
-    // Actions Historique (gardées pour compatibilité)
+    // Actions Historique
     void ouvrirSupprimerIntervention();
     void ouvrirVoirDetailsIntervention();
     
@@ -99,8 +105,6 @@ private:
     void remplirComboboxIds();
     
     void mettreAJourStatistiques();
-    
-    // Application du style CSS
     void appliquerStyleCSS();
 };
 

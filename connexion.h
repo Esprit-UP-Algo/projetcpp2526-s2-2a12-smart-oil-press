@@ -1,10 +1,12 @@
-#ifndef CONNECXION_H
-#define CONNECXION_H
+#ifndef CONNEXION_H
+#define CONNEXION_H
 
 #include <QtSql/QSqlDatabase>
 #include <QSqlQuery>
 #include <QVariantMap>
 #include <QList>
+#include <QDebug>
+#include <QString>
 
 class Connection
 {
@@ -20,6 +22,15 @@ public:
     bool ajouterIntervention(const QString& date, const QString& machineId, const QString& type,
                              const QString& technicien, double cout, const QString& statut);
     bool getMachines(QList<QVariantMap>& machines);
+    
+    bool supprimerMachine(const QString& id);
+    bool modifierMachine(const QString& id, const QString& nom, const QString& categorie,
+                         const QString& reference, const QString& dateAchat, 
+                         const QString& etat, const QString& localisation);
+    bool getMachineById(const QString& id, QVariantMap& machine);
+    
+    QSqlDatabase& getDb() { return db; }
+    
     void closeConnection();
     QString lastError() const;
 
@@ -34,5 +45,4 @@ private:
     QString m_lastError;
 };
 
-#endif // CONNECXION_H
-
+#endif // CONNEXION_H
