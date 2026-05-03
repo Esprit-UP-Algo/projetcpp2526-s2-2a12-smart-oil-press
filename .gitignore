@@ -1,0 +1,46 @@
+# Build directories
+build/
+*/build/
+
+# Qt Creator files
+.qtcreator/
+*.pro.user
+*.pro.user.*
+
+# Compiled binaries
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Debug files
+*.pdb
+*.ilk
+*.obj
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+
+# Log files
+*.log
+
+# Database files (if any)
+*.db
+*.sqlite
+*.sqlite3
+
+# Generated files
+moc_*.cpp
+ui_*.h
+qrc_*.cpp
