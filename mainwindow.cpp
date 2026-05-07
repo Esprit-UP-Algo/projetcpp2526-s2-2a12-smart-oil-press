@@ -5979,7 +5979,16 @@ void MainWindow::onModifierCommande()
     newCmd.setQuantite(nouvelleQuantite);
 
     if (Ccommande::modifier(id, newCmd)) {
-        QMessageBox::information(this, "Succes", "Commande modifiee.");
+        // Vérifier si l'état a été changé à "prete" pour afficher une alerte d'email
+        bool stateChangedToPrete = (nouvelEtat.toLower().contains("pret"));
+        
+        if (stateChangedToPrete) {
+            QMessageBox::information(this, "Notification Email", 
+                                   "Commande modifiee.\n\nEmail de notification envoye automatiquement au client via Brevo.");
+        } else {
+            QMessageBox::information(this, "Succes", "Commande modifiee.");
+        }
+        
         refreshTableCommandes();
         updateStatistics();
         refreshAllCharts();
@@ -7955,6 +7964,12 @@ QString MainWindow::getAPIKey(const QString &provider) const
     QString envVar;
     if (effectiveProvider == "openai") {
         envVar = "OPENAI_API_KEY";
+        // Hardcoded for demo/testing: set your OpenAI API key here if not using environment variable
+        QString apiKey = QString::fromUtf8(qgetenv(envVar.toUtf8())).trimmed();
+        if (apiKey.isEmpty()) {
+            apiKey = "";
+        }
+        return apiKey;
     } else if (effectiveProvider == "anthropic" || effectiveProvider == "claude") {
         envVar = "ANTHROPIC_API_KEY";
     } else if (effectiveProvider == "google" || effectiveProvider == "gemini") {
