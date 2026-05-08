@@ -1,0 +1,14 @@
+==================================================
+Date : 2026-05-07 14:55:04
+Machine ID : 122
+Action : AJOUT
+Details : Ajout machine : nom='oil', categorie='presse', reference='588', etat='en service', localisation='atelier', id_labo=1
+==================================================
+
+==================================================
+Date : 2026-05-07 14:55:26
+Machine ID : 122
+Action : MODIFICATION
+Details : Modification machine : nom 'oil' -> 'oiloil', categorie 'presse' -> 'presse', reference '588' -> '588', etat 'en service' -> 'en service', localisation 'atelier' -> 'atelier', id_labo '1' -> '1'
+==================================================
+

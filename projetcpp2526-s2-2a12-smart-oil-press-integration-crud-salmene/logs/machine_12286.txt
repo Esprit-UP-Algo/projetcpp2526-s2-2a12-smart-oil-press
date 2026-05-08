@@ -1,0 +1,7 @@
+==================================================
+Date : 2026-05-07 14:54:29
+Machine ID : 12286
+Action : AJOUT
+Details : Ajout machine : nom='oiloil hbhgf', categorie='presse', reference='20', etat='en service', localisation='atelier', id_labo=1
+==================================================
+
